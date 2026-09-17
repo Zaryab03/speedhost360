@@ -1,26 +1,165 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode (toggled by next-themes) instead of Tailwind v4's
+   default prefers-color-scheme-only strategy. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  /* Core surfaces */
+  --paper: #f6f4ee;
+  --paper-raised: #ffffff;
+  --ink: #13161a;
+  --ink-muted: #565b62;
+  --line: #dfdbcf;
+  --line-strong: #c7c2b2;
+
+  /* Signal accent — infrastructure amber. Used sparingly: CTAs, live states,
+     the build/host/grow diagram pulse. Never as large-area fill. */
+  --signal: #ff5a1f;
+  --signal-ink: #14100a;
+  --signal-soft: #ffe4d3;
+
+  /* Secondary technical tone — used only in the diagram/terminal-style chrome */
+  --wire: #3d4a46;
+
+  --danger: #c22a1f;
+  --success: #1f7a4d;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --shadow-card: 0 1px 0 var(--line), 0 10px 24px -18px rgba(19, 22, 26, 0.35);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --paper: #0c0e10;
+  --paper-raised: #14171a;
+  --ink: #f3f1ea;
+  --ink-muted: #9a9f9c;
+  --line: #262a2c;
+  --line-strong: #34393b;
+
+  --signal: #ff7a3d;
+  --signal-ink: #14100a;
+  --signal-soft: #3a2416;
+
+  --wire: #6c8079;
+
+  --danger: #ff6b5e;
+  --success: #4fd188;
+
+  --shadow-card: 0 1px 0 var(--line), 0 10px 24px -18px rgba(0, 0, 0, 0.6);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-signal-soft: var(--signal-soft);
+
+  --color-wire: var(--wire);
+
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
   }
 }
 
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+/* Respect reduced motion globally; components should also gate their own
+   Framer Motion variants on this, this is a hard CSS-level backstop. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+/* Marks placeholder content that must be replaced with real assets before
+   launch. Visible in every environment (not just dev) so it can never ship
+   silently disguised as real — content owners are expected to swap it. */
+.placeholder-tag {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: var(--signal-soft);
+  color: var(--signal);
+  border: 1px solid var(--signal);
+  pointer-events: none;
 }
