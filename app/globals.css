@@ -85,7 +85,7 @@
 
   /* Attention-drawing loops for the primary CTA and WhatsApp entry points —
      kept subtle so they read as "click me" rather than a loading spinner. */
-  --animate-cta-pulse: cta-pulse 2.2s ease-in-out infinite;
+  --animate-cta-pulse: cta-pulse 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   --animate-icon-pulse: icon-pulse 1.6s ease-in-out infinite;
 }
 
@@ -107,13 +107,20 @@
   }
 }
 
+/* A soft ring that breathes out once per cycle rather than looping
+   continuously — reads as an occasional "notice me" instead of a
+   loading indicator. Most of the cycle sits flat at rest. */
 @keyframes cta-pulse {
   0%,
+  72%,
   100% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 45%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 0%, transparent);
   }
-  50% {
-    box-shadow: 0 0 0 8px color-mix(in srgb, var(--signal) 0%, transparent);
+  82% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--signal) 32%, transparent);
+  }
+  92% {
+    box-shadow: 0 0 0 14px color-mix(in srgb, var(--signal) 0%, transparent);
   }
 }
 
