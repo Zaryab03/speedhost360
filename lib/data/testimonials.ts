@@ -18,4 +18,10 @@ export const testimonials: Testimonial[] = [
     name: "Farhan",
     role: "Admin Manager, Shima Japan Trading",
   },
+  {
+    quote:
+      "We moved our team onto SpeedHost360's business email plan and it just works. Every account was set up and running on our own domain within a day, with none of the back and forth we expected.",
+    name: "Mashood Ibrahim",
+    role: "Owner, Equipment Supply PK",
+  },
 ];

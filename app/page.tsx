@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { ServiceGrid } from "@/components/sections/service-grid";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import { Pricing } from "@/components/sections/pricing";
+import { EmailPricing } from "@/components/sections/email-pricing";
 import { HostingComparison } from "@/components/sections/hosting-comparison";
 import { BuildHostGrow } from "@/components/sections/build-host-grow";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -24,6 +25,7 @@ export default function Home() {
       <ReliabilityStats />
       <ServiceGrid />
       <Pricing />
+      <EmailPricing />
       <HostingComparison />
       <BuildHostGrow />
       <Testimonials />

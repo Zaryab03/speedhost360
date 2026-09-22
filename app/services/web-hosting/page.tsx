@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { services } from "@/lib/data/services";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
+import { EmailPricing } from "@/components/sections/email-pricing";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import { HostingComparison } from "@/components/sections/hosting-comparison";
 
@@ -27,6 +28,7 @@ export default function WebHostingPage() {
         service={service}
         afterPricing={
           <>
+            <EmailPricing />
             <ReliabilityStats />
             <HostingComparison />
           </>
