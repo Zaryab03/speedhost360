@@ -9,7 +9,7 @@ import { RevealOnScroll } from "@/components/motion/reveal";
 export const metadata: Metadata = buildMetadata({
   title: "Services",
   description:
-    "Web development, web hosting, managed hosting and digital marketing — four services, one accountable team at SpeedHost360.",
+    "Web development, web hosting, managed hosting and digital marketing: four services, one accountable team at SpeedHost360.",
   path: "/services",
 });
 

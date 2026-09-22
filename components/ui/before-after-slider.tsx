@@ -122,7 +122,7 @@ function Panel({
         }`}
       >
         <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
-          {label} — placeholder
+          {label} (placeholder)
         </span>
         <span className="text-xs text-ink-muted">{alt}</span>
       </div>

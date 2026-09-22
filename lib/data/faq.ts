@@ -4,7 +4,7 @@ export const generalFaq: FaqItem[] = [
   {
     question: "How long does website development take?",
     answer:
-      "A focused business website typically takes 3–6 weeks from signed-off content to launch. E-commerce and custom web applications take longer depending on scope — you'll get a specific timeline after a discovery call.",
+      "A focused business website typically takes 3–6 weeks from signed-off content to launch. E-commerce and custom web applications take longer depending on scope. You'll get a specific timeline after a discovery call.",
   },
   {
     question: "Do you provide hosting?",
@@ -14,7 +14,7 @@ export const generalFaq: FaqItem[] = [
   {
     question: "Can you manage my existing server?",
     answer:
-      "Yes. We start with an infrastructure audit of your current setup before taking over management — nothing is assumed or skipped.",
+      "Yes. We start with an infrastructure audit of your current setup before taking over management; nothing is assumed or skipped.",
   },
   {
     question: "Can you migrate my website?",
@@ -34,7 +34,7 @@ export const generalFaq: FaqItem[] = [
   {
     question: "Can you work with an existing website?",
     answer:
-      "Yes — redesigns, extensions and migrations of existing sites are common work for us, not an exception.",
+      "Yes, redesigns, extensions and migrations of existing sites are common work for us, not an exception.",
   },
   {
     question: "What happens after I submit an inquiry?",

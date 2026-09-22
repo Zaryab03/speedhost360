@@ -17,14 +17,6 @@ const serviceOptions: { value: ContactFormValues["service"]; label: string }[] =
   { value: "other", label: "Other / Not sure yet" },
 ];
 
-const budgetOptions = [
-  "Under PKR 50,000",
-  "PKR 50,000 – 150,000",
-  "PKR 150,000 – 500,000",
-  "PKR 500,000+",
-  "Not sure yet",
-];
-
 type FieldErrors = Partial<Record<keyof ContactFormValues, string[]>>;
 
 export function ContactForm() {
@@ -38,7 +30,6 @@ export function ContactForm() {
     email: "",
     phone: "",
     service: "other" as ContactFormValues["service"],
-    budget: "",
     message: "",
     company_website: "",
   });
@@ -182,23 +173,6 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-
-        <Field label="Budget" htmlFor="budget" error={fieldErrors.budget?.[0]}>
-          <select
-            id="budget"
-            name="budget"
-            value={values.budget}
-            onChange={(e) => updateField("budget", e.target.value)}
-            className={inputClass(!!fieldErrors.budget)}
-          >
-            <option value="">Select a range</option>
-            {budgetOptions.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
-        </Field>
       </div>
 
       <Field label="Project details" htmlFor="message" required error={fieldErrors.message?.[0]}>
@@ -212,8 +186,8 @@ export function ContactForm() {
           className={inputClass(!!fieldErrors.message)}
           placeholder={
             isQuote
-              ? "Tell us what you need a quote for — service, rough scope, and timeline."
-              : "Tell us about your project — goals, timeline, and anything else useful."
+              ? "Tell us what you need a quote for: service, rough scope, and timeline."
+              : "Tell us about your project: goals, timeline, and anything else useful."
           }
         />
       </Field>

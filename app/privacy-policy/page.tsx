@@ -19,21 +19,13 @@ export default function PrivacyPolicyPage() {
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Privacy Policy
           </h1>
-          <p className="mt-3 text-xs text-ink-muted">Last updated: to be confirmed at launch.</p>
-
           <div className="prose-legal mt-10 space-y-8 text-sm leading-relaxed text-ink-muted">
-            <div className="border border-line-strong bg-paper-raised p-4 text-xs text-ink">
-              This page is a working template, not finished legal advice. It should be reviewed
-              by a qualified professional against {siteConfig.name}&rsquo;s actual data practices
-              and applicable law before publication.
-            </div>
-
             <section>
               <h2 className="text-base font-semibold text-ink">Information we collect</h2>
               <p className="mt-2">
                 When you submit our contact form, we collect the information you provide: name,
-                business name, email, phone/WhatsApp number, selected service, budget range and
-                your project message. We do not ask for or store payment details on this website.
+                business name, email, phone/WhatsApp number, selected service and your project
+                message. We do not ask for or store payment details on this website.
               </p>
             </section>
 

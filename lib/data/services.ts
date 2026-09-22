@@ -49,11 +49,11 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Website Development",
     metaTitle: "Website Development Services | SpeedHost360",
     metaDescription:
-      "Business websites, e-commerce, landing pages and custom web applications — designed, built and optimized by SpeedHost360.",
+      "Business websites, e-commerce, landing pages and custom web applications: designed, built and optimized by SpeedHost360.",
     eyebrow: "01 · Build",
     headline: "Websites built to work, not just look good.",
     subheadline:
-      "Corporate sites, online stores, landing pages and custom web applications — engineered for speed, clarity and conversion from the first commit.",
+      "Corporate sites, online stores, landing pages and custom web applications: engineered for speed, clarity and conversion from the first commit.",
     primaryCta: "Start Your Website Project",
     benefits: [
       {
@@ -115,12 +115,12 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Can you work with an existing website?",
         answer:
-          "Yes — we regularly redesign, extend or migrate existing sites rather than starting from zero, once we've reviewed what's already there.",
+          "Yes, we regularly redesign, extend or migrate existing sites rather than starting from zero, once we've reviewed what's already there.",
       },
       {
         question: "Do you provide hosting after the site is built?",
         answer:
-          "Yes, hosting and managed hosting are core services — see our Web Hosting and Managed Hosting pages for details.",
+          "Yes, hosting and managed hosting are core services; see our Web Hosting and Managed Hosting pages for details.",
       },
     ],
     relatedServices: ["web-hosting", "digital-marketing"],
@@ -136,7 +136,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     eyebrow: "02 · Host",
     headline: "Infrastructure your website can depend on.",
     subheadline:
-      "SSL, backups, security hardening, performance tuning and real monitoring — the operational basics most hosts skip.",
+      "SSL, backups, security hardening, performance tuning and real monitoring: the operational basics most hosts skip.",
     primaryCta: "Explore Hosting Plans",
     benefits: [
       {
@@ -221,12 +221,12 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
     ],
     pricingNote:
-      "Pricing shown in PKR. Contact us to confirm the current billing cycle and any traffic- or storage-based adjustments for your project — we don't publish uptime guarantees we can't stand behind.",
+      "Pricing shown in PKR. Contact us to confirm the current billing cycle and any traffic- or storage-based adjustments for your project. We don't publish uptime guarantees we can't stand behind.",
     faq: [
       {
         question: "Can you migrate my existing website?",
         answer:
-          "Yes, migration is included as part of onboarding to a hosting plan — we handle DNS, files and databases to minimize downtime.",
+          "Yes, migration is included as part of onboarding to a hosting plan; we handle DNS, files and databases to minimize downtime.",
       },
       {
         question: "Do you provide SSL certificates?",
@@ -235,7 +235,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "What happens if my site goes down?",
         answer:
-          "Our monitoring flags downtime and our support team investigates — response time details are confirmed in your plan agreement.",
+          "Our monitoring flags downtime and our support team investigates; response time details are confirmed in your plan agreement.",
       },
     ],
     relatedServices: ["managed-hosting", "web-development"],
@@ -247,11 +247,11 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Managed Hosting",
     metaTitle: "Managed Hosting Services | SpeedHost360",
     metaDescription:
-      "You run the business, we run the infrastructure — server management, security, monitoring and support from SpeedHost360, starting at PKR 50,000.",
+      "You run the business, we run the infrastructure: server management, security, monitoring and support from SpeedHost360, starting at PKR 50,000.",
     eyebrow: "03 · Manage",
     headline: "You run the business. We run the infrastructure.",
     subheadline:
-      "Server management, security, updates, monitoring, backups and performance optimization handled by us — so your team never has to think about the server.",
+      "Server management, security, updates, monitoring, backups and performance optimization handled by us, so your team never has to think about the server.",
     primaryCta: "Talk to Us About Managed Hosting",
     benefits: [
       {
@@ -319,17 +319,17 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
     ],
     pricingNote:
-      "Final pricing depends on your infrastructure requirements — traffic, server specification, and the number of applications we're managing. We'll scope this with you before quoting a fixed number.",
+      "Final pricing depends on your infrastructure requirements, traffic, server specification, and the number of applications we're managing. We'll scope this with you before quoting a fixed number.",
     faq: [
       {
         question: "Can you manage my existing server?",
         answer:
-          "Yes — we start with an infrastructure audit of your current server before taking over management, so nothing is assumed.",
+          "Yes, we start with an infrastructure audit of your current server before taking over management, so nothing is assumed.",
       },
       {
         question: "Is managed hosting the same as shared hosting?",
         answer:
-          "No. Managed hosting means we actively administer the server — patching, monitoring, security and performance — rather than just providing an account on shared infrastructure.",
+          "No. Managed hosting means we actively administer the server (patching, monitoring, security and performance) rather than just providing an account on shared infrastructure.",
       },
       {
         question: "Do you provide ongoing support?",
@@ -346,11 +346,11 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Digital Marketing",
     metaTitle: "Digital Marketing Services | SpeedHost360",
     metaDescription:
-      "SEO, local SEO, content strategy, social media, paid campaigns and conversion optimization — digital marketing built on top of a website that's actually fast.",
+      "SEO, local SEO, content strategy, social media, paid campaigns and conversion optimization: digital marketing built on top of a website that's actually fast.",
     eyebrow: "04 · Grow",
     headline: "Traffic is a start. Customers are the goal.",
     subheadline:
-      "SEO, content strategy, social media, paid campaigns and conversion optimization — built on top of a website and infrastructure that can actually convert visitors.",
+      "SEO, content strategy, social media, paid campaigns and conversion optimization: built on top of a website and infrastructure that can actually convert visitors.",
     primaryCta: "Get a Marketing Quote",
     benefits: [
       {
@@ -361,7 +361,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         title: "Measured, not guessed",
         description:
-          "Every campaign is tied to tracked events — CTA clicks, form submissions, WhatsApp conversations — not vanity metrics.",
+          "Every campaign is tied to tracked events (CTA clicks, form submissions, WhatsApp conversations), not vanity metrics.",
       },
       {
         title: "Built for the long term",
@@ -407,17 +407,17 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Can you guarantee first-page rankings?",
         answer:
-          "No — no legitimate agency can guarantee specific rankings, and we won't promise one. We focus on the technical, content and authority factors that are actually within our control.",
+          "No, no legitimate agency can guarantee specific rankings, and we won't promise one. We focus on the technical, content and authority factors that are actually within our control.",
       },
       {
         question: "Do I need a new website for SEO to work?",
         answer:
-          "Not necessarily, but site speed and structure matter a lot for SEO — if your current site is holding you back, we'll tell you plainly.",
+          "Not necessarily, but site speed and structure matter a lot for SEO. If your current site is holding you back, we'll tell you plainly.",
       },
       {
         question: "What does 'growth' actually mean here?",
         answer:
-          "Traffic that turns into engagement, engagement that turns into leads, and leads that turn into customers — each stage is tracked, not just top-of-funnel visits.",
+          "Traffic that turns into engagement, engagement that turns into leads, and leads that turn into customers. Each stage is tracked, not just top-of-funnel visits.",
       },
     ],
     relatedServices: ["web-development", "web-hosting"],

@@ -16,10 +16,10 @@ export function ServiceGrid() {
 
         <div className="mt-12 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
           {serviceList.map((service, index) => (
-            <RevealOnScroll key={service.slug} delay={index * 0.05} className="bg-paper">
+            <RevealOnScroll key={service.slug} delay={index * 0.05} className="relative bg-paper">
               <Link
                 href={`/services/${service.slug}`}
-                className="focus-ring group flex h-full flex-col justify-between p-8 transition-colors hover:bg-paper-raised"
+                className="focus-ring group relative flex h-full flex-col justify-between p-8 transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-1 hover:bg-paper-raised hover:shadow-[var(--shadow-card)]"
               >
                 <div>
                   <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">

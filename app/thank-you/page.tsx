@@ -20,7 +20,7 @@ export default function ThankYouPage() {
       <div className="mx-auto max-w-2xl px-4 py-24 text-center sm:px-6">
         <CheckCircle2 size={40} className="mx-auto text-signal" />
         <h1 className="mt-6 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-          Thanks — your project inquiry has been received.
+          Thanks, your project inquiry has been received.
         </h1>
         <p className="mt-4 text-base leading-relaxed text-ink-muted">
           We&rsquo;ll review your requirements and get back to you within 1 business day.
@@ -40,11 +40,7 @@ export default function ThankYouPage() {
           </a>
         </div>
 
-        <div className="mt-16 grid gap-4 border-t border-line pt-10 text-left sm:grid-cols-3">
-          <Link href="/case-studies" className="focus-ring border border-line-strong p-4 hover:border-signal">
-            <p className="text-sm font-medium text-ink">Case Studies</p>
-            <p className="mt-1 text-xs text-ink-muted">See what we&rsquo;ve built</p>
-          </Link>
+        <div className="mt-16 grid gap-4 border-t border-line pt-10 text-left sm:grid-cols-2">
           <Link href="/services" className="focus-ring border border-line-strong p-4 hover:border-signal">
             <p className="text-sm font-medium text-ink">Services</p>
             <p className="mt-1 text-xs text-ink-muted">Explore what we offer</p>

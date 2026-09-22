@@ -5,7 +5,7 @@ const stages = [
     step: "01",
     title: "Build",
     description:
-      "A business needs a digital presence — designed with intent, built to load fast, structured to be found.",
+      "A business needs a digital presence: designed with intent, built to load fast, structured to be found.",
   },
   {
     step: "02",
@@ -17,7 +17,7 @@ const stages = [
     step: "03",
     title: "Manage",
     description:
-      "Infrastructure needs upkeep — security patching, performance tuning, and someone watching it, not just renting it to you.",
+      "Infrastructure needs upkeep: security patching, performance tuning, and someone watching it, not just renting it to you.",
   },
   {
     step: "04",

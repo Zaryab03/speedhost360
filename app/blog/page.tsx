@@ -32,13 +32,16 @@ export default async function BlogIndexPage() {
 
           {posts.length === 0 ? (
             <p className="mt-12 text-sm text-ink-muted">
-              Nothing published yet — check back soon.
+              Nothing published yet. Check back soon.
             </p>
           ) : (
             <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post, index) => (
                 <RevealOnScroll key={post.id} delay={index * 0.05}>
-                  <Link href={`/blog/${post.slug}`} className="focus-ring group block">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="focus-ring group block transition-transform duration-300 hover:-translate-y-1"
+                  >
                     <div className="relative aspect-[4/3] w-full overflow-hidden border border-line bg-paper-raised">
                       {post.featuredImageUrl && (
                         <Image

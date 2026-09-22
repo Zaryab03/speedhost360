@@ -15,8 +15,6 @@ export function GET() {
     "## Key pages",
     `- [Home](${siteConfig.url}/)`,
     `- [About](${siteConfig.url}/about)`,
-    `- [Case Studies](${siteConfig.url}/case-studies)`,
-    `- [Gallery](${siteConfig.url}/gallery)`,
     `- [Blog](${siteConfig.url}/blog)`,
     `- [Contact](${siteConfig.url}/contact)`,
     "",

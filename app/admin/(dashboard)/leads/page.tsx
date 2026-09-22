@@ -22,7 +22,7 @@ export default async function AdminLeadsPage() {
 
       {leads.length === 0 ? (
         <p className="mt-8 text-sm text-ink-muted">
-          No leads yet — submissions from the contact form will show up here.
+          No leads yet. Submissions from the contact form will show up here.
         </p>
       ) : (
         <div className="mt-8 overflow-x-auto">
@@ -34,7 +34,6 @@ export default async function AdminLeadsPage() {
                 <th className="py-2 pr-4 font-medium">Business</th>
                 <th className="py-2 pr-4 font-medium">Contact</th>
                 <th className="py-2 pr-4 font-medium">Service</th>
-                <th className="py-2 pr-4 font-medium">Budget</th>
                 <th className="py-2 pr-4 font-medium">Message</th>
                 <th className="py-2 pr-4 font-medium">Source</th>
                 <th className="py-2 pr-4 font-medium">Status</th>
@@ -56,7 +55,7 @@ export default async function AdminLeadsPage() {
                     })}
                   </td>
                   <td className="py-3 pr-4 font-medium text-ink">{lead.name}</td>
-                  <td className="py-3 pr-4 text-ink-muted">{lead.businessName || "—"}</td>
+                  <td className="py-3 pr-4 text-ink-muted">{lead.businessName || "N/A"}</td>
                   <td className="py-3 pr-4 text-ink-muted">
                     <a href={`mailto:${lead.email}`} className="focus-ring block hover:text-signal">
                       {lead.email}
@@ -66,7 +65,6 @@ export default async function AdminLeadsPage() {
                     </a>
                   </td>
                   <td className="py-3 pr-4 text-ink-muted">{lead.service}</td>
-                  <td className="py-3 pr-4 text-ink-muted">{lead.budget || "—"}</td>
                   <td className="max-w-64 py-3 pr-4 text-ink-muted">
                     <p className="line-clamp-3" title={lead.message}>
                       {lead.message}

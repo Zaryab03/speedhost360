@@ -26,7 +26,7 @@ const values = [
   {
     title: "Build for the long run",
     description:
-      "Fast, secure, maintainable work — the kind that's still easy to work with a year from now.",
+      "Fast, secure, maintainable work: the kind that's still easy to work with a year from now.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function AboutPage() {
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-ink-muted">
               SpeedHost360 exists because those three things are usually handled by three
-              different vendors who don&rsquo;t talk to each other — a developer who hands off
+              different vendors who don&rsquo;t talk to each other: a developer who hands off
               and disappears, a host who only sells server space, and a marketer working against
               a site they didn&rsquo;t build and don&rsquo;t control. We do all three under one
               roof, so decisions in one area account for the other two.
@@ -83,7 +83,7 @@ export default function AboutPage() {
           <div className="relative mt-10 flex aspect-[16/7] w-full items-center justify-center border border-line bg-paper-raised">
             <PlaceholderTag />
             <p className="max-w-sm px-6 text-center text-sm text-ink-muted">
-              [Real team photo goes here — replace before launch. No AI-generated or stock
+              [Real team photo goes here, replace before launch. No AI-generated or stock
               people.]
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function AboutPage() {
               Want to work with us?
             </h2>
             <div className="mt-6">
-              <Button href="/contact">Start a Project</Button>
+              <Button href="/contact" pulse>Start a Project</Button>
             </div>
           </RevealOnScroll>
         </div>

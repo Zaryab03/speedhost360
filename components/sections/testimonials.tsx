@@ -22,7 +22,7 @@ export function Testimonials() {
               {testimonial.isPlaceholder && <PlaceholderTag />}
               <p className="text-xl leading-relaxed text-ink">“{testimonial.quote}”</p>
               <p className="mt-4 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
-                {testimonial.name} — {testimonial.role}
+                {testimonial.name}, {testimonial.role}
               </p>
             </RevealOnScroll>
           ))}

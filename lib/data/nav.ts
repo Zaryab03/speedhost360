@@ -29,8 +29,6 @@ export const serviceLinks: NavLink[] = [
 
 export const primaryNav: NavLink[] = [
   { label: "Services", href: "/services" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

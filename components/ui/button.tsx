@@ -53,7 +53,7 @@ export function Button(props: LinkButtonProps | NativeButtonProps) {
     base,
     variants[variant],
     sizes[size],
-    pulse && "animate-cta-pulse transition-transform hover:scale-105 hover:[animation-play-state:paused]",
+    pulse && "animate-cta-pulse",
     className
   );
 

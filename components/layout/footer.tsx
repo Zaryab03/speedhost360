@@ -51,16 +51,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="focus-ring text-sm text-ink hover:text-signal">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="/gallery" className="focus-ring text-sm text-ink hover:text-signal">
-                  Gallery
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog" className="focus-ring text-sm text-ink hover:text-signal">
                   Blog
                 </Link>
@@ -116,10 +106,6 @@ export function Footer() {
               </li>
             </ul>
           </div>
-        </div>
-
-        <div className="mt-6 rounded-[var(--radius-sm)] border border-line-strong bg-paper-raised px-4 py-3 text-xs text-ink-muted">
-          {siteConfig.responseTimePromise}
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-line pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">

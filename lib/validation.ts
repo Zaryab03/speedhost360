@@ -16,7 +16,6 @@ export const contactFormSchema = z.object({
     "digital-marketing",
     "other",
   ]),
-  budget: z.string().trim().optional().or(z.literal("")),
   message: z.string().trim().min(10, "Please tell us a bit more about your project."),
   // Honeypot field — must stay empty. Bots that fill every field trip this.
   company_website: z.string().max(0).optional().or(z.literal("")),

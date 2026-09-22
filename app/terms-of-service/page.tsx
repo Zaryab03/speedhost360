@@ -19,15 +19,7 @@ export default function TermsOfServicePage() {
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Terms of Service
           </h1>
-          <p className="mt-3 text-xs text-ink-muted">Last updated: to be confirmed at launch.</p>
-
           <div className="mt-10 space-y-8 text-sm leading-relaxed text-ink-muted">
-            <div className="border border-line-strong bg-paper-raised p-4 text-xs text-ink">
-              This page is a working template, not finished legal advice. It should be reviewed
-              by a qualified professional before publication, and updated to match{" "}
-              {siteConfig.name}&rsquo;s actual contracts and policies.
-            </div>
-
             <section>
               <h2 className="text-base font-semibold text-ink">Services</h2>
               <p className="mt-2">

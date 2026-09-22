@@ -14,14 +14,14 @@ export const galleryItems: GalleryItem[] = [
     id: "placeholder-gallery-one",
     isPlaceholder: true,
     projectName: "[Replace with real project name]",
-    beforeAlt: "[Before screenshot — replace with real image]",
-    afterAlt: "[After screenshot — replace with real image]",
+    beforeAlt: "[Before screenshot, replace with real image]",
+    afterAlt: "[After screenshot, replace with real image]",
   },
   {
     id: "placeholder-gallery-two",
     isPlaceholder: true,
     projectName: "[Replace with real project name]",
-    beforeAlt: "[Before screenshot — replace with real image]",
-    afterAlt: "[After screenshot — replace with real image]",
+    beforeAlt: "[Before screenshot, replace with real image]",
+    afterAlt: "[After screenshot, replace with real image]",
   },
 ];
