@@ -147,7 +147,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         title: "Backed up, not hoped for",
         description:
-          "Scheduled backups so a bad deploy or update is never a full rebuild.",
+          "Daily backups so a bad deploy or update is never a full rebuild.",
       },
       {
         title: "Actually monitored",
@@ -157,7 +157,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     features: [
       "Free SSL certificate",
-      "Scheduled automated backups",
+      "Daily automated backups",
       "Security hardening & firewall rules",
       "Performance & caching configuration",
       "Uptime & performance monitoring",
@@ -192,7 +192,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         features: [
           "1 website",
           "Free SSL",
-          "Scheduled backups",
+          "Daily backups",
           "Standard support",
         ],
       },
@@ -203,25 +203,25 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         features: [
           "Up to 5 websites",
           "Free SSL",
-          "Scheduled backups",
+          "Daily backups",
           "Performance monitoring",
           "Priority support",
         ],
       },
       {
-        name: "Enterprise",
+        name: "Professional",
         price: "PKR 40,000",
         features: [
           "Multiple high-traffic sites",
           "Free SSL",
-          "Scheduled backups",
+          "Daily backups",
           "Advanced monitoring",
           "Priority support",
         ],
       },
     ],
     pricingNote:
-      "Pricing shown in PKR. Contact us to confirm the current billing cycle and any traffic- or storage-based adjustments for your project. We don't publish uptime guarantees we can't stand behind.",
+      "Pricing shown in PKR. Contact us to confirm the current billing cycle and any traffic- or storage-based adjustments for your project. Every plan is backed by a 99.9% uptime commitment and daily automated backups.",
     faq: [
       {
         question: "Can you migrate my existing website?",
@@ -235,7 +235,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "What happens if my site goes down?",
         answer:
-          "Our monitoring flags downtime and our support team investigates; response time details are confirmed in your plan agreement.",
+          "Our monitoring flags downtime immediately and our support team investigates right away. Every hosting plan carries a 99.9% uptime commitment.",
       },
     ],
     relatedServices: ["managed-hosting", "web-development"],
@@ -247,7 +247,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Managed Hosting",
     metaTitle: "Managed Hosting Services | SpeedHost360",
     metaDescription:
-      "You run the business, we run the infrastructure: server management, security, monitoring and support from SpeedHost360, starting at PKR 50,000.",
+      "You run the business, we run the infrastructure: server management, security, monitoring and support from SpeedHost360, starting at PKR 56,000.",
     eyebrow: "03 · Manage",
     headline: "You run the business. We run the infrastructure.",
     subheadline:
@@ -274,7 +274,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       "Server provisioning & management",
       "Security hardening & patching",
       "Proactive monitoring",
-      "Scheduled backups & recovery testing",
+      "Daily backups & recovery testing",
       "Performance optimization",
       "Ongoing technical support",
     ],
@@ -306,8 +306,8 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     pricing: [
       {
-        name: "Managed Infrastructure",
-        price: "Starting from PKR 50,000",
+        name: "Managed Hosting",
+        price: "Starting from PKR 56,000",
         highlighted: true,
         features: [
           "Server management",

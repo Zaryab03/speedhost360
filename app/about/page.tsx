@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { RevealOnScroll } from "@/components/motion/reveal";
 import { PlaceholderTag } from "@/components/ui/placeholder-tag";
 import { Button } from "@/components/ui/button";
+import { yearsInBusiness } from "@/lib/data/trust";
 
 export const metadata: Metadata = buildMetadata({
   title: "About",
@@ -42,6 +43,9 @@ export default function AboutPage() {
             <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
               Build. Host. Grow.
             </h1>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
+              {yearsInBusiness}
+            </p>
             <p className="mt-6 text-lg leading-relaxed text-ink-muted">
               SpeedHost360 exists because those three things are usually handled by three
               different vendors who don&rsquo;t talk to each other: a developer who hands off

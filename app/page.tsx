@@ -3,6 +3,8 @@ import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/sections/hero";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { ServiceGrid } from "@/components/sections/service-grid";
+import { ReliabilityStats } from "@/components/sections/reliability-stats";
+import { Pricing } from "@/components/sections/pricing";
 import { BuildHostGrow } from "@/components/sections/build-host-grow";
 import { Testimonials } from "@/components/sections/testimonials";
 import { FaqSection } from "@/components/sections/faq-section";
@@ -20,7 +22,9 @@ export default function Home() {
     <>
       <Hero />
       <TrustStrip />
+      <ReliabilityStats />
       <ServiceGrid />
+      <Pricing />
       <BuildHostGrow />
       <Testimonials />
       <FaqSection />

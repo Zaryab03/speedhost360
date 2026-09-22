@@ -41,6 +41,11 @@ export default function ServicesIndexPage() {
                       {service.title}
                     </h2>
                     <p className="mt-1 max-w-xl text-sm text-ink-muted">{service.subheadline}</p>
+                    {service.pricing && (
+                      <p className="mt-2 font-mono text-xs uppercase tracking-[0.06em] text-signal">
+                        From {service.pricing[0].price.replace(/^Starting from /i, "")}
+                      </p>
+                    )}
                   </div>
                   <ArrowUpRight
                     size={20}

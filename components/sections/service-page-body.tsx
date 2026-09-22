@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { Check, MessageCircle } from "lucide-react";
 import type { ServiceContent } from "@/lib/data/services";
 import { services } from "@/lib/data/services";
@@ -9,7 +10,14 @@ import { FaqAccordion } from "@/components/ui/accordion";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqJsonLd } from "@/lib/seo/json-ld";
 
-export function ServicePageBody({ service }: { service: ServiceContent }) {
+export function ServicePageBody({
+  service,
+  afterPricing,
+}: {
+  service: ServiceContent;
+  /** Optional service-specific content (e.g. a competitor comparison) rendered right after the pricing block and before the FAQ. */
+  afterPricing?: ReactNode;
+}) {
   return (
     <>
       <JsonLd data={faqJsonLd(service.faq)} />
@@ -133,6 +141,8 @@ export function ServicePageBody({ service }: { service: ServiceContent }) {
           </div>
         </section>
       )}
+
+      {afterPricing}
 
       <section className="border-b border-line bg-paper-raised">
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MessageCircle, Phone, Mail, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
 import { serviceLinks, footerLegalLinks } from "@/lib/data/nav";
+import { paymentMethods, yearsInBusiness } from "@/lib/data/trust";
 import { trackEvent } from "@/lib/analytics";
 
 export function Footer() {
@@ -23,6 +24,7 @@ export function Footer() {
             <p className="mt-6 font-mono text-xs uppercase tracking-[0.06em] text-signal">
               {siteConfig.tagline}
             </p>
+            <p className="mt-2 text-xs text-ink-muted">{yearsInBusiness}</p>
           </div>
 
           <div>
@@ -108,7 +110,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-line pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>Payments accepted: {paymentMethods.join(" · ")}</p>
+        </div>
+
+        <div className="mt-4 flex flex-col gap-4 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {siteConfig.name}. All rights reserved.</p>
           <div className="flex gap-5">
             {footerLegalLinks.map((link) => (
