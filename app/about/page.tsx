@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { RevealOnScroll } from "@/components/motion/reveal";
-import { PlaceholderTag } from "@/components/ui/placeholder-tag";
 import { Button } from "@/components/ui/button";
 import { yearsInBusiness } from "@/lib/data/trust";
 
@@ -102,12 +102,15 @@ export default function AboutPage() {
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-14">
             <RevealOnScroll>
-              <div className="relative flex aspect-[4/5] w-full items-center justify-center border border-line bg-paper-raised">
-                <PlaceholderTag />
-                <p className="max-w-[14rem] px-6 text-center text-sm text-ink-muted">
-                  [Real founder photo goes here, replace before launch. No AI-generated or stock
-                  people.]
-                </p>
+              <div className="relative aspect-[4/5] w-full overflow-hidden border border-line">
+                <Image
+                  src="/images/founder.jpeg"
+                  alt="Zaryab Qureshi, Founder of SpeedHost360"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                  priority
+                />
               </div>
             </RevealOnScroll>
 

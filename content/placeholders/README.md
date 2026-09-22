@@ -12,7 +12,6 @@ for `isPlaceholder` and `PLACEHOLDER` to find every instance programmatically.
 | 3 case studies (name, industry, challenge, solution, tech, screenshots) | `/case-studies` | `lib/data/case-studies.ts` |
 | 2 before/after gallery projects + real screenshots | `/gallery` | `lib/data/gallery.ts` |
 | Testimonial quote(s), **only publish with the client's written permission** | Homepage | `lib/data/testimonials.ts` |
-| Team photo, real photography only, no AI-generated or stock people | `/about` | `app/about/page.tsx` |
 | Business address (currently blank, marked placeholder) | Footer / structured data | `lib/data/site.ts` → `siteConfig.address` |
 | Social profile links, only add ones that actually exist | Footer | `lib/data/site.ts` → `siteConfig.social` |
 | Phone number, confirm whether it's the same as WhatsApp or different | Everywhere | `lib/data/site.ts` → `siteConfig.phoneNumber` |
