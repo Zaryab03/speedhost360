@@ -12,14 +12,14 @@ export function Testimonials() {
           </p>
         </RevealOnScroll>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-1">
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
           {testimonials.map((testimonial, index) => (
             <RevealOnScroll
               key={testimonial.name + index}
               delay={index * 0.06}
-              className="relative max-w-2xl border-l-2 border-signal py-2 pl-6"
+              className="relative border-l-2 border-signal py-2 pl-6"
             >
-              <PlaceholderTag />
+              {testimonial.isPlaceholder && <PlaceholderTag />}
               <p className="text-xl leading-relaxed text-ink">“{testimonial.quote}”</p>
               <p className="mt-4 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
                 {testimonial.name} — {testimonial.role}
