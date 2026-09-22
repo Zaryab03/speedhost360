@@ -12,6 +12,11 @@ export const generalFaq: FaqItem[] = [
       "Yes. We offer standard web hosting plans and fully managed hosting where we handle server administration end to end. See our Web Hosting and Managed Hosting pages for details.",
   },
   {
+    question: "Do you offer business email hosting?",
+    answer:
+      "Yes. Self-hosted business email on your own domain, priced per mailbox: PKR 15,000 for 3 mailboxes or PKR 20,000 for 6. It's sold alongside any hosting plan, not locked to one.",
+  },
+  {
     question: "Can you manage my existing server?",
     answer:
       "Yes. We start with an infrastructure audit of your current setup before taking over management; nothing is assumed or skipped.",

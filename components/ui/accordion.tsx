@@ -19,10 +19,14 @@ export function FaqAccordion({
       className={cn("divide-y divide-line border-y border-line", className)}
     >
       {items.map((item, index) => (
-        <AccordionPrimitive.Item key={index} value={`item-${index}`}>
+        <AccordionPrimitive.Item
+          key={index}
+          value={`item-${index}`}
+          className="relative transition-[box-shadow,background-color] duration-300 data-[state=open]:z-10 data-[state=open]:bg-paper data-[state=open]:shadow-[inset_3px_0_0_var(--signal),var(--shadow-card)]"
+        >
           <AccordionPrimitive.Header>
-            <AccordionPrimitive.Trigger className="focus-ring group flex w-full items-center justify-between gap-4 py-5 text-left">
-              <span className="text-base font-medium text-ink">
+            <AccordionPrimitive.Trigger className="focus-ring group flex w-full items-center justify-between gap-4 py-5 pl-4 pr-2 text-left">
+              <span className="text-base font-medium text-ink transition-colors group-data-[state=open]:text-signal">
                 {item.question}
               </span>
               <ChevronDown
@@ -32,7 +36,7 @@ export function FaqAccordion({
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
           <AccordionPrimitive.Content className="overflow-hidden text-sm leading-relaxed text-ink-muted data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-            <p className="pb-5 pr-8">{item.answer}</p>
+            <p className="pb-5 pl-4 pr-8">{item.answer}</p>
           </AccordionPrimitive.Content>
         </AccordionPrimitive.Item>
       ))}

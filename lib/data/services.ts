@@ -237,6 +237,16 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         answer:
           "Our monitoring flags downtime immediately and our support team investigates right away. Every hosting plan carries a 99.9% uptime commitment.",
       },
+      {
+        question: "Do you offer business email hosting?",
+        answer:
+          "Yes. Self-hosted business email on your own domain, priced per mailbox: PKR 15,000 for 3 mailboxes or PKR 20,000 for 6. It's sold alongside any hosting plan, not locked to one.",
+      },
+      {
+        question: "Can I get business email without signing up for hosting?",
+        answer:
+          "Yes, business email is priced and sold separately from the hosting plans above. Contact us and we'll set it up on its own.",
+      },
     ],
     relatedServices: ["managed-hosting", "web-development"],
   },
