@@ -47,6 +47,7 @@ export function Hero() {
           <Button
             href="/contact"
             size="lg"
+            pulse
             onClick={() => trackEvent("cta_click", { location: "hero_primary" })}
           >
             Start a Project
@@ -66,7 +67,7 @@ export function Hero() {
             onClick={() => trackEvent("whatsapp_click", { location: "hero" })}
             className="focus-ring flex items-center gap-2 text-sm text-ink hover:text-signal"
           >
-            <MessageCircle size={17} />
+            <MessageCircle size={17} className="animate-icon-pulse" />
             {siteConfig.whatsappDisplay}
           </a>
         </motion.div>

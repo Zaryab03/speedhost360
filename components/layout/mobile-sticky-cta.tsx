@@ -18,7 +18,7 @@ export function MobileStickyCta() {
         onClick={() => trackEvent("whatsapp_click", { location: "mobile_sticky_cta" })}
         className="focus-ring flex flex-col items-center justify-center gap-1 border-r border-line py-2.5 text-[0.6875rem] font-mono uppercase tracking-[0.04em] text-ink"
       >
-        <MessageCircle size={16} />
+        <MessageCircle size={16} className="animate-icon-pulse" />
         WhatsApp
       </a>
       <a
@@ -32,7 +32,7 @@ export function MobileStickyCta() {
       <Link
         href="/contact"
         onClick={() => trackEvent("cta_click", { location: "mobile_sticky_cta" })}
-        className="focus-ring flex flex-col items-center justify-center gap-1 bg-signal py-2.5 text-[0.6875rem] font-mono uppercase tracking-[0.04em] text-signal-ink"
+        className="focus-ring animate-cta-pulse flex flex-col items-center justify-center gap-1 bg-signal py-2.5 text-[0.6875rem] font-mono uppercase tracking-[0.04em] text-signal-ink"
       >
         <ArrowRight size={16} />
         Start Project

@@ -82,6 +82,11 @@
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Attention-drawing loops for the primary CTA and WhatsApp entry points —
+     kept subtle so they read as "click me" rather than a loading spinner. */
+  --animate-cta-pulse: cta-pulse 2.2s ease-in-out infinite;
+  --animate-icon-pulse: icon-pulse 1.6s ease-in-out infinite;
 }
 
 @keyframes accordion-down {
@@ -99,6 +104,26 @@
   }
   to {
     height: 0;
+  }
+}
+
+@keyframes cta-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 45%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--signal) 0%, transparent);
+  }
+}
+
+@keyframes icon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
   }
 }
 

@@ -29,6 +29,8 @@ type SharedProps = {
   children: ReactNode;
   onClick?: MouseEventHandler;
   "aria-label"?: string;
+  /** Adds a looping glow + hover-scale to draw the eye to key CTAs. */
+  pulse?: boolean;
 };
 
 type LinkButtonProps = SharedProps & {
@@ -46,8 +48,14 @@ type NativeButtonProps = SharedProps & {
 };
 
 export function Button(props: LinkButtonProps | NativeButtonProps) {
-  const { variant = "primary", size = "md", className, children } = props;
-  const classes = cn(base, variants[variant], sizes[size], className);
+  const { variant = "primary", size = "md", className, children, pulse } = props;
+  const classes = cn(
+    base,
+    variants[variant],
+    sizes[size],
+    pulse && "animate-cta-pulse transition-transform hover:scale-105 hover:[animation-play-state:paused]",
+    className
+  );
 
   if (props.href) {
     return (

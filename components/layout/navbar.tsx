@@ -112,13 +112,14 @@ export function Navbar() {
             onClick={() => trackEvent("whatsapp_click", { location: "navbar" })}
             className="focus-ring flex items-center gap-1.5 text-xs text-ink-muted hover:text-signal"
           >
-            <MessageCircle size={14} />
+            <MessageCircle size={14} className="animate-icon-pulse" />
             {siteConfig.whatsappDisplay}
           </a>
           <ThemeToggle />
           <Button
             href="/contact"
             size="md"
+            pulse
             onClick={() => trackEvent("cta_click", { location: "navbar" })}
           >
             Start a Project
@@ -197,9 +198,9 @@ export function Navbar() {
                     onClick={() => trackEvent("whatsapp_click", { location: "mobile_menu" })}
                     className="focus-ring flex items-center gap-2 text-sm text-ink"
                   >
-                    <MessageCircle size={16} /> {siteConfig.whatsappDisplay}
+                    <MessageCircle size={16} className="animate-icon-pulse" /> {siteConfig.whatsappDisplay}
                   </a>
-                  <Button href="/contact" className="mt-2 w-full">
+                  <Button href="/contact" pulse className="mt-2 w-full">
                     Start a Project
                   </Button>
                 </div>

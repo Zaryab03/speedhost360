@@ -24,6 +24,7 @@ export function FinalCta() {
             <Button
               href="/contact"
               size="lg"
+              pulse
               onClick={() => trackEvent("cta_click", { location: "final_cta_primary" })}
             >
               Start a Project
@@ -44,7 +45,7 @@ export function FinalCta() {
               onClick={() => trackEvent("whatsapp_click", { location: "final_cta" })}
               className="focus-ring flex items-center gap-2 text-sm text-paper/80 hover:text-signal"
             >
-              <MessageCircle size={17} />
+              <MessageCircle size={17} className="animate-icon-pulse" />
               Talk on WhatsApp
             </a>
           </div>
