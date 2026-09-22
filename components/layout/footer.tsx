@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MessageCircle, Phone, Mail, Clock } from "lucide-react";
+import { MessageCircle, Phone, Mail, Clock, Landmark } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
 import { serviceLinks, footerLegalLinks } from "@/lib/data/nav";
 import { paymentMethods, yearsInBusiness } from "@/lib/data/trust";
@@ -110,8 +110,29 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>Payments accepted: {paymentMethods.join(" · ")}</p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:gap-4">
+          <p className="text-xs text-ink-muted">Payments accepted:</p>
+          <div className="flex flex-wrap items-center gap-2">
+            {paymentMethods.map((method) =>
+              method.logo ? (
+                <span
+                  key={method.name}
+                  className="flex h-9 items-center rounded-[var(--radius-sm)] border border-line bg-paper-raised px-3"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={method.logo} alt={method.name} className="h-5 w-auto" />
+                </span>
+              ) : (
+                <span
+                  key={method.name}
+                  className="flex h-9 items-center gap-1.5 rounded-[var(--radius-sm)] border border-line bg-paper-raised px-3 text-xs text-ink"
+                >
+                  <Landmark size={14} className="text-ink-muted" />
+                  {method.name}
+                </span>
+              )
+            )}
+          </div>
         </div>
 
         <div className="mt-4 flex flex-col gap-4 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">

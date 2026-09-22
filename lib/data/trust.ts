@@ -9,11 +9,18 @@ export const reliabilityStats: { value: string; label: string }[] = [
   { value: "Free", label: "SSL on every plan" },
 ];
 
-export const paymentMethods: string[] = [
-  "Bank transfer",
-  "JazzCash",
-  "EasyPaisa",
-  "Card / online payment",
+export type PaymentMethod = {
+  name: string;
+  /** Path under /public to the brand's logo. Omitted for generic (non-branded) methods. */
+  logo?: string;
+};
+
+export const paymentMethods: PaymentMethod[] = [
+  { name: "Bank transfer" },
+  { name: "JazzCash", logo: "/payments/jazzcash-icon.png" },
+  { name: "EasyPaisa", logo: "/payments/easypaisa.png" },
+  { name: "Visa", logo: "/payments/visa.svg" },
+  { name: "Mastercard", logo: "/payments/mastercard.svg" },
 ];
 
 export const yearsInBusiness = "6+ years in business";
