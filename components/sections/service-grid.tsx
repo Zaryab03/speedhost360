@@ -10,7 +10,7 @@ export function ServiceGrid() {
         <RevealOnScroll>
           <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">Services</p>
           <h2 className="mt-3 max-w-lg text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Four services. One accountable team.
+            Everything a website needs. One accountable team.
           </h2>
         </RevealOnScroll>
 

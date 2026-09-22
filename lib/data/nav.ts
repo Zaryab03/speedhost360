@@ -21,6 +21,11 @@ export const serviceLinks: NavLink[] = [
     description: "We run your infrastructure end to end",
   },
   {
+    label: "Business Email",
+    href: "/services/business-email",
+    description: "Self-hosted mailboxes on your own domain",
+  },
+  {
     label: "Digital Marketing",
     href: "/services/digital-marketing",
     description: "SEO, content, paid & conversion",

@@ -7,7 +7,7 @@ export function GET() {
     "",
     `> ${siteConfig.description}`,
     "",
-    `${siteConfig.name} (${siteConfig.tagline}) provides website development, web hosting, managed hosting and digital marketing, primarily serving businesses in Pakistan.`,
+    `${siteConfig.name} (${siteConfig.tagline}) provides website development, web hosting, managed hosting, business email and digital marketing, primarily serving businesses in Pakistan.`,
     "",
     "## Services",
     ...serviceList.map((s) => `- [${s.title}](${siteConfig.url}/services/${s.slug}): ${s.subheadline}`),

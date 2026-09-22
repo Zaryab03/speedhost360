@@ -47,6 +47,23 @@ export function ServicePageBody({
         </div>
       </section>
 
+      {service.overview && (
+        <section className="border-b border-line">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+            <RevealOnScroll>
+              <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">Overview</p>
+            </RevealOnScroll>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              {service.overview.map((paragraph, index) => (
+                <RevealOnScroll key={index} delay={index * 0.06}>
+                  <p className="max-w-xl text-base leading-relaxed text-ink-muted">{paragraph}</p>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="border-b border-line bg-paper-raised">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <StaggerGroup className="grid gap-8 sm:grid-cols-3">
@@ -69,18 +86,43 @@ export function ServicePageBody({
               What&rsquo;s included
             </p>
           </RevealOnScroll>
-          <StaggerGroup className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+          <StaggerGroup className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
             {service.features.map((feature) => (
-              <StaggerItem key={feature} className="flex items-start gap-2.5 text-sm text-ink">
-                <Check size={16} className="mt-0.5 shrink-0 text-signal" />
-                {feature}
+              <StaggerItem key={feature.title} className="flex items-start gap-2.5">
+                <Check size={16} className="mt-1 shrink-0 text-signal" />
+                <div>
+                  <p className="text-sm font-semibold text-ink">{feature.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-muted">{feature.description}</p>
+                </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
         </div>
       </section>
 
-      <section className="border-b border-line bg-paper-raised">
+      {service.whoItsFor && (
+        <section className="border-b border-line bg-paper-raised">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+            <RevealOnScroll>
+              <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">
+                Who it&rsquo;s for
+              </p>
+            </RevealOnScroll>
+            <StaggerGroup className="mt-6 flex flex-wrap gap-3">
+              {service.whoItsFor.map((item) => (
+                <StaggerItem
+                  key={item}
+                  className="rounded-full border border-line-strong px-4 py-2 text-sm text-ink"
+                >
+                  {item}
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          </div>
+        </section>
+      )}
+
+      <section className="border-b border-line">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <RevealOnScroll>
             <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">Process</p>
