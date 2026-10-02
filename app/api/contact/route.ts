@@ -8,7 +8,7 @@ const GENERIC_ERROR =
 
 // Project brief form (/contact). Public, so: rate limited, honeypot, zod.
 export async function POST(request: Request) {
-  const { success } = rateLimit(`contact:${clientIp(request)}`, {
+  const { success } = await rateLimit(`contact:${clientIp(request)}`, {
     limit: 5,
     windowMs: 10 * 60 * 1000,
   });

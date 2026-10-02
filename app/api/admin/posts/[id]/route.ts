@@ -26,7 +26,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { success } = rateLimit(`admin-post-write:${session.user.id}`, {
+  const { success } = await rateLimit(`admin-post-write:${session.user.id}`, {
     limit: 30,
     windowMs: 10 * 60 * 1000,
   });

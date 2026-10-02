@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db";
 
 // Free website audit form. Public, so: rate limited, honeypot, zod.
 export async function POST(request: Request) {
-  const { success } = rateLimit(`audit:${clientIp(request)}`, {
+  const { success } = await rateLimit(`audit:${clientIp(request)}`, {
     limit: 3,
     windowMs: 10 * 60 * 1000,
   });

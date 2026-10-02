@@ -135,3 +135,13 @@ model HostingPlan {
 
   @@index([service, sortOrder])
 }
+
+// Fixed-window rate limit counters for public forms. `key` is a SHA-256
+// hash of "<form>:<client ip>", so no raw IPs are stored.
+model RateLimitBucket {
+  key     String   @id
+  count   Int
+  resetAt DateTime
+
+  @@index([resetAt])
+}
