@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { services } from "@/lib/data/services";
-import { plansForService } from "@/lib/data/plans";
+import { getHostingPlans } from "@/lib/plans";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
 import { DataOwnership } from "@/components/sections/data-ownership";
@@ -20,13 +20,18 @@ import {
 
 const service = services["web-hosting"];
 
+// Plans come from the database; refresh the prerendered page every 5 minutes.
+export const revalidate = 300;
+
 export const metadata: Metadata = buildMetadata({
   title: service.metaTitle,
   description: service.metaDescription,
   path: "/services/web-hosting",
 });
 
-export default function WebHostingPage() {
+export default async function WebHostingPage() {
+  const plans = await getHostingPlans();
+
   return (
     <>
       <Breadcrumbs
@@ -39,14 +44,14 @@ export default function WebHostingPage() {
         service={service}
         pricing={
           <>
-            <PlanComparisonTable location="web_hosting_compare" />
-            <PlanScenarios />
+            <PlanComparisonTable plans={plans} location="web_hosting_compare" />
+            <PlanScenarios plans={plans} />
           </>
         }
         afterPricing={
           <>
             <NotIncludedAndAddOns />
-            <SlaSummary plans={plansForService("web-hosting")}>
+            <SlaSummary plans={plans.filter((p) => p.service === "web-hosting")}>
               <p>
                 Already hosting with us?{" "}
                 <ClientPortalLink location="hosting" className="underline underline-offset-2" />

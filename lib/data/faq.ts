@@ -1,18 +1,20 @@
 import type { FaqItem } from "./services";
 import { services } from "./services";
 import { emailHostingPricing } from "./email-hosting";
-import { formatPkr, hostingPlans } from "./plans";
+import { formatPkr, type HostingPlan } from "./plans";
 import { siteConfig } from "./site";
 
 // Prices in answers are derived from the pricing data so the FAQ (and its
 // FAQPage JSON-LD) can never drift from the pricing tables.
 const webDev = services["web-development"].pricing ?? [];
-const hostingPrices = hostingPlans
-  .map((p) => `${p.name} ${p.priceIsFrom ? "from " : ""}${formatPkr(p.price)}`)
-  .join(", ");
 const emailPrices = emailHostingPricing.map((p) => `${p.price} for ${p.name.toLowerCase()}`).join(" or ");
 
-export const generalFaq: FaqItem[] = [
+export function buildGeneralFaq(plans: HostingPlan[]): FaqItem[] {
+  const hostingPrices = plans
+    .map((p) => `${p.name} ${p.priceIsFrom ? "from " : ""}${formatPkr(p.price)}`)
+    .join(", ");
+
+  return [
   {
     question: "How long does website development take?",
     answer:
@@ -70,3 +72,4 @@ export const generalFaq: FaqItem[] = [
       "Our team reviews your brief and replies within 1 business day with questions or a time for a short call. You then get a fixed quote and timeline before any work starts.",
   },
 ];
+}

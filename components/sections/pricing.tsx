@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { hostingPlans, planCardKeys, planPriceLabel } from "@/lib/data/plans";
+import { planCardKeys, planPriceLabel, type HostingPlan } from "@/lib/data/plans";
 import { SpecValue } from "@/components/ui/spec-value";
 import { PlanCtas } from "@/components/sections/plan-ctas";
 import { RevealOnScroll } from "@/components/motion/reveal";
 
-export function Pricing() {
+export function Pricing({ plans }: { plans: HostingPlan[] }) {
   return (
     <section id="pricing" className="border-b border-line bg-paper-raised">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
@@ -22,7 +22,7 @@ export function Pricing() {
         </RevealOnScroll>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {hostingPlans.map((plan, index) => (
+          {plans.map((plan, index) => (
             <RevealOnScroll
               key={plan.slug}
               delay={index * 0.05}

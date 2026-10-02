@@ -31,7 +31,8 @@ export const briefFormSchema = z.object({
     .max(30, "Please enter a valid phone or WhatsApp number.")
     .regex(/^[\d+\-\s()]+$/, "Please enter a valid phone or WhatsApp number."),
   service: z.enum(optionValues(serviceOptions), { error: "Please choose a service." }),
-  plan: z.enum(["starter", "business", "professional", "managed"]).optional().or(z.literal("")),
+  // Plan slugs live in the HostingPlan table, so validate the shape only.
+  plan: z.string().regex(/^[a-z0-9-]{1,40}$/).optional().or(z.literal("")),
   budget: z.enum(optionValues(budgetOptions), { error: "Please choose a budget range." }),
   timeline: z.enum(optionValues(timelineOptions), { error: "Please choose a timeline." }),
   message: z

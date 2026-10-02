@@ -1,10 +1,13 @@
-import { generalFaq } from "@/lib/data/faq";
+import { buildGeneralFaq } from "@/lib/data/faq";
+import type { HostingPlan } from "@/lib/data/plans";
 import { FaqAccordion } from "@/components/ui/accordion";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqJsonLd } from "@/lib/seo/json-ld";
 import { RevealOnScroll } from "@/components/motion/reveal";
 
-export function FaqSection() {
+export function FaqSection({ plans }: { plans: HostingPlan[] }) {
+  const generalFaq = buildGeneralFaq(plans);
+
   return (
     <section className="border-b border-line bg-paper-raised">
       <JsonLd data={faqJsonLd(generalFaq)} />

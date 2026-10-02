@@ -6,6 +6,10 @@ import { siteConfig } from "@/lib/data/site";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { BriefForm } from "@/components/forms/brief-form";
 import { ClientPortalLink } from "@/components/layout/client-portal-link";
+import { getHostingPlans } from "@/lib/plans";
+import { planPriceLabel } from "@/lib/data/plans";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = buildMetadata({
   title: "Start a Project",
@@ -29,7 +33,14 @@ const nextSteps = [
   },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const plans = (await getHostingPlans()).map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    service: p.service,
+    priceLabel: planPriceLabel(p),
+  }));
+
   return (
     <>
       <Breadcrumbs items={[{ name: "Contact", path: "/contact" }]} />
@@ -46,7 +57,7 @@ export default function ContactPage() {
 
             <div className="mt-10">
               <Suspense fallback={null}>
-                <BriefForm />
+                <BriefForm plans={plans} />
               </Suspense>
             </div>
 

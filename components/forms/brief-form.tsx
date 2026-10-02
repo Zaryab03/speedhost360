@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { briefFormSchema, type BriefFormValues } from "@/lib/validation";
 import { budgetOptions, serviceOptions, timelineOptions } from "@/lib/data/forms";
-import { hostingPlans, planPriceLabel } from "@/lib/data/plans";
 import { trackEvent } from "@/lib/analytics";
 import { getStoredUtm } from "@/lib/utm";
 import { siteConfig } from "@/lib/data/site";
@@ -13,19 +12,26 @@ import { Button } from "@/components/ui/button";
 import { Field, Honeypot, inputClass } from "@/components/forms/fields";
 
 type FieldErrors = Partial<Record<keyof BriefFormValues, string[]>>;
+
+/** Minimal plan info for the plan dropdown (passed from the server). */
+export type BriefPlanOption = { slug: string; name: string; service: string; priceLabel: string };
 type Service = BriefFormValues["service"];
 
 const hostingServices: Service[] = ["web-hosting", "managed-hosting"];
 
-function initialService(param: string | null, planParam: string | null): Service {
-  const plan = hostingPlans.find((p) => p.slug === planParam);
-  if (plan) return plan.service;
+function initialService(
+  plans: BriefPlanOption[],
+  param: string | null,
+  planParam: string | null
+): Service {
+  const plan = plans.find((p) => p.slug === planParam);
+  if (plan && serviceOptions.some((o) => o.value === plan.service)) return plan.service as Service;
   return serviceOptions.some((o) => o.value === param) ? (param as Service) : "other";
 }
 
 // Short project brief: service, budget range, timeline, message, plus how
 // to reach you. ?service= and ?plan= preselect the matching options.
-export function BriefForm() {
+export function BriefForm({ plans }: { plans: BriefPlanOption[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isQuote = searchParams.get("intent") === "quote";
@@ -35,8 +41,8 @@ export function BriefForm() {
     name: "",
     email: "",
     phone: "",
-    service: initialService(searchParams.get("service"), planParam),
-    plan: hostingPlans.some((p) => p.slug === planParam) ? (planParam as string) : "",
+    service: initialService(plans, searchParams.get("service"), planParam),
+    plan: plans.some((p) => p.slug === planParam) ? (planParam as string) : "",
     budget: "",
     timeline: "",
     message: "",
@@ -56,7 +62,7 @@ export function BriefForm() {
   }
 
   const showPlan = hostingServices.includes(values.service);
-  const plansForService = hostingPlans.filter((p) => p.service === values.service);
+  const plansForService = plans.filter((p) => p.service === values.service);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -158,7 +164,7 @@ export function BriefForm() {
               <option value="">Not sure yet, help me choose</option>
               {plansForService.map((p) => (
                 <option key={p.slug} value={p.slug}>
-                  {p.name} ({planPriceLabel(p)})
+                  {p.name} ({p.priceLabel})
                 </option>
               ))}
             </select>

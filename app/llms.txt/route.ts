@@ -1,8 +1,12 @@
 import { siteConfig } from "@/lib/data/site";
 import { serviceList } from "@/lib/data/services";
-import { hostingPlans, planPriceLabel } from "@/lib/data/plans";
+import { planPriceLabel } from "@/lib/data/plans";
+import { getHostingPlans } from "@/lib/plans";
 
-export function GET() {
+export const revalidate = 300;
+
+export async function GET() {
+  const hostingPlans = await getHostingPlans();
   const lines = [
     `# ${siteConfig.name}`,
     "",

@@ -99,3 +99,39 @@ model Post {
 
   @@index([status, publishedAt])
 }
+
+// Hosting plan specs. Seeded from lib/data/plans.ts (npm run db:seed).
+// Unconfirmed spec values are stored as the literal string "TODO_CONFIRM".
+model HostingPlan {
+  slug                String   @id
+  sortOrder           Int
+  name                String
+  service             String
+  price               Int
+  priceIsFrom         Boolean  @default(false)
+  billingPeriod       String
+  renewalPrice        String
+  websitesIncluded    String
+  storageGb           String
+  bandwidth           String
+  ram                 String
+  cpu                 String
+  databases           String
+  emailAccounts       String
+  backupFrequency     String
+  backupRetentionDays String
+  monitoringLevel     String
+  supportTier         String
+  supportResponseTime String
+  migrationIncluded   String
+  staging             String
+  sshAccess           String
+  cdn                 String
+  region              String
+  bestFor             String
+  mostPopular         Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([service, sortOrder])
+}

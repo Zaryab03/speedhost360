@@ -5,6 +5,10 @@ import { buildMetadata } from "@/lib/seo";
 import { serviceList } from "@/lib/data/services";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { RevealOnScroll } from "@/components/motion/reveal";
+import { getHostingPlans } from "@/lib/plans";
+import { formatPkr } from "@/lib/data/plans";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = buildMetadata({
   title: "Services",
@@ -13,7 +17,14 @@ export const metadata: Metadata = buildMetadata({
   path: "/services",
 });
 
-export default function ServicesIndexPage() {
+export default async function ServicesIndexPage() {
+  const plans = await getHostingPlans();
+  // Hosting "from" prices come from the HostingPlan table; others from services.ts.
+  const fromPrice = (slug: string, fallback: string) => {
+    const prices = plans.filter((p) => p.service === slug).map((p) => p.price);
+    return prices.length ? formatPkr(Math.min(...prices)) : fallback;
+  };
+
   return (
     <>
       <Breadcrumbs items={[{ name: "Services", path: "/services" }]} />
@@ -43,7 +54,7 @@ export default function ServicesIndexPage() {
                     <p className="mt-1 max-w-xl text-sm text-ink-muted">{service.subheadline}</p>
                     {service.pricing && (
                       <p className="mt-2 font-mono text-xs uppercase tracking-[0.06em] text-signal">
-                        From {service.pricing[0].price.replace(/^Starting from /i, "")}
+                        From {fromPrice(service.slug, service.pricing[0].price.replace(/^Starting from /i, ""))}
                       </p>
                     )}
                   </div>

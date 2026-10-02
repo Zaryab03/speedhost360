@@ -11,6 +11,10 @@ import { BuildHostGrow } from "@/components/sections/build-host-grow";
 import { Testimonials } from "@/components/sections/testimonials";
 import { FaqSection } from "@/components/sections/faq-section";
 import { AuditCta } from "@/components/sections/audit-cta";
+import { getHostingPlans } from "@/lib/plans";
+
+// Plans come from the database; refresh the prerendered page every 5 minutes.
+export const revalidate = 300;
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = buildMetadata({
@@ -20,20 +24,22 @@ export const metadata: Metadata = buildMetadata({
   path: "/",
 });
 
-export default function Home() {
+export default async function Home() {
+  const plans = await getHostingPlans();
+
   return (
     <>
       <Hero />
       <AudienceCards />
       <ReliabilityStats />
       <ServiceGrid />
-      <Pricing />
+      <Pricing plans={plans} />
       <EmailPricing />
       <HostingComparison />
       <BuildHostGrow />
       <Testimonials />
       <AuditCta location="home" />
-      <FaqSection />
+      <FaqSection plans={plans} />
       <FinalCta />
     </>
   );

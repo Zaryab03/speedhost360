@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { ArrowRight, Check, Minus } from "lucide-react";
 import {
   hostingAddOns,
-  hostingPlans,
   isPending,
   planContactHref,
   planPriceLabel,
@@ -27,7 +26,7 @@ function Eyebrow({ children }: { children: ReactNode }) {
   return <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">{children}</p>;
 }
 
-export function PlanComparisonTable({ location }: { location: string }) {
+export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[]; location: string }) {
   return (
     <section id="compare-plans" className="scroll-mt-24 border-b border-line">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -51,7 +50,7 @@ export function PlanComparisonTable({ location }: { location: string }) {
                 <th scope="col" className="sticky left-0 bg-paper py-3 pr-4 text-left">
                   <span className="sr-only">Spec</span>
                 </th>
-                {hostingPlans.map((plan) => (
+                {plans.map((plan) => (
                   <th
                     key={plan.slug}
                     id={`plan-${plan.slug}`}
@@ -84,7 +83,7 @@ export function PlanComparisonTable({ location }: { location: string }) {
                   >
                     {row.label}
                   </th>
-                  {hostingPlans.map((plan) => (
+                  {plans.map((plan) => (
                     <td
                       key={plan.slug}
                       className={`px-4 py-3 text-ink-muted ${plan.mostPopular ? "bg-signal-soft/50" : ""}`}
@@ -96,7 +95,7 @@ export function PlanComparisonTable({ location }: { location: string }) {
               ))}
               <tr>
                 <td className="sticky left-0 bg-paper" />
-                {hostingPlans.map((plan) => (
+                {plans.map((plan) => (
                   <td
                     key={plan.slug}
                     className={`px-4 py-5 ${plan.mostPopular ? "bg-signal-soft/50" : ""}`}
@@ -111,7 +110,7 @@ export function PlanComparisonTable({ location }: { location: string }) {
 
         {/* Mobile: stacked cards, one per plan. */}
         <div className="mt-10 space-y-6 md:hidden">
-          {hostingPlans.map((plan) => (
+          {plans.map((plan) => (
             <article
               key={plan.slug}
               aria-labelledby={`plan-card-${plan.slug}`}
@@ -181,7 +180,7 @@ const scenarios: { title: string; description: string; plan: HostingPlan["slug"]
   },
 ];
 
-export function PlanScenarios() {
+export function PlanScenarios({ plans }: { plans: HostingPlan[] }) {
   return (
     <section className="border-b border-line bg-paper-raised">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -190,7 +189,8 @@ export function PlanScenarios() {
         </RevealOnScroll>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {scenarios.map((s) => {
-            const plan = hostingPlans.find((p) => p.slug === s.plan)!;
+            const plan = plans.find((p) => p.slug === s.plan);
+            if (!plan) return null;
             return (
               <div key={s.plan} className="flex flex-col border border-line bg-paper p-5">
                 <h3 className="text-base font-semibold text-ink">{s.title}</h3>
