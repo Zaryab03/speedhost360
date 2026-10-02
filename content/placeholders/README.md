@@ -21,7 +21,8 @@ for `isPlaceholder` and `PLACEHOLDER` to find every instance programmatically.
 
 | What | Purpose | Where |
 |---|---|---|
-| `DATABASE_URL` | Real Postgres connection (Neon/Supabase/etc.) | `.env.local` |
+| `DATABASE_URL` / `DIRECT_URL` | Self-managed Postgres connection (see README) | `.env.local` |
+| `NEXT_PUBLIC_HELPDESK_URL` | Client Portal link (defaults to https://helpdesk.speedhost360.com) | `.env.local` |
 | `AUTH_SECRET` | Session signing secret, generate with `openssl rand -base64 32` | `.env.local` |
 | `ADMIN_SEED_EMAIL` / `ADMIN_SEED_PASSWORD` | First admin login, used only by `prisma/seed.ts` | `.env.local` |
 | `NEXT_PUBLIC_GA4_ID` | Google Analytics measurement ID, leave blank to keep analytics off | `.env.local` |
@@ -41,10 +42,11 @@ there so every page that references them stays in sync.
 
 - **Contact form lead delivery**: every submission is saved to the `Lead` table and shows up at `/admin/leads` (status + delete per row). Nothing emails or pings anyone yet; if you want a Slack/email alert on new leads too, that's still to add on top of this.
 - **Image uploads** (`/api/admin/upload`) write to the local filesystem (`/public/uploads`). Fine for local dev or a single persistent server; swap for object storage (Vercel Blob, S3, etc.) before deploying to serverless, where the filesystem isn't persistent.
-- **Rate limiting** (`lib/rate-limit.ts`) is in-memory, resets on restart and isn't shared across serverless instances. Swap for a durable store (e.g. Upstash Redis) once running on more than one instance.
+- **Rate limiting** (`lib/rate-limit.ts`) is stored in Postgres (`RateLimitBucket`), so it survives restarts and is shared across instances.
+- **Hosting plan specs**: every unconfirmed value is `TODO_CONFIRM` in `lib/data/plans.ts` (and the `HostingPlan` table after `npm run db:seed`). Also `siteConfig.statusPageUrl` and the ownership/exit terms in `components/sections/data-ownership.tsx`.
 
 ## Once real content is in
 
-- Run `npm run db:migrate` then `npm run db:seed` against the real `DATABASE_URL`.
+- Run `npm run db:migrate:deploy` then `npm run db:seed` against the real `DATABASE_URL`.
 - Flip `isPlaceholder` off (or just delete the placeholder entries) in the `lib/data/*.ts` files above: the orange "Placeholder" tag and `noIndex` on case studies are driven by that flag, so real entries stop being marked and become indexable automatically.
 - Recheck `robots.ts`/`sitemap.ts` output once real case studies and blog posts exist.
