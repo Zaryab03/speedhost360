@@ -20,6 +20,9 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
           <Link href="/admin/leads" className="text-sm text-ink-muted hover:text-signal">
             Leads
           </Link>
+          <Link href="/admin/audits" className="text-sm text-ink-muted hover:text-signal">
+            Audits
+          </Link>
           <Link href="/admin/posts" className="text-sm text-ink-muted hover:text-signal">
             Posts
           </Link>

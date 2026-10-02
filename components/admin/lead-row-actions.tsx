@@ -6,7 +6,16 @@ import { useRouter } from "next/navigation";
 const statusOptions = ["NEW", "CONTACTED", "QUALIFIED", "WON", "LOST"] as const;
 type LeadStatus = (typeof statusOptions)[number];
 
-export function LeadStatusSelect({ id, status }: { id: string; status: LeadStatus }) {
+export function LeadStatusSelect({
+  id,
+  status,
+  endpoint = "/api/admin/leads",
+}: {
+  id: string;
+  status: LeadStatus;
+  /** Collection endpoint; leads and audit requests share the same status flow. */
+  endpoint?: string;
+}) {
   const router = useRouter();
   const [updating, setUpdating] = useState(false);
 
@@ -16,7 +25,7 @@ export function LeadStatusSelect({ id, status }: { id: string; status: LeadStatu
       disabled={updating}
       onChange={async (e) => {
         setUpdating(true);
-        await fetch(`/api/admin/leads/${id}`, {
+        await fetch(`${endpoint}/${id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ status: e.target.value }),
@@ -35,7 +44,15 @@ export function LeadStatusSelect({ id, status }: { id: string; status: LeadStatu
   );
 }
 
-export function DeleteLeadButton({ id, name }: { id: string; name: string }) {
+export function DeleteLeadButton({
+  id,
+  name,
+  endpoint = "/api/admin/leads",
+}: {
+  id: string;
+  name: string;
+  endpoint?: string;
+}) {
   const router = useRouter();
   const [confirming, setConfirming] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -49,7 +66,7 @@ export function DeleteLeadButton({ id, name }: { id: string; name: string }) {
           disabled={deleting}
           onClick={async () => {
             setDeleting(true);
-            await fetch(`/api/admin/leads/${id}`, { method: "DELETE" });
+            await fetch(`${endpoint}/${id}`, { method: "DELETE" });
             router.refresh();
           }}
           className="focus-ring font-medium text-danger hover:underline"

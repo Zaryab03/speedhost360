@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { services } from "@/lib/data/services";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
+import { AuditCta } from "@/components/sections/audit-cta";
 
 const service = services["digital-marketing"];
 
@@ -21,7 +22,7 @@ export default function DigitalMarketingPage() {
           { name: service.navLabel, path: "/services/digital-marketing" },
         ]}
       />
-      <ServicePageBody service={service} />
+      <ServicePageBody service={service} afterPricing={<AuditCta location="digital_marketing" />} />
     </>
   );
 }

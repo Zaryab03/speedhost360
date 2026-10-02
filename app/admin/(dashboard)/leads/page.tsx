@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { LeadStatusSelect, DeleteLeadButton } from "@/components/admin/lead-row-actions";
+import { budgetOptions, optionLabel, serviceOptions, timelineOptions } from "@/lib/data/forms";
 
 export const dynamic = "force-dynamic";
 
@@ -31,9 +32,8 @@ export default async function AdminLeadsPage() {
               <tr className="border-b border-line text-left text-xs uppercase tracking-[0.06em] text-ink-muted">
                 <th className="py-2 pr-4 font-medium">Received</th>
                 <th className="py-2 pr-4 font-medium">Name</th>
-                <th className="py-2 pr-4 font-medium">Business</th>
                 <th className="py-2 pr-4 font-medium">Contact</th>
-                <th className="py-2 pr-4 font-medium">Service</th>
+                <th className="py-2 pr-4 font-medium">Brief</th>
                 <th className="py-2 pr-4 font-medium">Message</th>
                 <th className="py-2 pr-4 font-medium">Source</th>
                 <th className="py-2 pr-4 font-medium">Status</th>
@@ -55,7 +55,6 @@ export default async function AdminLeadsPage() {
                     })}
                   </td>
                   <td className="py-3 pr-4 font-medium text-ink">{lead.name}</td>
-                  <td className="py-3 pr-4 text-ink-muted">{lead.businessName || "N/A"}</td>
                   <td className="py-3 pr-4 text-ink-muted">
                     <a href={`mailto:${lead.email}`} className="focus-ring block hover:text-signal">
                       {lead.email}
@@ -64,7 +63,17 @@ export default async function AdminLeadsPage() {
                       {lead.phone}
                     </a>
                   </td>
-                  <td className="py-3 pr-4 text-ink-muted">{lead.service}</td>
+                  <td className="py-3 pr-4 text-ink-muted">
+                    <span className="block text-ink">
+                      {optionLabel(serviceOptions, lead.service)}
+                      {lead.plan ? ` · ${lead.plan}` : ""}
+                    </span>
+                    {lead.budget && <span className="block">{optionLabel(budgetOptions, lead.budget)}</span>}
+                    {lead.timeline && (
+                      <span className="block">{optionLabel(timelineOptions, lead.timeline)}</span>
+                    )}
+                    {lead.businessName && <span className="block">{lead.businessName}</span>}
+                  </td>
                   <td className="max-w-64 py-3 pr-4 text-ink-muted">
                     <p className="line-clamp-3" title={lead.message}>
                       {lead.message}

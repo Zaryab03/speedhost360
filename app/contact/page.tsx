@@ -4,14 +4,29 @@ import { MessageCircle, Phone, Mail, Clock } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/data/site";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
-import { ContactForm } from "@/components/forms/contact-form";
+import { BriefForm } from "@/components/forms/brief-form";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact",
+  title: "Start a Project",
   description:
-    "Start a website, hosting or digital marketing project with SpeedHost360. We respond to new inquiries within 1 business day.",
+    "Send SpeedHost360 a short project brief (service, budget, timeline) for websites, hosting, business email or digital marketing. We reply within 1 business day.",
   path: "/contact",
 });
+
+const nextSteps = [
+  {
+    title: "We read your brief",
+    description: "Someone on the team reviews what you need, not an auto-responder.",
+  },
+  {
+    title: "We reply within 1 business day",
+    description: "With questions, or a time for a short call to scope the work.",
+  },
+  {
+    title: "You get a fixed quote",
+    description: "A fixed price and timeline before any work starts.",
+  },
+];
 
 export default function ContactPage() {
   return (
@@ -25,14 +40,32 @@ export default function ContactPage() {
               Let&rsquo;s build it.
             </h1>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-muted">
-              {siteConfig.responseTimePromise}
+              A short brief is all we need to get started. {siteConfig.responseTimePromise}
             </p>
 
             <div className="mt-10">
               <Suspense fallback={null}>
-                <ContactForm />
+                <BriefForm />
               </Suspense>
             </div>
+
+            <section aria-labelledby="next-steps" className="mt-14 border-t border-line pt-8">
+              <h2
+                id="next-steps"
+                className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted"
+              >
+                What happens after you submit
+              </h2>
+              <ol className="mt-6 grid gap-6 sm:grid-cols-3">
+                {nextSteps.map((step, index) => (
+                  <li key={step.title}>
+                    <span className="font-mono text-sm text-signal">0{index + 1}</span>
+                    <p className="mt-2 text-base font-semibold text-ink">{step.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-muted">{step.description}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
           </div>
 
           <aside className="space-y-8 lg:pt-24">

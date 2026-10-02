@@ -10,6 +10,7 @@ import { HostingComparison } from "@/components/sections/hosting-comparison";
 import { BuildHostGrow } from "@/components/sections/build-host-grow";
 import { Testimonials } from "@/components/sections/testimonials";
 import { FaqSection } from "@/components/sections/faq-section";
+import { AuditCta } from "@/components/sections/audit-cta";
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = buildMetadata({
@@ -31,6 +32,7 @@ export default function Home() {
       <HostingComparison />
       <BuildHostGrow />
       <Testimonials />
+      <AuditCta location="home" />
       <FaqSection />
       <FinalCta />
     </>

@@ -26,3 +26,7 @@ export function rateLimit(
   existing.count += 1;
   return { success: true, remaining: limit - existing.count };
 }
+
+export function clientIp(request: Request) {
+  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+}
