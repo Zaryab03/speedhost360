@@ -2,7 +2,7 @@
 // /services/web-hosting and /services/managed-hosting all read from here
 // (and prisma/seed.ts copies it into the HostingPlan table).
 //
-// Starter's resource specs (storage, SSL, domain, bandwidth, addon domains,
+// Starter's resource specs (storage, SSL, bandwidth, addon domains,
 // emails/databases, subdomains) come from the owner; Business, Professional
 // and Managed values for those fields were scaled to price and proposed on
 // 2026-10-02, pending the owner's confirmation. Every other unknown value is
@@ -37,8 +37,6 @@ export type HostingPlan = {
   storageGb: Spec;
   /** "Yes" or "No". */
   freeSsl: Spec;
-  /** "No", "Yes", or a qualifier such as "1st year". */
-  freeDomain: Spec;
   /** Monthly bandwidth, e.g. "Unlimited". */
   bandwidth: Spec;
   /** Extra domains on top of the main one, e.g. "0". */
@@ -81,7 +79,6 @@ export const hostingPlans: HostingPlan[] = [
     websitesIncluded: "1",
     storageGb: "3",
     freeSsl: "Yes",
-    freeDomain: "No",
     bandwidth: "Unlimited",
     addonDomains: "0",
     subdomains: "2",
@@ -113,7 +110,6 @@ export const hostingPlans: HostingPlan[] = [
     websitesIncluded: "Up to 5",
     storageGb: "10",
     freeSsl: "Yes",
-    freeDomain: "No",
     bandwidth: "Unlimited",
     addonDomains: "4",
     subdomains: "10",
@@ -145,7 +141,6 @@ export const hostingPlans: HostingPlan[] = [
     websitesIncluded: "Up to 10",
     storageGb: "25",
     freeSsl: "Yes",
-    freeDomain: "1st year",
     bandwidth: "Unlimited",
     addonDomains: "9",
     subdomains: "25",
@@ -177,7 +172,6 @@ export const hostingPlans: HostingPlan[] = [
     websitesIncluded: "Scoped to your project",
     storageGb: "Sized to your requirements",
     freeSsl: "Yes",
-    freeDomain: "1st year",
     bandwidth: "Unlimited",
     addonDomains: "Unlimited",
     subdomains: "Unlimited",
@@ -206,7 +200,6 @@ export const planSpecRows: { key: PlanSpecKey; label: string }[] = [
   { key: "renewalPrice", label: "Renewal price" },
   { key: "storageGb", label: "SSD space (GB)" },
   { key: "freeSsl", label: "Free SSL" },
-  { key: "freeDomain", label: "Free domain" },
   { key: "bandwidth", label: "Monthly bandwidth" },
   { key: "websitesIncluded", label: "Websites" },
   { key: "addonDomains", label: "Addon domains" },
@@ -233,22 +226,17 @@ const plural = (n: string, word: string) => `${n} ${word}${n === "1" ? "" : "s"}
 
 /**
  * Feature bullets for plan cards, in the house style ("3GB SSD Space",
- * "Free SSL", "No Free Domain", ...). Unconfirmed values are left out here;
+ * "Free SSL", ...). Unconfirmed values are left out here;
  * the comparison table shows them as "Ask us".
  */
 export function planFeatureLines(plan: HostingPlan): string[] {
   const lines: (string | null)[] = [];
-  const { storageGb, freeSsl, freeDomain, bandwidth, addonDomains, emailAccounts, databases, subdomains } = plan;
+  const { storageGb, freeSsl, bandwidth, addonDomains, emailAccounts, databases, subdomains } = plan;
 
   if (!isPending(storageGb)) {
     lines.push(isCount(storageGb) ? `${storageGb}GB SSD Space` : `SSD Space ${storageGb.toLowerCase()}`);
   }
   if (!isPending(freeSsl)) lines.push(freeSsl === "Yes" ? "Free SSL" : "No Free SSL");
-  if (!isPending(freeDomain)) {
-    lines.push(
-      freeDomain === "No" ? "No Free Domain" : freeDomain === "Yes" ? "Free Domain" : `Free Domain (${freeDomain})`
-    );
-  }
   if (!isPending(bandwidth)) {
     lines.push(bandwidth === "Unlimited" ? "Unlimited Monthly Bandwidth" : `${bandwidth} Monthly Bandwidth`);
   }
