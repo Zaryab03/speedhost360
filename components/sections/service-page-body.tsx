@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { RevealOnScroll, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 import { FaqAccordion } from "@/components/ui/accordion";
 import { JsonLd } from "@/components/seo/json-ld";
+import { SpecValue } from "@/components/ui/spec-value";
 import { faqJsonLd } from "@/lib/seo/json-ld";
 
 export function ServicePageBody({
@@ -131,16 +132,57 @@ export function ServicePageBody({
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <RevealOnScroll>
             <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">Process</p>
+            {service.typicalTimeline && (
+              <p className="mt-3 max-w-2xl text-sm text-ink">
+                Typical timeline: <SpecValue value={service.typicalTimeline} />
+              </p>
+            )}
           </RevealOnScroll>
-          <div className="mt-8 grid gap-6 sm:grid-cols-4">
+          <ol className="mt-8 grid gap-6 sm:grid-cols-4">
             {service.process.map((step, index) => (
-              <RevealOnScroll key={step.step} delay={index * 0.06}>
-                <span className="font-mono text-sm text-signal">{step.step}</span>
-                <h3 className="mt-2 text-base font-semibold text-ink">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.description}</p>
-              </RevealOnScroll>
+              <li key={step.step}>
+                <RevealOnScroll delay={index * 0.06}>
+                  <span className="font-mono text-sm text-signal">{step.step}</span>
+                  <h3 className="mt-2 text-base font-semibold text-ink">{step.title}</h3>
+                  {step.duration && (
+                    <p className="mt-1 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
+                      <SpecValue value={step.duration} />
+                    </p>
+                  )}
+                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.description}</p>
+                  {step.deliverables && (
+                    <>
+                      <p className="mt-3 text-xs font-medium text-ink">You get</p>
+                      <ul className="mt-1.5 space-y-1.5">
+                        {step.deliverables.map((d) => (
+                          <li key={d} className="flex items-start gap-1.5 text-sm text-ink-muted">
+                            <Check size={14} className="mt-0.5 shrink-0 text-signal" aria-hidden />
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </RevealOnScroll>
+              </li>
             ))}
-          </div>
+          </ol>
+
+          {service.clientNeeds && (
+            <div className="mt-12 border-t border-line pt-8">
+              <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
+                What we need from you
+              </p>
+              <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                {service.clientNeeds.map((need) => (
+                  <li key={need} className="flex items-start gap-2 text-sm text-ink">
+                    <Check size={15} className="mt-0.5 shrink-0 text-signal" aria-hidden />
+                    {need}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 

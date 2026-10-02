@@ -2,6 +2,8 @@ import { emailHostingPricing } from "@/lib/data/email-hosting";
 import {
   isPending,
   planCardKeys,
+  TODO_CONFIRM,
+  type Spec,
   planPriceLabel,
   plansForService,
   type HostingPlan,
@@ -19,6 +21,8 @@ export type ProcessStep = {
   step: string;
   title: string;
   description: string;
+  duration?: Spec;
+  deliverables?: string[];
 };
 
 export type FaqItem = {
@@ -55,6 +59,10 @@ export type ServiceContent = {
   whoItsFor?: string[];
   features: ServiceFeature[];
   process: ProcessStep[];
+  /** Overall typical timeline shown above the process steps. */
+  typicalTimeline?: Spec;
+  /** What we need from the client to get started. */
+  clientNeeds?: string[];
   pricing?: PricingPlan[];
   pricingNote?: string;
   faq: FaqItem[];
@@ -139,25 +147,40 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         title: "Discovery",
         description:
           "We map your goals, audience and content before any design work starts.",
+        duration: TODO_CONFIRM,
+        deliverables: ["Agreed page list and scope", "Fixed price and timeline"],
       },
       {
         step: "02",
         title: "Design",
         description:
           "Wireframes and visual design reviewed with you before a single line of production code.",
+        duration: TODO_CONFIRM,
+        deliverables: ["Wireframes", "Visual design for your review"],
       },
       {
         step: "03",
         title: "Build",
         description:
           "Development against real content, with performance and accessibility checked continuously.",
+        duration: TODO_CONFIRM,
+        deliverables: ["Site built with your real content", "Performance and accessibility checks"],
       },
       {
         step: "04",
         title: "Launch & Handoff",
         description:
           "Deployed onto SpeedHost360 hosting with monitoring in place, plus a walkthrough of what you own.",
+        duration: TODO_CONFIRM,
+        deliverables: ["Live site with monitoring", "Walkthrough of what you can edit yourself"],
       },
+    ],
+    typicalTimeline: "3–6 weeks from signed-off content to launch for a focused business website",
+    clientNeeds: [
+      "Your page text, images and logo (or a list of what's missing)",
+      "Access to your domain registrar or DNS",
+      "One person who can approve designs and content",
+      "Two or three websites you like, and why",
     ],
     pricing: [
       {
@@ -543,25 +566,40 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         title: "Audit",
         description:
           "We review your current traffic, content and technical SEO baseline.",
+        duration: TODO_CONFIRM,
+        deliverables: ["Baseline report: traffic, content and technical SEO"],
       },
       {
         step: "02",
         title: "Strategy",
         description:
           "A prioritized plan across the channels that fit your business and budget.",
+        duration: TODO_CONFIRM,
+        deliverables: ["Prioritized channel plan for your budget"],
       },
       {
         step: "03",
         title: "Execution",
         description:
           "Content, campaigns and on-site optimization shipped on a regular cadence.",
+        duration: "Ongoing, monthly retainer",
+        deliverables: ["Content, campaigns and on-site fixes"],
       },
       {
         step: "04",
         title: "Review & iterate",
         description:
           "Results reviewed against tracked conversions, and the plan adjusted accordingly.",
+        duration: "Monthly",
+        deliverables: ["Monthly performance report", "Strategy call (Growth plan and up)"],
       },
+    ],
+    typicalTimeline: TODO_CONFIRM,
+    clientNeeds: [
+      "Access to Google Analytics and Search Console",
+      "Access to your Google Business Profile, for local SEO",
+      "Ad account access and a monthly ad budget, for paid campaigns",
+      "One person who can approve content before it's published",
     ],
     pricing: [
       {
