@@ -4,6 +4,7 @@ import { services } from "@/lib/data/services";
 import { plansForService } from "@/lib/data/plans";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
+import { DataOwnership } from "@/components/sections/data-ownership";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import {
   MigrationChecklist,
@@ -43,6 +44,7 @@ export default function ManagedHostingPage() {
             <NotIncludedAndAddOns />
             <SlaSummary plans={plansForService("managed-hosting")} />
             <MigrationChecklist />
+            <DataOwnership />
             <ReliabilityStats />
           </>
         }

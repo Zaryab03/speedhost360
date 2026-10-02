@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { services } from "@/lib/data/services";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
+import { DataOwnership } from "@/components/sections/data-ownership";
 
 const service = services["web-development"];
 
@@ -21,7 +22,7 @@ export default function WebDevelopmentPage() {
           { name: service.navLabel, path: "/services/web-development" },
         ]}
       />
-      <ServicePageBody service={service} />
+      <ServicePageBody service={service} afterPricing={<DataOwnership />} />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { siteConfig } from "@/lib/data/site";
 import { serviceList } from "@/lib/data/services";
+import { hostingPlans, planPriceLabel } from "@/lib/data/plans";
 
 export function GET() {
   const lines = [
@@ -12,11 +13,16 @@ export function GET() {
     "## Services",
     ...serviceList.map((s) => `- [${s.title}](${siteConfig.url}/services/${s.slug}): ${s.subheadline}`),
     "",
+    "## Hosting plans (PKR)",
+    ...hostingPlans.map((p) => `- ${p.name}: ${planPriceLabel(p)}, best for ${p.bestFor.toLowerCase()}`),
+    `- Full comparison: ${siteConfig.url}/services/web-hosting#compare-plans`,
+    "",
     "## Key pages",
     `- [Home](${siteConfig.url}/)`,
     `- [About](${siteConfig.url}/about)`,
     `- [Blog](${siteConfig.url}/blog)`,
-    `- [Contact](${siteConfig.url}/contact)`,
+    `- [Start a project](${siteConfig.url}/contact)`,
+    `- [Free website audit](${siteConfig.url}/free-website-audit)`,
     "",
     "## Contact",
     `- WhatsApp: ${siteConfig.whatsappDisplay}`,

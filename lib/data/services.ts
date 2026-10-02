@@ -258,7 +258,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Web Hosting",
     metaTitle: "Web Hosting Services | SpeedHost360",
     metaDescription:
-      "Reliable web hosting with SSL, backups, security and monitoring. Plans starting at PKR 15,000 for businesses in Pakistan and beyond.",
+      "Compare web hosting plans side by side: websites, backups, support, migration and SLA. SSL, daily backups and monitoring on every plan, from PKR 15,000.",
     eyebrow: "02 · Host",
     headline: "Infrastructure your website can depend on.",
     subheadline:

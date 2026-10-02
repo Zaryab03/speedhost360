@@ -4,6 +4,7 @@ import { services } from "@/lib/data/services";
 import { plansForService } from "@/lib/data/plans";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
+import { DataOwnership } from "@/components/sections/data-ownership";
 import { EmailPricing } from "@/components/sections/email-pricing";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import { HostingComparison } from "@/components/sections/hosting-comparison";
@@ -45,6 +46,7 @@ export default function WebHostingPage() {
             <NotIncludedAndAddOns />
             <SlaSummary plans={plansForService("web-hosting")} />
             <MigrationChecklist />
+            <DataOwnership />
             <EmailPricing />
             <ReliabilityStats />
             <HostingComparison />
