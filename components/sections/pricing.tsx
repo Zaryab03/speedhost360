@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { planCardKeys, planPriceLabel, type HostingPlan } from "@/lib/data/plans";
-import { SpecValue } from "@/components/ui/spec-value";
+import { planFeatureLines, planPriceLabel, type HostingPlan } from "@/lib/data/plans";
 import { PlanCtas } from "@/components/sections/plan-ctas";
 import { RevealOnScroll } from "@/components/motion/reveal";
 
@@ -41,12 +40,10 @@ export function Pricing({ plans }: { plans: HostingPlan[] }) {
               <p className="mt-3 text-2xl font-semibold text-ink">{planPriceLabel(plan)}</p>
               <p className="mt-2 text-sm text-ink-muted">{plan.bestFor}</p>
               <ul className="mt-5 flex-1 space-y-2.5">
-                {planCardKeys.map(({ key, label }) => (
-                  <li key={key} className="flex items-start gap-2 text-sm text-ink-muted">
-                    <Check size={15} className="mt-0.5 shrink-0 text-signal" />
-                    <span>
-                      {label}: <SpecValue value={plan[key]} />
-                    </span>
+                {planFeatureLines(plan).map((line) => (
+                  <li key={line} className="flex items-start gap-2 text-sm text-ink-muted">
+                    <Check size={15} className="mt-0.5 shrink-0 text-signal" aria-hidden />
+                    {line}
                   </li>
                 ))}
               </ul>

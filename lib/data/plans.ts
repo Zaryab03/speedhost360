@@ -2,8 +2,11 @@
 // /services/web-hosting and /services/managed-hosting all read from here
 // (and prisma/seed.ts copies it into the HostingPlan table).
 //
-// Only prices and facts already published elsewhere on the site are filled
-// in. Every other value is TODO_CONFIRM: never replace one with a guess.
+// Starter's resource specs (storage, SSL, domain, bandwidth, addon domains,
+// emails/databases, subdomains) come from the owner; Business, Professional
+// and Managed values for those fields were scaled to price and proposed on
+// 2026-10-02, pending the owner's confirmation. Every other unknown value is
+// TODO_CONFIRM: never replace one with a guess.
 // The UI renders TODO_CONFIRM as "Ask us" in production and as a visible
 // marker in development, so nothing invented ever reaches a visitor.
 
@@ -30,8 +33,17 @@ export type HostingPlan = {
   billingPeriod: Spec;
   renewalPrice: Spec;
   websitesIncluded: Spec;
+  /** SSD storage in GB, e.g. "3". */
   storageGb: Spec;
+  /** "Yes" or "No". */
+  freeSsl: Spec;
+  /** "No", "Yes", or a qualifier such as "1st year". */
+  freeDomain: Spec;
+  /** Monthly bandwidth, e.g. "Unlimited". */
   bandwidth: Spec;
+  /** Extra domains on top of the main one, e.g. "0". */
+  addonDomains: Spec;
+  subdomains: Spec;
   ram: Spec;
   cpu: Spec;
   databases: Spec;
@@ -67,12 +79,16 @@ export const hostingPlans: HostingPlan[] = [
     billingPeriod: T,
     renewalPrice: T,
     websitesIncluded: "1",
-    storageGb: T,
-    bandwidth: T,
+    storageGb: "3",
+    freeSsl: "Yes",
+    freeDomain: "No",
+    bandwidth: "Unlimited",
+    addonDomains: "0",
+    subdomains: "2",
     ram: T,
     cpu: T,
-    databases: T,
-    emailAccounts: T,
+    databases: "2",
+    emailAccounts: "2",
     backupFrequency: "Daily",
     backupRetentionDays: T,
     monitoringLevel: T,
@@ -95,12 +111,16 @@ export const hostingPlans: HostingPlan[] = [
     billingPeriod: T,
     renewalPrice: T,
     websitesIncluded: "Up to 5",
-    storageGb: T,
-    bandwidth: T,
+    storageGb: "10",
+    freeSsl: "Yes",
+    freeDomain: "No",
+    bandwidth: "Unlimited",
+    addonDomains: "4",
+    subdomains: "10",
     ram: T,
     cpu: T,
-    databases: T,
-    emailAccounts: T,
+    databases: "10",
+    emailAccounts: "10",
     backupFrequency: "Daily",
     backupRetentionDays: T,
     monitoringLevel: "Performance monitoring",
@@ -122,13 +142,17 @@ export const hostingPlans: HostingPlan[] = [
     priceIsFrom: false,
     billingPeriod: T,
     renewalPrice: T,
-    websitesIncluded: T,
-    storageGb: T,
-    bandwidth: T,
+    websitesIncluded: "Up to 10",
+    storageGb: "25",
+    freeSsl: "Yes",
+    freeDomain: "1st year",
+    bandwidth: "Unlimited",
+    addonDomains: "9",
+    subdomains: "25",
     ram: T,
     cpu: T,
-    databases: T,
-    emailAccounts: T,
+    databases: "25",
+    emailAccounts: "25",
     backupFrequency: "Daily",
     backupRetentionDays: T,
     monitoringLevel: "Advanced monitoring",
@@ -152,11 +176,15 @@ export const hostingPlans: HostingPlan[] = [
     renewalPrice: T,
     websitesIncluded: "Scoped to your project",
     storageGb: "Sized to your requirements",
-    bandwidth: "Sized to your requirements",
+    freeSsl: "Yes",
+    freeDomain: "1st year",
+    bandwidth: "Unlimited",
+    addonDomains: "Unlimited",
+    subdomains: "Unlimited",
     ram: "Sized to your requirements",
     cpu: "Sized to your requirements",
-    databases: "Scoped to your project",
-    emailAccounts: T,
+    databases: "Unlimited",
+    emailAccounts: "Unlimited",
     backupFrequency: "Daily, with recovery testing",
     backupRetentionDays: T,
     monitoringLevel: "Proactive server monitoring",
@@ -176,13 +204,17 @@ export const hostingPlans: HostingPlan[] = [
 export const planSpecRows: { key: PlanSpecKey; label: string }[] = [
   { key: "billingPeriod", label: "Billing period" },
   { key: "renewalPrice", label: "Renewal price" },
+  { key: "storageGb", label: "SSD space (GB)" },
+  { key: "freeSsl", label: "Free SSL" },
+  { key: "freeDomain", label: "Free domain" },
+  { key: "bandwidth", label: "Monthly bandwidth" },
   { key: "websitesIncluded", label: "Websites" },
-  { key: "storageGb", label: "Storage (GB)" },
-  { key: "bandwidth", label: "Bandwidth" },
+  { key: "addonDomains", label: "Addon domains" },
+  { key: "emailAccounts", label: "Email accounts" },
+  { key: "databases", label: "Databases" },
+  { key: "subdomains", label: "Subdomains" },
   { key: "ram", label: "RAM" },
   { key: "cpu", label: "CPU" },
-  { key: "databases", label: "Databases" },
-  { key: "emailAccounts", label: "Email accounts" },
   { key: "backupFrequency", label: "Backups" },
   { key: "backupRetentionDays", label: "Backup retention (days)" },
   { key: "monitoringLevel", label: "Monitoring" },
@@ -196,13 +228,44 @@ export const planSpecRows: { key: PlanSpecKey; label: string }[] = [
   { key: "bestFor", label: "Best for" },
 ];
 
-/** Short spec lines for compact plan cards (homepage). */
-export const planCardKeys: { key: PlanSpecKey; label: string }[] = [
-  { key: "websitesIncluded", label: "Websites" },
-  { key: "storageGb", label: "Storage (GB)" },
-  { key: "backupFrequency", label: "Backups" },
-  { key: "supportTier", label: "Support" },
-];
+const isCount = (v: Spec) => /^\d+$/.test(v);
+const plural = (n: string, word: string) => `${n} ${word}${n === "1" ? "" : "s"}`;
+
+/**
+ * Feature bullets for plan cards, in the house style ("3GB SSD Space",
+ * "Free SSL", "No Free Domain", ...). Unconfirmed values are left out here;
+ * the comparison table shows them as "Ask us".
+ */
+export function planFeatureLines(plan: HostingPlan): string[] {
+  const lines: (string | null)[] = [];
+  const { storageGb, freeSsl, freeDomain, bandwidth, addonDomains, emailAccounts, databases, subdomains } = plan;
+
+  if (!isPending(storageGb)) {
+    lines.push(isCount(storageGb) ? `${storageGb}GB SSD Space` : `SSD Space ${storageGb.toLowerCase()}`);
+  }
+  if (!isPending(freeSsl)) lines.push(freeSsl === "Yes" ? "Free SSL" : "No Free SSL");
+  if (!isPending(freeDomain)) {
+    lines.push(
+      freeDomain === "No" ? "No Free Domain" : freeDomain === "Yes" ? "Free Domain" : `Free Domain (${freeDomain})`
+    );
+  }
+  if (!isPending(bandwidth)) {
+    lines.push(bandwidth === "Unlimited" ? "Unlimited Monthly Bandwidth" : `${bandwidth} Monthly Bandwidth`);
+  }
+  if (!isPending(addonDomains)) {
+    lines.push(isCount(addonDomains) ? plural(addonDomains, "Addon Domain") : `${addonDomains} Addon Domains`);
+  }
+  if (!isPending(emailAccounts) && emailAccounts === databases) {
+    lines.push(`${emailAccounts} Emails/Databases`);
+  } else {
+    if (!isPending(emailAccounts)) lines.push(`${emailAccounts} Emails`);
+    if (!isPending(databases)) lines.push(`${databases} Databases`);
+  }
+  if (!isPending(subdomains)) {
+    lines.push(isCount(subdomains) ? plural(subdomains, "Subdomain") : `${subdomains} Subdomains`);
+  }
+  return lines.filter((l): l is string => l !== null);
+}
 
 export function formatPkr(amount: number) {
   return `PKR ${amount.toLocaleString("en-US")}`;

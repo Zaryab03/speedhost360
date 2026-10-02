@@ -113,7 +113,11 @@ model HostingPlan {
   renewalPrice        String
   websitesIncluded    String
   storageGb           String
+  freeSsl             String   @default("TODO_CONFIRM")
+  freeDomain          String   @default("TODO_CONFIRM")
   bandwidth           String
+  addonDomains        String   @default("TODO_CONFIRM")
+  subdomains          String   @default("TODO_CONFIRM")
   ram                 String
   cpu                 String
   databases           String

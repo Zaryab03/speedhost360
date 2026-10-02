@@ -1,7 +1,6 @@
 import { emailHostingPricing } from "@/lib/data/email-hosting";
 import {
-  isPending,
-  planCardKeys,
+  planFeatureLines,
   TODO_CONFIRM,
   type Spec,
   planPriceLabel,
@@ -792,8 +791,6 @@ function toPricingPlan(plan: HostingPlan): PricingPlan {
     name: plan.name,
     price: planPriceLabel(plan),
     highlighted: plan.mostPopular,
-    features: planCardKeys
-      .filter(({ key }) => !isPending(plan[key]))
-      .map(({ key, label }) => `${label}: ${plan[key]}`),
+    features: planFeatureLines(plan),
   };
 }
