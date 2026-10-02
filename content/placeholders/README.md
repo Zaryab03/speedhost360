@@ -22,7 +22,7 @@ for `isPlaceholder` and `PLACEHOLDER` to find every instance programmatically.
 | What | Purpose | Where |
 |---|---|---|
 | `DATABASE_URL` / `DIRECT_URL` | Self-managed Postgres connection (see README) | `.env.local` |
-| `NEXT_PUBLIC_HELPDESK_URL` | Client Portal link (defaults to https://helpdesk.speedhost360.com) | `.env.local` |
+| `NEXT_PUBLIC_HELPDESK_URL` | Client Portal link (defaults to https://clients.speedhost360.com) | `.env.local` |
 | `AUTH_SECRET` | Session signing secret, generate with `openssl rand -base64 32` | `.env.local` |
 | `ADMIN_SEED_EMAIL` / `ADMIN_SEED_PASSWORD` | First admin login, used only by `prisma/seed.ts` | `.env.local` |
 | `NEXT_PUBLIC_GA4_ID` | Google Analytics measurement ID, leave blank to keep analytics off | `.env.local` |
@@ -31,7 +31,7 @@ for `isPlaceholder` and `PLACEHOLDER` to find every instance programmatically.
 ## Reliability & payment facts (confirmed, not placeholders)
 
 The 99.9% uptime commitment, daily backup cadence, US/EU server location,
-accepted payment methods (bank transfer, JazzCash, EasyPaisa, card/online),
+payment by bank transfer (account details sent by email),
 and "6+ years in business" are published as real, confirmed claims, not
 placeholders, in `lib/data/trust.ts` and the hosting/managed-hosting pricing
 notes in `lib/data/services.ts`. If any of these ever change (a new data

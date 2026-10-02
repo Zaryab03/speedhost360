@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { briefFormSchema, type BriefFormValues } from "@/lib/validation";
-import { budgetOptions, serviceOptions, timelineOptions } from "@/lib/data/forms";
+import { serviceOptions } from "@/lib/data/forms";
 import { trackEvent } from "@/lib/analytics";
 import { getStoredUtm } from "@/lib/utm";
 import { siteConfig } from "@/lib/data/site";
@@ -13,11 +13,9 @@ import { Field, Honeypot, inputClass } from "@/components/forms/fields";
 
 type FieldErrors = Partial<Record<keyof BriefFormValues, string[]>>;
 
-/** Minimal plan info for the plan dropdown (passed from the server). */
+/** Minimal plan info, used when ?plan= preselects a hosting plan. */
 export type BriefPlanOption = { slug: string; name: string; service: string; priceLabel: string };
 type Service = BriefFormValues["service"];
-
-const hostingServices: Service[] = ["web-hosting", "managed-hosting"];
 
 function initialService(
   plans: BriefPlanOption[],
@@ -29,23 +27,25 @@ function initialService(
   return serviceOptions.some((o) => o.value === param) ? (param as Service) : "other";
 }
 
-// Short project brief: service, budget range, timeline, message, plus how
-// to reach you. ?service= and ?plan= preselect the matching options.
+// Short project brief: what you need, about your project, and how to reach
+// you. ?service= preselects the service; ?plan= (from a plan's CTA) is
+// saved with the lead and pre-fills the project message.
 export function BriefForm({ plans }: { plans: BriefPlanOption[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isQuote = searchParams.get("intent") === "quote";
   const planParam = searchParams.get("plan");
+  const chosenPlan = plans.find((p) => p.slug === planParam);
 
   const [values, setValues] = useState({
     name: "",
     email: "",
     phone: "",
     service: initialService(plans, searchParams.get("service"), planParam),
-    plan: plans.some((p) => p.slug === planParam) ? (planParam as string) : "",
-    budget: "",
-    timeline: "",
-    message: "",
+    plan: chosenPlan?.slug ?? "",
+    message: chosenPlan
+      ? `I'm interested in the ${chosenPlan.name} plan (${chosenPlan.priceLabel}).`
+      : "",
     company_website: "",
   });
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -61,18 +61,13 @@ export function BriefForm({ plans }: { plans: BriefPlanOption[] }) {
     setValues((prev) => ({ ...prev, [key]: value }));
   }
 
-  const showPlan = hostingServices.includes(values.service);
-  const plansForService = plans.filter((p) => p.service === values.service);
-
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     trackEvent("form_submit", { form: "brief" });
 
-    const parsed = briefFormSchema.safeParse({
-      ...values,
-      plan: showPlan ? values.plan : "",
-      utm: getStoredUtm(),
-    });
+    // Keep the preselected plan only if it still matches the chosen service.
+    const plan = plans.find((p) => p.slug === values.plan)?.service === values.service ? values.plan : "";
+    const parsed = briefFormSchema.safeParse({ ...values, plan, utm: getStoredUtm() });
     if (!parsed.success) {
       setFieldErrors(parsed.error.flatten().fieldErrors as FieldErrors);
       setStatus("error");
@@ -133,88 +128,24 @@ export function BriefForm({ plans }: { plans: BriefPlanOption[] }) {
         </div>
       )}
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <Field label="What do you need?" htmlFor="service" required error={err("service")}>
-          <select
-            id="service"
-            name="service"
-            value={values.service}
-            onChange={(e) => updateField("service", e.target.value as Service)}
-            aria-invalid={!!err("service")}
-            aria-describedby={described("service")}
-            className={inputClass(!!err("service"))}
-          >
-            {serviceOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-
-        {showPlan ? (
-          <Field label="Plan" htmlFor="plan" error={err("plan")}>
-            <select
-              id="plan"
-              name="plan"
-              value={values.plan}
-              onChange={(e) => updateField("plan", e.target.value)}
-              className={inputClass(!!err("plan"))}
-            >
-              <option value="">Not sure yet, help me choose</option>
-              {plansForService.map((p) => (
-                <option key={p.slug} value={p.slug}>
-                  {p.name} ({p.priceLabel})
-                </option>
-              ))}
-            </select>
-          </Field>
-        ) : (
-          <div className="hidden sm:block" />
-        )}
-
-        <Field label="Budget range" htmlFor="budget" required error={err("budget")}>
-          <select
-            id="budget"
-            name="budget"
-            value={values.budget}
-            onChange={(e) => updateField("budget", e.target.value)}
-            aria-invalid={!!err("budget")}
-            aria-describedby={described("budget")}
-            className={inputClass(!!err("budget"))}
-          >
-            <option value="" disabled>
-              Choose a range
+      <Field label="What do you need?" htmlFor="service" required error={err("service")}>
+        <select
+          id="service"
+          name="service"
+          required
+          value={values.service}
+          onChange={(e) => updateField("service", e.target.value as Service)}
+          aria-invalid={!!err("service")}
+          aria-describedby={described("service")}
+          className={inputClass(!!err("service"))}
+        >
+          {serviceOptions.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
             </option>
-            {budgetOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-
-        <Field label="Timeline" htmlFor="timeline" required error={err("timeline")}>
-          <select
-            id="timeline"
-            name="timeline"
-            value={values.timeline}
-            onChange={(e) => updateField("timeline", e.target.value)}
-            aria-invalid={!!err("timeline")}
-            aria-describedby={described("timeline")}
-            className={inputClass(!!err("timeline"))}
-          >
-            <option value="" disabled>
-              When do you want to start?
-            </option>
-            {timelineOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-      </div>
+          ))}
+        </select>
+      </Field>
 
       <Field label="About your project" htmlFor="message" required error={err("message")}>
         <textarea

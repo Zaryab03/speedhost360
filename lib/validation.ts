@@ -1,10 +1,8 @@
 import { z } from "zod";
 import {
   auditFocusOptions,
-  budgetOptions,
   optionValues,
   serviceOptions,
-  timelineOptions,
 } from "@/lib/data/forms";
 
 // Honeypot: accepted here so the route can silently drop the submission
@@ -33,8 +31,6 @@ export const briefFormSchema = z.object({
   service: z.enum(optionValues(serviceOptions), { error: "Please choose a service." }),
   // Plan slugs live in the HostingPlan table, so validate the shape only.
   plan: z.string().regex(/^[a-z0-9-]{1,40}$/).optional().or(z.literal("")),
-  budget: z.enum(optionValues(budgetOptions), { error: "Please choose a budget range." }),
-  timeline: z.enum(optionValues(timelineOptions), { error: "Please choose a timeline." }),
   message: z
     .string()
     .trim()

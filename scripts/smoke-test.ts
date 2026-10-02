@@ -86,7 +86,7 @@ async function main() {
       check(`GET ${path}`, res.status === 200 && res.body.includes(needle), `status ${res.status}`);
     }
     const sitemap = await get("/sitemap.xml");
-    check("sitemap excludes helpdesk", sitemap.status === 200 && !sitemap.body.includes("helpdesk."));
+    check("sitemap excludes client portal", sitemap.status === 200 && !sitemap.body.includes("clients.speedhost360.com"));
 
     console.log("\nDatabase");
     const plans = await prisma.hostingPlan.findMany({ orderBy: { sortOrder: "asc" } });
@@ -102,14 +102,12 @@ async function main() {
       phone: "+92 300 0000000",
       service: "web-hosting",
       plan: "business",
-      budget: "not-sure",
-      timeline: "flexible",
       message: "Automated smoke test, please ignore.",
     };
     const ok = await post("/api/contact", brief);
     check("valid brief accepted", ok.status === 200, JSON.stringify(ok.json));
     const lead = await prisma.lead.findFirst({ where: { email: MARKER_EMAIL, plan: "business" } });
-    check("brief stored with plan, budget and timeline", !!lead && lead.budget === "not-sure" && lead.timeline === "flexible");
+    check("brief stored with plan", !!lead);
 
     const contactOnly = await post("/api/contact", { ...brief, service: "other", plan: "" });
     check("general enquiry (no plan) accepted", contactOnly.status === 200);

@@ -10,6 +10,8 @@ export const serviceOptions = [
   { value: "other", label: "Other / Not sure yet" },
 ] as const;
 
+// Budget and timeline are no longer asked on the brief form; kept so the
+// admin can still label older leads that have them.
 export const budgetOptions = [
   { value: "under-50k", label: "Under PKR 50,000" },
   { value: "50k-100k", label: "PKR 50,000 – 100,000" },

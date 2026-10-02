@@ -53,8 +53,6 @@ export async function POST(request: Request) {
         phone: lead.phone,
         service: lead.service,
         plan: lead.plan || null,
-        budget: lead.budget,
-        timeline: lead.timeline,
         message: lead.message,
         utmSource: utm?.source || null,
         utmMedium: utm?.medium || null,

@@ -14,7 +14,7 @@ export const revalidate = 300;
 export const metadata: Metadata = buildMetadata({
   title: "Start a Project",
   description:
-    "Send SpeedHost360 a short project brief (service, budget, timeline) for websites, hosting, business email or digital marketing. We reply within 1 business day.",
+    "Tell SpeedHost360 what you need for your website, hosting, business email or digital marketing. We reply within 1 business day.",
   path: "/contact",
 });
 
