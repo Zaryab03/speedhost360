@@ -1,12 +1,9 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { services } from "@/lib/data/services";
-import { Button } from "@/components/ui/button";
+import { hostingPlans, planCardKeys, planPriceLabel } from "@/lib/data/plans";
+import { SpecValue } from "@/components/ui/spec-value";
+import { PlanCtas } from "@/components/sections/plan-ctas";
 import { RevealOnScroll } from "@/components/motion/reveal";
-
-const hostingPlans = services["web-hosting"].pricing ?? [];
-const managedPlan = services["managed-hosting"].pricing?.[0];
-const plans = managedPlan ? [...hostingPlans, managedPlan] : hostingPlans;
 
 export function Pricing() {
   return (
@@ -25,51 +22,59 @@ export function Pricing() {
         </RevealOnScroll>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {plans.map((plan, index) => (
+          {hostingPlans.map((plan, index) => (
             <RevealOnScroll
-              key={plan.name}
+              key={plan.slug}
               delay={index * 0.05}
-              className={`flex h-full flex-col border p-6 ${
-                plan.highlighted ? "border-signal" : "border-line"
+              className={`relative flex h-full flex-col border p-6 ${
+                plan.mostPopular ? "border-signal" : "border-line"
               }`}
             >
+              {plan.mostPopular && (
+                <span className="absolute -top-3 left-6 bg-signal px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-signal-ink">
+                  Most popular
+                </span>
+              )}
               <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
                 {plan.name}
               </p>
-              <p className="mt-3 text-2xl font-semibold text-ink">{plan.price}</p>
+              <p className="mt-3 text-2xl font-semibold text-ink">{planPriceLabel(plan)}</p>
+              <p className="mt-2 text-sm text-ink-muted">{plan.bestFor}</p>
               <ul className="mt-5 flex-1 space-y-2.5">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-ink-muted">
+                {planCardKeys.map(({ key, label }) => (
+                  <li key={key} className="flex items-start gap-2 text-sm text-ink-muted">
                     <Check size={15} className="mt-0.5 shrink-0 text-signal" />
-                    {f}
+                    <span>
+                      {label}: <SpecValue value={plan[key]} />
+                    </span>
                   </li>
                 ))}
               </ul>
-              <Button
-                href="/contact"
-                variant={plan.highlighted ? "primary" : "secondary"}
-                className="mt-6 w-full"
-              >
-                Get Started
-              </Button>
+              <PlanCtas
+                className="mt-6"
+                primary={plan.mostPopular}
+                location="home_pricing"
+                plan={{
+                  slug: plan.slug,
+                  name: plan.name,
+                  service: plan.service,
+                  priceLabel: planPriceLabel(plan),
+                }}
+              />
             </RevealOnScroll>
           ))}
         </div>
 
         <p className="mt-6 text-xs leading-relaxed text-ink-muted">
-          Pricing shown in PKR. See full plan details on the{" "}
-          <Link href="/services/web-hosting" className="underline underline-offset-2 hover:text-signal">
+          Pricing shown in PKR. Compare every spec side by side on the{" "}
+          <Link href="/services/web-hosting#compare-plans" className="underline underline-offset-2 hover:text-signal">
             Web Hosting
           </Link>{" "}
-          and{" "}
+          page, or see{" "}
           <Link href="/services/managed-hosting" className="underline underline-offset-2 hover:text-signal">
             Managed Hosting
           </Link>{" "}
-          pages, or{" "}
-          <Link href="/contact" className="underline underline-offset-2 hover:text-signal">
-            contact us
-          </Link>{" "}
-          to confirm the current billing cycle for your project.
+          for custom servers.
         </p>
       </div>
     </section>

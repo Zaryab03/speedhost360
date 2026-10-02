@@ -18,7 +18,9 @@ type AnalyticsEvent =
   | "thank_you_view"
   | "case_study_view"
   | "hosting_cta_click"
-  | "service_cta_click";
+  | "service_cta_click"
+  | "plan_cta_click"
+  | "audience_card_click";
 
 // Only ever passes non-identifying, structural data (label/location) — never
 // form field values or anything that could contain PII.

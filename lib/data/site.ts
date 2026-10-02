@@ -15,6 +15,10 @@ export const siteConfig = {
   get whatsappLink() {
     return `https://wa.me/${this.whatsappNumber.replace(/[^\d]/g, "")}`;
   },
+  /** WhatsApp deep link with a pre-filled message. Never put user data in `text`. */
+  whatsappLinkWithText(text: string) {
+    return `${this.whatsappLink}?text=${encodeURIComponent(text)}`;
+  },
 
   // PLACEHOLDER — confirm the real business phone/email/address before launch.
   phoneNumber: "+923402046835",

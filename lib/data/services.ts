@@ -1,4 +1,11 @@
 import { emailHostingPricing } from "@/lib/data/email-hosting";
+import {
+  isPending,
+  planCardKeys,
+  planPriceLabel,
+  plansForService,
+  type HostingPlan,
+} from "@/lib/data/plans";
 
 export type PricingPlan = {
   name: string;
@@ -306,41 +313,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         description: "Uptime and performance tracked for the life of the plan.",
       },
     ],
-    pricing: [
-      {
-        name: "Starter",
-        price: "PKR 15,000",
-        features: [
-          "1 website",
-          "Free SSL",
-          "Daily backups",
-          "Standard support",
-        ],
-      },
-      {
-        name: "Business",
-        price: "PKR 25,000",
-        highlighted: true,
-        features: [
-          "Up to 5 websites",
-          "Free SSL",
-          "Daily backups",
-          "Performance monitoring",
-          "Priority support",
-        ],
-      },
-      {
-        name: "Professional",
-        price: "PKR 40,000",
-        features: [
-          "Multiple high-traffic sites",
-          "Free SSL",
-          "Daily backups",
-          "Advanced monitoring",
-          "Priority support",
-        ],
-      },
-    ],
+    pricing: plansForService("web-hosting").map(toPricingPlan),
     pricingNote:
       "Pricing shown in PKR. Contact us to confirm the current billing cycle and any traffic- or storage-based adjustments for your project. Every plan is backed by a 99.9% uptime commitment and daily automated backups.",
     faq: [
@@ -462,20 +435,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
           "Updates, monitoring and support continue for as long as we manage your infrastructure.",
       },
     ],
-    pricing: [
-      {
-        name: "Managed Hosting",
-        price: "Starting from PKR 56,000",
-        highlighted: true,
-        features: [
-          "Server management",
-          "Security & monitoring",
-          "Backups & recovery",
-          "Performance optimization",
-          "Technical support",
-        ],
-      },
-    ],
+    pricing: plansForService("managed-hosting").map(toPricingPlan),
     pricingNote:
       "Final pricing depends on your infrastructure requirements, traffic, server specification, and the number of applications we're managing. We'll scope this with you before quoting a fixed number.",
     faq: [
@@ -782,3 +742,16 @@ export const services: Record<ServiceSlug, ServiceContent> = {
 };
 
 export const serviceList = Object.values(services);
+
+// Hosting plans live in lib/data/plans.ts; this adapts them to the generic
+// card shape used by service listings. Unconfirmed specs are left out.
+function toPricingPlan(plan: HostingPlan): PricingPlan {
+  return {
+    name: plan.name,
+    price: planPriceLabel(plan),
+    highlighted: plan.mostPopular,
+    features: planCardKeys
+      .filter(({ key }) => !isPending(plan[key]))
+      .map(({ key, label }) => `${label}: ${plan[key]}`),
+  };
+}
