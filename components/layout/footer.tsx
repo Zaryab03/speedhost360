@@ -74,9 +74,6 @@ export function Footer() {
               <li>
                 <ClientPortalLink location="footer" />
               </li>
-              <li>
-                <ClientPortalLink location="footer" label="Support Tickets" />
-              </li>
             </ul>
             <p className="mt-3 max-w-[14rem] text-xs leading-relaxed text-ink-muted">
               {siteConfig.helpdeskHelperText}
