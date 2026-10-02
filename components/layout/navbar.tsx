@@ -11,6 +11,7 @@ import { siteConfig } from "@/lib/data/site";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { trackEvent } from "@/lib/analytics";
+import { ClientPortalLink } from "@/components/layout/client-portal-link";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -116,6 +117,7 @@ export function Navbar() {
             {siteConfig.whatsappDisplay}
           </a>
           <ThemeToggle />
+          <ClientPortalLink location="header" variant="button" />
           <Button
             href="/contact"
             size="md"
@@ -182,6 +184,11 @@ export function Navbar() {
                       </Link>
                     ))}
                 </nav>
+
+                <div className="mb-4 border-t border-line pt-4">
+                  <ClientPortalLink location="mobile_menu" variant="menu" />
+                  <p className="px-1 text-xs text-ink-muted">{siteConfig.helpdeskHelperText}</p>
+                </div>
 
                 <div className="flex flex-col gap-3 border-t border-line pt-4">
                   <a

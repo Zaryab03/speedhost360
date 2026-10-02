@@ -5,6 +5,8 @@ import { plansForService } from "@/lib/data/plans";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
 import { DataOwnership } from "@/components/sections/data-ownership";
+import { ClientPortalLink } from "@/components/layout/client-portal-link";
+import { siteConfig } from "@/lib/data/site";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import {
   MigrationChecklist,
@@ -42,7 +44,13 @@ export default function ManagedHostingPage() {
         afterPricing={
           <>
             <NotIncludedAndAddOns />
-            <SlaSummary plans={plansForService("managed-hosting")} />
+            <SlaSummary plans={plansForService("managed-hosting")}>
+              <p>
+                Already hosting with us?{" "}
+                <ClientPortalLink location="hosting" className="underline underline-offset-2" />
+                . {siteConfig.helpdeskHelperText}
+              </p>
+            </SlaSummary>
             <MigrationChecklist />
             <DataOwnership />
             <ReliabilityStats />

@@ -5,6 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/data/site";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { BriefForm } from "@/components/forms/brief-form";
+import { ClientPortalLink } from "@/components/layout/client-portal-link";
 
 export const metadata: Metadata = buildMetadata({
   title: "Start a Project",
@@ -69,6 +70,15 @@ export default function ContactPage() {
           </div>
 
           <aside className="space-y-8 lg:pt-24">
+            <div className="border border-line-strong bg-paper-raised p-5">
+              <p className="text-sm font-semibold text-ink">Already a customer?</p>
+              <p className="mt-1 text-sm leading-relaxed text-ink-muted">
+                Open a support ticket in the Client Portal.{" "}
+                {siteConfig.helpdeskHelperText}
+              </p>
+              <ClientPortalLink location="contact" variant="button" className="mt-4" />
+            </div>
+
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
                 Reach us directly

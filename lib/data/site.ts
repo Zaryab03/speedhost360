@@ -56,4 +56,9 @@ export const siteConfig = {
   },
 
   ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_ID ?? "",
+
+  // ERPNext Helpdesk (client portal). Configure via NEXT_PUBLIC_HELPDESK_URL;
+  // components must read it from here, never hardcode it.
+  helpdeskUrl: process.env.NEXT_PUBLIC_HELPDESK_URL || "https://helpdesk.speedhost360.com",
+  helpdeskHelperText: "Existing customers can raise and track support requests here.",
 } as const;
