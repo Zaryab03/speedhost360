@@ -2,6 +2,12 @@ export type Testimonial = {
   quote: string;
   name: string;
   role: string;
+  /** A specific, client-confirmed outcome, e.g. "Mailboxes live in 1 day". */
+  result?: string;
+  /** Headshot under /public. Only with the person's permission. */
+  photo?: { src: string; alt: string };
+  /** Company logo under /public. Only with the company's permission. */
+  logo?: { src: string; alt: string };
   isPlaceholder?: boolean;
 };
 

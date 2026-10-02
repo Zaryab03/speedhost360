@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Quote } from "lucide-react";
 import { testimonials } from "@/lib/data/testimonials";
 import { PlaceholderTag } from "@/components/ui/placeholder-tag";
@@ -30,9 +31,34 @@ export function Testimonials() {
               <p className="mt-3 flex-1 text-lg leading-relaxed text-ink">
                 {testimonial.quote}
               </p>
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
-                {testimonial.name}, {testimonial.role}
-              </p>
+              {testimonial.result && (
+                <p className="mt-4 inline-block self-start bg-signal-soft px-2 py-1 text-sm font-medium text-ink">
+                  {testimonial.result}
+                </p>
+              )}
+              <div className="mt-4 flex items-center gap-3">
+                {testimonial.photo && (
+                  <Image
+                    src={testimonial.photo.src}
+                    alt={testimonial.photo.alt}
+                    width={40}
+                    height={40}
+                    className="size-10 rounded-full object-cover"
+                  />
+                )}
+                <p className="font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
+                  {testimonial.name}, {testimonial.role}
+                </p>
+                {testimonial.logo && (
+                  <Image
+                    src={testimonial.logo.src}
+                    alt={testimonial.logo.alt}
+                    width={96}
+                    height={32}
+                    className="ml-auto h-6 w-auto object-contain"
+                  />
+                )}
+              </div>
             </RevealOnScroll>
           ))}
         </div>

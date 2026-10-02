@@ -9,9 +9,10 @@ for `isPlaceholder` and `PLACEHOLDER` to find every instance programmatically.
 
 | What | Where | File |
 |---|---|---|
-| 3 case studies (name, industry, challenge, solution, tech, screenshots) | `/case-studies` | `lib/data/case-studies.ts` |
+| Case studies (problem, solution, verified results, live link). Empty until real, client-approved entries are added; the page shows an empty state and is noindexed meanwhile | `/case-studies` | `lib/data/case-studies.ts` |
+| Portfolio items (live client sites). Same empty-state behaviour | `/portfolio` | `lib/data/portfolio.ts` |
 | 2 before/after gallery projects + real screenshots | `/gallery` | `lib/data/gallery.ts` |
-| Testimonial quote(s), **only publish with the client's written permission** | Homepage | `lib/data/testimonials.ts` |
+| Testimonial quote(s), plus optional photo, logo and a specific result. **Only publish with the client's written permission** | Homepage | `lib/data/testimonials.ts` |
 | Business address (currently blank, marked placeholder) | Footer / structured data | `lib/data/site.ts` → `siteConfig.address` |
 | Social profile links, only add ones that actually exist | Footer | `lib/data/site.ts` → `siteConfig.social` |
 | Phone number, confirm whether it's the same as WhatsApp or different | Everywhere | `lib/data/site.ts` → `siteConfig.phoneNumber` |
