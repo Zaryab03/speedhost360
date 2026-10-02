@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { services } from "@/lib/data/services";
+import { plansForService } from "@/lib/data/plans";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ServicePageBody } from "@/components/sections/service-page-body";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
+import {
+  MigrationChecklist,
+  NotIncludedAndAddOns,
+  PlanComparisonTable,
+  PlanScenarios,
+  SlaSummary,
+} from "@/components/sections/hosting-plan-details";
 
 const service = services["managed-hosting"];
 
@@ -22,7 +30,23 @@ export default function ManagedHostingPage() {
           { name: service.navLabel, path: "/services/managed-hosting" },
         ]}
       />
-      <ServicePageBody service={service} afterPricing={<ReliabilityStats />} />
+      <ServicePageBody
+        service={service}
+        pricing={
+          <>
+            <PlanComparisonTable location="managed_hosting_compare" />
+            <PlanScenarios />
+          </>
+        }
+        afterPricing={
+          <>
+            <NotIncludedAndAddOns />
+            <SlaSummary plans={plansForService("managed-hosting")} />
+            <MigrationChecklist />
+            <ReliabilityStats />
+          </>
+        }
+      />
     </>
   );
 }

@@ -48,6 +48,8 @@ export type ServiceContent = {
   headline: string;
   subheadline: string;
   primaryCta: string;
+  /** Defaults to the brief form with this service preselected. */
+  primaryCtaHref?: string;
   overview?: string[];
   benefits: { title: string; description: string }[];
   whoItsFor?: string[];
@@ -238,7 +240,8 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     headline: "Infrastructure your website can depend on.",
     subheadline:
       "SSL, backups, security hardening, performance tuning and real monitoring: the operational basics most hosts skip.",
-    primaryCta: "Explore Hosting Plans",
+    primaryCta: "Compare Hosting Plans",
+    primaryCtaHref: "#compare-plans",
     overview: [
       "A lot of hosting is sold on price alone, then leaves you to figure out backups, security and downtime on your own once something goes wrong. Every SpeedHost360 hosting plan bundles the operational basics in from the start: SSL, daily backups, security hardening and real monitoring, not add-ons you discover you needed after an incident.",
       "You get server infrastructure sized to your traffic, plus a team that answers when something needs attention, not just a control panel and a support ticket queue.",
@@ -357,6 +360,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     subheadline:
       "Server management, security, updates, monitoring, backups and performance optimization handled by us, so your team never has to think about the server.",
     primaryCta: "Talk to Us About Managed Hosting",
+    primaryCtaHref: "/contact?service=managed-hosting&plan=managed",
     overview: [
       "Standard hosting plans work well until your application outgrows shared infrastructure or needs a specific server configuration. Managed hosting is us taking direct responsibility for that server: provisioning, patching, hardening, monitoring and backups, so your team doesn't have to carry that operational load.",
       "It's built for businesses that need dedicated or custom infrastructure but don't have (or don't want to hire) an in-house systems administrator to run it.",

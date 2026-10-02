@@ -5,12 +5,9 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/data/site";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { planContactHref } from "@/lib/data/plans";
 
 type PlanCtaPlan = { slug: string; name: string; service: string; priceLabel: string };
-
-export function planContactHref(plan: Pick<PlanCtaPlan, "slug" | "service">) {
-  return `/contact?service=${plan.service}&plan=${plan.slug}`;
-}
 
 // Plan-specific CTAs: the brief form with this plan preselected, and a
 // WhatsApp chat pre-filled with the plan name.

@@ -12,12 +12,17 @@ import { faqJsonLd } from "@/lib/seo/json-ld";
 
 export function ServicePageBody({
   service,
+  pricing,
   afterPricing,
 }: {
   service: ServiceContent;
+  /** Replaces the default pricing cards (e.g. the hosting plan comparison table). */
+  pricing?: ReactNode;
   /** Optional service-specific content (e.g. a competitor comparison) rendered right after the pricing block and before the FAQ. */
   afterPricing?: ReactNode;
 }) {
+  const contactHref = `/contact?service=${service.slug}`;
+
   return (
     <>
       <JsonLd data={faqJsonLd(service.faq)} />
@@ -34,7 +39,7 @@ export function ServicePageBody({
             {service.subheadline}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/contact">{service.primaryCta}</Button>
+            <Button href={service.primaryCtaHref ?? contactHref}>{service.primaryCta}</Button>
             <a
               href={siteConfig.whatsappLink}
               target="_blank"
@@ -139,7 +144,7 @@ export function ServicePageBody({
         </div>
       </section>
 
-      {service.pricing && (
+      {pricing ?? (service.pricing && (
         <section className="border-b border-line">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
             <RevealOnScroll>
@@ -169,7 +174,7 @@ export function ServicePageBody({
                       </li>
                     ))}
                   </ul>
-                  <Button href="/contact" variant={plan.highlighted ? "primary" : "secondary"} className="mt-6 w-full">
+                  <Button href={contactHref} variant={plan.highlighted ? "primary" : "secondary"} className="mt-6 w-full">
                     {service.primaryCta}
                   </Button>
                 </div>
@@ -182,7 +187,7 @@ export function ServicePageBody({
             )}
           </div>
         </section>
-      )}
+      ))}
 
       {afterPricing}
 

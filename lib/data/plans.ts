@@ -212,6 +212,11 @@ export function planPriceLabel(plan: HostingPlan) {
   return plan.priceIsFrom ? `Starting from ${formatPkr(plan.price)}` : formatPkr(plan.price);
 }
 
+/** Brief form with this plan preselected. */
+export function planContactHref(plan: { slug: string; service: string }) {
+  return `/contact?service=${plan.service}&plan=${plan.slug}`;
+}
+
 export function plansForService(service: HostingPlan["service"]) {
   return hostingPlans.filter((p) => p.service === service);
 }

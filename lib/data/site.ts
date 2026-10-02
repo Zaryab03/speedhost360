@@ -33,6 +33,10 @@ export const siteConfig = {
 
   responseTimePromise: "We respond to new inquiries within 1 business day.",
 
+  // No public status/uptime page exists yet. Set the real URL here once it
+  // does; until then the link is hidden everywhere.
+  statusPageUrl: "TODO_CONFIRM" as string,
+
   // PLACEHOLDER — set real, live profiles only. Leave an entry out entirely
   // rather than link to an account that doesn't exist.
   social: {
