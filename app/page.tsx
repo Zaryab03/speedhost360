@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/sections/hero";
+import { AudienceCards } from "@/components/sections/audience-cards";
 import { ServiceGrid } from "@/components/sections/service-grid";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import { Pricing } from "@/components/sections/pricing";
@@ -22,6 +23,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <AudienceCards />
       <ReliabilityStats />
       <ServiceGrid />
       <Pricing />

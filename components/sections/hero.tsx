@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PipelineDiagram } from "@/components/motion/pipeline-diagram";
 import { siteConfig } from "@/lib/data/site";
+import { reliabilityStats, yearsInBusiness } from "@/lib/data/trust";
 import { trackEvent } from "@/lib/analytics";
 
 export function Hero() {
@@ -41,6 +42,18 @@ export function Hero() {
           className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted"
         >
           {siteConfig.description}
+        </motion.p>
+
+        <motion.p
+          {...fadeUp(0.22)}
+          className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs uppercase tracking-[0.06em] text-ink"
+        >
+          <ShieldCheck size={15} className="text-signal" aria-hidden />
+          <span>{yearsInBusiness}</span>
+          <span aria-hidden className="text-ink-muted">·</span>
+          <span>
+            {reliabilityStats[0].value} {reliabilityStats[0].label.toLowerCase()}
+          </span>
         </motion.p>
 
         <motion.div {...fadeUp(0.26)} className="mt-9 flex flex-wrap items-center gap-4">
