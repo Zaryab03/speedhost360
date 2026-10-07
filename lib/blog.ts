@@ -26,17 +26,30 @@ export async function getPublishedPostBySlug(slug: string) {
   }
 }
 
+/**
+ * Posts to suggest at the end of an article: same category first, then the
+ * latest posts from any category, so there's always something to read next.
+ */
 export async function getRelatedPosts(currentId: string, category: string | null, limit = 3) {
   try {
-    return await prisma.post.findMany({
+    const sameCategory = category
+      ? await prisma.post.findMany({
+          where: { status: "PUBLISHED", id: { not: currentId }, category },
+          orderBy: { publishedAt: "desc" },
+          take: limit,
+        })
+      : [];
+    if (sameCategory.length >= limit) return sameCategory;
+
+    const latest = await prisma.post.findMany({
       where: {
         status: "PUBLISHED",
-        id: { not: currentId },
-        ...(category ? { category } : {}),
+        id: { notIn: [currentId, ...sameCategory.map((p) => p.id)] },
       },
       orderBy: { publishedAt: "desc" },
-      take: limit,
+      take: limit - sameCategory.length,
     });
+    return [...sameCategory, ...latest];
   } catch {
     return [];
   }

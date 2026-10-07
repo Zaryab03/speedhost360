@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { getPublishedPosts } from "@/lib/blog";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { RevealOnScroll } from "@/components/motion/reveal";
+import { PostCard } from "@/components/blog/post-card";
 
 export const metadata: Metadata = buildMetadata({
   title: "Blog",
@@ -37,34 +36,12 @@ export default async function BlogIndexPage() {
           ) : (
             <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post, index) => (
-                <RevealOnScroll key={post.id} delay={index * 0.05}>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="focus-ring group block transition-transform duration-300 hover:-translate-y-1"
-                  >
-                    <div className="relative aspect-[4/3] w-full overflow-hidden border border-line bg-paper-raised">
-                      {post.featuredImageUrl && (
-                        <Image
-                          src={post.featuredImageUrl}
-                          alt={post.title}
-                          fill
-                          className="object-cover transition-transform group-hover:scale-[1.02]"
-                        />
-                      )}
-                    </div>
-                    <p className="mt-4 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
-                      {post.category ?? "General"} ·{" "}
-                      {post.publishedAt?.toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </p>
-                    <h2 className="mt-2 text-lg font-semibold text-ink group-hover:text-signal">
-                      {post.title}
-                    </h2>
-                    <p className="mt-2 text-sm text-ink-muted">{post.excerpt}</p>
-                  </Link>
+                <RevealOnScroll
+                  key={post.id}
+                  delay={Math.min(index, 5) * 0.05}
+                  className={index === 0 && posts.length > 2 ? "sm:col-span-2 lg:col-span-3" : undefined}
+                >
+                  <PostCard post={post} featured={index === 0 && posts.length > 2} />
                 </RevealOnScroll>
               ))}
             </div>

@@ -3,11 +3,9 @@
 import { useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeSanitize from "rehype-sanitize";
 import { slugify } from "@/lib/slugify";
 import { Button } from "@/components/ui/button";
+import { MarkdownEditor } from "@/components/admin/markdown-editor";
 import type { PostFormValues } from "@/lib/validation";
 
 type PostRecord = PostFormValues & { id: string };
@@ -36,7 +34,6 @@ export function PostForm({ post }: { post?: PostRecord }) {
   );
   const [slugTouched, setSlugTouched] = useState(isEditing);
   const [tagsInput, setTagsInput] = useState(post?.tags.join(", ") ?? "");
-  const [preview, setPreview] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState<false | "draft" | "publish">(false);
@@ -138,30 +135,13 @@ export function PostForm({ post }: { post?: PostRecord }) {
       </AdminField>
 
       <div>
-        <div className="mb-1.5 flex items-center justify-between">
-          <label className="text-xs font-medium text-ink">Body (Markdown)</label>
-          <button
-            type="button"
-            onClick={() => setPreview((p) => !p)}
-            className="focus-ring font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-signal"
-          >
-            {preview ? "Edit" : "Preview"}
-          </button>
-        </div>
-        {preview ? (
-          <div className="prose min-h-64 border border-line-strong bg-paper-raised p-4 text-sm text-ink">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
-              {values.body || "*Nothing to preview yet.*"}
-            </ReactMarkdown>
-          </div>
-        ) : (
-          <textarea
-            rows={16}
-            value={values.body}
-            onChange={(e) => update("body", e.target.value)}
-            className={fieldClass(!!errors.body) + " font-mono"}
-          />
-        )}
+        <label className="mb-1.5 block text-xs font-medium text-ink">Body</label>
+        <MarkdownEditor
+          value={values.body}
+          onChange={(body) => update("body", body)}
+          onUploadImage={uploadImage}
+          hasError={!!errors.body}
+        />
         {errors.body?.[0] && <p className="mt-1.5 text-xs text-danger">{errors.body[0]}</p>}
       </div>
 
