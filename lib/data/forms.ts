@@ -7,6 +7,7 @@ export const serviceOptions = [
   { value: "managed-hosting", label: "Managed Hosting" },
   { value: "business-email", label: "Business Email" },
   { value: "digital-marketing", label: "Digital Marketing" },
+  { value: "complete-package", label: "Complete Package (domain, hosting, website & email)" },
   { value: "other", label: "Other / Not sure yet" },
 ] as const;
 

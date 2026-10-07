@@ -8,6 +8,7 @@ import { BriefForm } from "@/components/forms/brief-form";
 import { ClientPortalLink } from "@/components/layout/client-portal-link";
 import { getHostingPlans } from "@/lib/plans";
 import { planPriceLabel } from "@/lib/data/plans";
+import { completePackages, packagePriceLabel, PACKAGE_SERVICE } from "@/lib/data/packages";
 
 export const revalidate = 300;
 
@@ -40,6 +41,12 @@ export default async function ContactPage() {
     service: p.service,
     priceLabel: planPriceLabel(p),
   }));
+  const packages = completePackages.map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    service: PACKAGE_SERVICE,
+    priceLabel: packagePriceLabel(p),
+  }));
 
   return (
     <>
@@ -57,7 +64,7 @@ export default async function ContactPage() {
 
             <div className="mt-10">
               <Suspense fallback={null}>
-                <BriefForm plans={plans} />
+                <BriefForm plans={[...plans, ...packages]} />
               </Suspense>
             </div>
 

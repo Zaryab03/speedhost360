@@ -32,6 +32,13 @@ export const serviceLinks: NavLink[] = [
   },
 ];
 
+// Not a service page: links to the packages section on the homepage.
+export const packagesLink: NavLink = {
+  label: "Complete Packages",
+  href: "/#packages",
+  description: "Domain, hosting, website & email together",
+};
+
 export const primaryNav: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "Case Studies", href: "/case-studies" },

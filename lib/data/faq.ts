@@ -3,10 +3,14 @@ import { services } from "./services";
 import { emailHostingPricing } from "./email-hosting";
 import { formatPkr, pricePeriod, type HostingPlan } from "./plans";
 import { siteConfig } from "./site";
+import { completePackages } from "./packages";
 
 // Prices in answers are derived from the pricing data so the FAQ (and its
 // FAQPage JSON-LD) can never drift from the pricing tables.
 const webDev = services["web-development"].pricing ?? [];
+const packagePrices = completePackages
+  .map((p) => `${p.name} (${formatPkr(p.price)}): ${p.includes.join(", ").toLowerCase()}`)
+  .join("; ");
 const emailPrices = emailHostingPricing.map((p) => `${p.price} ${pricePeriod} for ${p.name.toLowerCase()}`).join(" or ");
 
 export function buildGeneralFaq(plans: HostingPlan[]): FaqItem[] {
@@ -27,6 +31,10 @@ export function buildGeneralFaq(plans: HostingPlan[]): FaqItem[] {
   {
     question: "How much does hosting cost?",
     answer: `Hosting plans are ${hostingPrices}. Business email is separate: ${emailPrices}. The Web Hosting page compares every plan spec by spec. All hosting and email plans are billed annually.`,
+  },
+  {
+    question: "Do you offer complete packages?",
+    answer: `Yes. If you need everything set up together, our complete packages bundle domain, hosting, website and business email at one price: ${packagePrices}.`,
   },
   {
     question: "Can you migrate my website, and will it go down?",

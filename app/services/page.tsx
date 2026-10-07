@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { RevealOnScroll } from "@/components/motion/reveal";
 import { getHostingPlans } from "@/lib/plans";
 import { formatPkr, pricePeriod } from "@/lib/data/plans";
+import { CompletePackages } from "@/components/sections/complete-packages";
 
 export const revalidate = 300;
 
@@ -68,6 +69,7 @@ export default async function ServicesIndexPage() {
           </div>
         </div>
       </section>
+      <CompletePackages location="services_packages" />
     </>
   );
 }

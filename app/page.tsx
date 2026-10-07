@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { AudienceCards } from "@/components/sections/audience-cards";
 import { ServiceGrid } from "@/components/sections/service-grid";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
+import { CompletePackages } from "@/components/sections/complete-packages";
 import { Pricing } from "@/components/sections/pricing";
 import { EmailPricing } from "@/components/sections/email-pricing";
 import { HostingComparison } from "@/components/sections/hosting-comparison";
@@ -33,6 +34,7 @@ export default async function Home() {
       <AudienceCards />
       <ReliabilityStats />
       <ServiceGrid />
+      <CompletePackages location="home_packages" />
       <Pricing plans={plans} />
       <EmailPricing />
       <HostingComparison />

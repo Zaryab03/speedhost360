@@ -16,13 +16,16 @@ export function PlanCtas({
   primary,
   location,
   className,
+  noun = "hosting plan",
 }: {
   plan: PlanCtaPlan;
   primary?: boolean;
   location: string;
   className?: string;
+  /** How the WhatsApp message describes the plan, e.g. "complete package". */
+  noun?: string;
 }) {
-  const whatsappText = `Hi SpeedHost360, I'm interested in the ${plan.name} hosting plan (${plan.priceLabel}).`;
+  const whatsappText = `Hi SpeedHost360, I'm interested in the ${plan.name} ${noun} (${plan.priceLabel}).`;
 
   return (
     <div className={cn("flex flex-col gap-3", className)}>

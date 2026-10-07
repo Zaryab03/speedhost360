@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { primaryNav, serviceLinks } from "@/lib/data/nav";
+import { packagesLink, primaryNav, serviceLinks } from "@/lib/data/nav";
 import { siteConfig } from "@/lib/data/site";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -74,7 +74,7 @@ export function Navbar() {
             </Link>
             {servicesOpen && (
               <div className="absolute left-0 top-full w-72 border border-line bg-paper-raised p-2 shadow-[var(--shadow-card)]">
-                {serviceLinks.map((link) => (
+                {[...serviceLinks, packagesLink].map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -162,7 +162,7 @@ export function Navbar() {
                   <p className="px-1 pb-2 font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
                     Services
                   </p>
-                  {serviceLinks.map((link) => (
+                  {[...serviceLinks, packagesLink].map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}

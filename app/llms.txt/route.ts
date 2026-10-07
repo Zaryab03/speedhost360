@@ -1,6 +1,7 @@
 import { siteConfig } from "@/lib/data/site";
 import { serviceList } from "@/lib/data/services";
 import { planPriceLabel } from "@/lib/data/plans";
+import { completePackages, packagePriceLabel } from "@/lib/data/packages";
 import { getHostingPlans } from "@/lib/plans";
 
 export const revalidate = 300;
@@ -20,6 +21,10 @@ export async function GET() {
     "## Hosting plans (PKR)",
     ...hostingPlans.map((p) => `- ${p.name}: ${planPriceLabel(p)}, best for ${p.bestFor.toLowerCase()}`),
     `- Full comparison: ${siteConfig.url}/services/web-hosting#compare-plans`,
+    "",
+    "## Complete packages (PKR)",
+    ...completePackages.map((p) => `- ${p.name}: ${packagePriceLabel(p)}, includes ${p.includes.join(", ").toLowerCase()}`),
+    `- Details: ${siteConfig.url}/#packages`,
     "",
     "## Key pages",
     `- [Home](${siteConfig.url}/)`,

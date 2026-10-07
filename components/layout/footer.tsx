@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MessageCircle, Phone, Mail, Clock, Landmark } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
-import { serviceLinks, footerLegalLinks } from "@/lib/data/nav";
+import { packagesLink, serviceLinks, footerLegalLinks } from "@/lib/data/nav";
 import { paymentNote, yearsInBusiness } from "@/lib/data/trust";
 import { trackEvent } from "@/lib/analytics";
 
@@ -32,7 +32,7 @@ export function Footer() {
               Services
             </p>
             <ul className="mt-4 space-y-3">
-              {serviceLinks.map((link) => (
+              {[...serviceLinks, packagesLink].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="focus-ring text-sm text-ink hover:text-signal">
                     {link.label}
