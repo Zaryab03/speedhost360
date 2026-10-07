@@ -32,7 +32,7 @@ export function BackToTop() {
           exit={{ opacity: 0, y: 8 }}
           transition={{ duration: 0.2 }}
           aria-label="Back to top"
-          className="focus-ring fixed bottom-24 right-4 z-40 flex size-11 items-center justify-center rounded-full border border-line-strong bg-paper-raised text-ink shadow-[var(--shadow-card)] hover:border-signal hover:text-signal sm:bottom-6 sm:right-6"
+          className="focus-ring fixed bottom-[9.5rem] right-[1.375rem] z-40 flex size-11 items-center justify-center rounded-full border border-line-strong bg-paper-raised text-ink shadow-[var(--shadow-card)] hover:border-signal hover:text-signal sm:bottom-24 sm:right-[1.875rem]"
         >
           <ArrowUp size={18} />
         </motion.button>

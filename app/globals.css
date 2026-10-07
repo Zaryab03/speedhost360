@@ -87,6 +87,12 @@
      kept subtle so they read as "click me" rather than a loading spinner. */
   --animate-cta-pulse: cta-pulse 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   --animate-icon-pulse: icon-pulse 1.6s ease-in-out infinite;
+
+  /* Floating WhatsApp button: expanding rings, a periodic nudge, and a
+     label that slides in once the visitor has been on the page a moment. */
+  --animate-wa-ripple: wa-ripple 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-wa-nudge: wa-nudge 4s ease-in-out infinite;
+  --animate-wa-label: wa-label 0.5s ease-out 2.5s both;
 }
 
 @keyframes accordion-down {
@@ -131,6 +137,48 @@
   }
   50% {
     transform: scale(1.18);
+  }
+}
+
+@keyframes wa-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes wa-nudge {
+  0%,
+  70%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  74% {
+    transform: rotate(-14deg) scale(1.12);
+  }
+  80% {
+    transform: rotate(12deg) scale(1.12);
+  }
+  86% {
+    transform: rotate(-8deg) scale(1.06);
+  }
+  92% {
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes wa-label {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

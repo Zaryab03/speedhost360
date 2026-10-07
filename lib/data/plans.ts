@@ -259,8 +259,16 @@ export function formatPkr(amount: number) {
   return `PKR ${amount.toLocaleString("en-US")}`;
 }
 
-export function planPriceLabel(plan: HostingPlan) {
+/** Every hosting and email package is billed annually. */
+export const pricePeriod = "per year";
+
+/** The price without the billing period, for cards that style the period separately. */
+export function planPriceAmount(plan: HostingPlan) {
   return plan.priceIsFrom ? `Starting from ${formatPkr(plan.price)}` : formatPkr(plan.price);
+}
+
+export function planPriceLabel(plan: HostingPlan) {
+  return `${planPriceAmount(plan)} ${pricePeriod}`;
 }
 
 /** Brief form with this plan preselected. */

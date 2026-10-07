@@ -6,7 +6,6 @@ import { siteConfig } from "@/lib/data/site";
 import { serviceLinks, footerLegalLinks } from "@/lib/data/nav";
 import { paymentNote, yearsInBusiness } from "@/lib/data/trust";
 import { trackEvent } from "@/lib/analytics";
-import { ClientPortalLink } from "@/components/layout/client-portal-link";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -14,7 +13,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line bg-paper">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.1fr]">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
           <div>
             <Link href="/" className="font-mono text-sm font-semibold tracking-[0.04em] text-ink">
               SPEEDHOST360
@@ -64,20 +63,6 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
-
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
-              Support
-            </p>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <ClientPortalLink location="footer" />
-              </li>
-            </ul>
-            <p className="mt-3 max-w-[14rem] text-xs leading-relaxed text-ink-muted">
-              {siteConfig.helpdeskHelperText}
-            </p>
           </div>
 
           <div>

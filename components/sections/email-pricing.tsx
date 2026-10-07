@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { emailHostingPricing } from "@/lib/data/email-hosting";
+import { pricePeriod } from "@/lib/data/plans";
 import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/motion/reveal";
 
@@ -32,7 +33,10 @@ export function EmailPricing() {
               <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
                 {plan.name}
               </p>
-              <p className="mt-3 text-2xl font-semibold text-ink">{plan.price}</p>
+              <p className="mt-3 text-2xl font-semibold text-ink">
+                {plan.price}
+                <span className="ml-1 text-sm font-normal text-ink-muted">{pricePeriod}</span>
+              </p>
               <ul className="mt-5 flex-1 space-y-2.5">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-ink-muted">

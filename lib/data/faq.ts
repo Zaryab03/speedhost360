@@ -1,17 +1,17 @@
 import type { FaqItem } from "./services";
 import { services } from "./services";
 import { emailHostingPricing } from "./email-hosting";
-import { formatPkr, type HostingPlan } from "./plans";
+import { formatPkr, pricePeriod, type HostingPlan } from "./plans";
 import { siteConfig } from "./site";
 
 // Prices in answers are derived from the pricing data so the FAQ (and its
 // FAQPage JSON-LD) can never drift from the pricing tables.
 const webDev = services["web-development"].pricing ?? [];
-const emailPrices = emailHostingPricing.map((p) => `${p.price} for ${p.name.toLowerCase()}`).join(" or ");
+const emailPrices = emailHostingPricing.map((p) => `${p.price} ${pricePeriod} for ${p.name.toLowerCase()}`).join(" or ");
 
 export function buildGeneralFaq(plans: HostingPlan[]): FaqItem[] {
   const hostingPrices = plans
-    .map((p) => `${p.name} ${p.priceIsFrom ? "from " : ""}${formatPkr(p.price)}`)
+    .map((p) => `${p.name} ${p.priceIsFrom ? "from " : ""}${formatPkr(p.price)} ${pricePeriod}`)
     .join(", ");
 
   return [
@@ -26,7 +26,7 @@ export function buildGeneralFaq(plans: HostingPlan[]): FaqItem[] {
   },
   {
     question: "How much does hosting cost?",
-    answer: `Hosting plans are ${hostingPrices}. Business email is separate: ${emailPrices}. The Web Hosting page compares every plan spec by spec; contact us to confirm the billing cycle for your plan.`,
+    answer: `Hosting plans are ${hostingPrices}. Business email is separate: ${emailPrices}. The Web Hosting page compares every plan spec by spec. All hosting and email plans are billed annually.`,
   },
   {
     question: "Can you migrate my website, and will it go down?",

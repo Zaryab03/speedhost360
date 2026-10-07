@@ -5,7 +5,9 @@ import {
   hostingAddOns,
   isPending,
   planContactHref,
+  planPriceAmount,
   planPriceLabel,
+  pricePeriod,
   planSpecRows,
   slaSummary,
   TODO_CONFIRM,
@@ -68,8 +70,9 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
                       {plan.name}
                     </span>
                     <span className="mt-1 block text-lg font-semibold text-ink">
-                      {planPriceLabel(plan)}
+                      {planPriceAmount(plan)}
                     </span>
+                    <span className="block text-xs text-ink-muted">{pricePeriod}</span>
                   </th>
                 ))}
               </tr>
@@ -213,7 +216,7 @@ export function PlanScenarios({ plans }: { plans: HostingPlan[] }) {
 const notIncluded: { item: string; detail: Spec }[] = [
   {
     item: "Business email",
-    detail: `Sold separately, from ${emailHostingPricing[0].price} for ${emailHostingPricing[0].name.toLowerCase()}.`,
+    detail: `Sold separately, from ${emailHostingPricing[0].price} ${pricePeriod} for ${emailHostingPricing[0].name.toLowerCase()}.`,
   },
   { item: "Website design and development", detail: "A separate service, quoted per project." },
   { item: "Domain registration and renewal", detail: TODO_CONFIRM },

@@ -6,7 +6,7 @@ import { serviceList } from "@/lib/data/services";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { RevealOnScroll } from "@/components/motion/reveal";
 import { getHostingPlans } from "@/lib/plans";
-import { formatPkr } from "@/lib/data/plans";
+import { formatPkr, pricePeriod } from "@/lib/data/plans";
 
 export const revalidate = 300;
 
@@ -22,7 +22,7 @@ export default async function ServicesIndexPage() {
   // Hosting "from" prices come from the HostingPlan table; others from services.ts.
   const fromPrice = (slug: string, fallback: string) => {
     const prices = plans.filter((p) => p.service === slug).map((p) => p.price);
-    return prices.length ? formatPkr(Math.min(...prices)) : fallback;
+    return prices.length ? `${formatPkr(Math.min(...prices))} ${pricePeriod}` : fallback;
   };
 
   return (

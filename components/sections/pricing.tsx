@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { planFeatureLines, planPriceLabel, type HostingPlan } from "@/lib/data/plans";
+import { planFeatureLines, planPriceAmount, planPriceLabel, pricePeriod, type HostingPlan } from "@/lib/data/plans";
 import { PlanCtas } from "@/components/sections/plan-ctas";
 import { RevealOnScroll } from "@/components/motion/reveal";
 
@@ -37,7 +37,10 @@ export function Pricing({ plans }: { plans: HostingPlan[] }) {
               <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
                 {plan.name}
               </p>
-              <p className="mt-3 text-2xl font-semibold text-ink">{planPriceLabel(plan)}</p>
+              <p className="mt-3 text-2xl font-semibold text-ink">
+                {planPriceAmount(plan)}
+                <span className="ml-1 text-sm font-normal text-ink-muted">{pricePeriod}</span>
+              </p>
               <p className="mt-2 text-sm text-ink-muted">{plan.bestFor}</p>
               <ul className="mt-5 flex-1 space-y-2.5">
                 {planFeatureLines(plan).map((line) => (

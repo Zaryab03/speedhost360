@@ -257,7 +257,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Web Hosting",
     metaTitle: "Web Hosting Services | SpeedHost360",
     metaDescription:
-      "Compare web hosting plans side by side: websites, backups, support, migration and SLA. SSL, daily backups and monitoring on every plan, from PKR 15,000.",
+      "Compare web hosting plans side by side: websites, backups, support, migration and SLA. SSL, daily backups and monitoring on every plan, from PKR 15,000 per year.",
     eyebrow: "02 · Host",
     headline: "Infrastructure your website can depend on.",
     subheadline:
@@ -340,7 +340,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     pricing: plansForService("web-hosting").map(toPricingPlan),
     pricingNote:
-      "Pricing shown in PKR. Contact us to confirm the current billing cycle and any traffic- or storage-based adjustments for your project. Every plan is backed by a 99.9% uptime commitment and daily automated backups.",
+      "Pricing shown in PKR per year. Contact us about any traffic- or storage-based adjustments for your project. Every plan is backed by a 99.9% uptime commitment and daily automated backups.",
     faq: [
       {
         question: "Can you migrate my existing website?",
@@ -359,7 +359,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Do you offer business email hosting?",
         answer:
-          "Yes. Self-hosted business email on your own domain, priced per mailbox: PKR 15,000 for 3 mailboxes or PKR 20,000 for 6. It's sold alongside any hosting plan, not locked to one.",
+          "Yes. Self-hosted business email on your own domain, priced per mailbox: PKR 15,000 per year for 3 mailboxes or PKR 20,000 per year for 6. It's sold alongside any hosting plan, not locked to one.",
       },
       {
         question: "Can I get business email without signing up for hosting?",
@@ -668,7 +668,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Business Email Hosting",
     metaTitle: "Business Email Hosting | SpeedHost360",
     metaDescription:
-      "Self-hosted business email on your own domain, priced per mailbox from PKR 15,000. Set up alongside any hosting plan, or entirely on its own.",
+      "Self-hosted business email on your own domain, priced per mailbox from PKR 15,000 per year. Set up alongside any hosting plan, or entirely on its own.",
     eyebrow: "05 · Email",
     headline: "Look like a real business every time you hit send.",
     subheadline:
@@ -750,12 +750,12 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     pricing: emailHostingPricing,
     pricingNote:
-      "Priced and billed per mailbox, independent of any hosting plan. Contact us to confirm the billing cycle or to price a custom mailbox count.",
+      "Billed annually, independent of any hosting plan. Contact us to price a custom mailbox count.",
     faq: [
       {
         question: "How is business email priced?",
         answer:
-          "Per mailbox: PKR 15,000 for 3 mailboxes or PKR 20,000 for 6. Contact us to confirm the billing cycle for your plan.",
+          "PKR 15,000 per year for 3 mailboxes or PKR 20,000 per year for 6, billed annually.",
       },
       {
         question: "Is this Google Workspace or Microsoft 365?",
