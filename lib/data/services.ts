@@ -45,6 +45,7 @@ export type ServiceContent = {
   slug: ServiceSlug;
   navLabel: string;
   title: string;
+  /** Without the brand: the root layout's title template appends " | SpeedHost360". */
   metaTitle: string;
   metaDescription: string;
   eyebrow: string;
@@ -73,7 +74,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "web-development",
     navLabel: "Web Development",
     title: "Website Development",
-    metaTitle: "Website Development Services | SpeedHost360",
+    metaTitle: "Website Development Services in Pakistan",
     metaDescription:
       "Business websites, e-commerce, landing pages and custom web applications: designed, built and optimized by SpeedHost360.",
     eyebrow: "01 · Build",
@@ -255,7 +256,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "web-hosting",
     navLabel: "Web Hosting",
     title: "Web Hosting",
-    metaTitle: "Web Hosting Services | SpeedHost360",
+    metaTitle: "Web Hosting in Pakistan: Plans in PKR",
     metaDescription:
       "Compare web hosting plans side by side: websites, backups, support, migration and SLA. SSL, daily backups and monitoring on every plan, from PKR 15,000 per year.",
     eyebrow: "02 · Host",
@@ -374,7 +375,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "managed-hosting",
     navLabel: "Managed Hosting",
     title: "Managed Hosting",
-    metaTitle: "Managed Hosting Services | SpeedHost360",
+    metaTitle: "Managed Hosting Services in Pakistan",
     metaDescription:
       "You run the business, we run the infrastructure: server management, security, monitoring and support from SpeedHost360, starting at PKR 56,000.",
     eyebrow: "03 · Manage",
@@ -498,7 +499,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "digital-marketing",
     navLabel: "Digital Marketing",
     title: "Digital Marketing",
-    metaTitle: "Digital Marketing Services | SpeedHost360",
+    metaTitle: "Digital Marketing & SEO Services in Pakistan",
     metaDescription:
       "SEO, local SEO, content strategy, social media, paid campaigns and conversion optimization: digital marketing built on top of a website that's actually fast.",
     eyebrow: "04 · Grow",
@@ -666,7 +667,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "business-email",
     navLabel: "Business Email",
     title: "Business Email Hosting",
-    metaTitle: "Business Email Hosting | SpeedHost360",
+    metaTitle: "Business Email Hosting in Pakistan",
     metaDescription:
       "Self-hosted business email on your own domain, priced per mailbox from PKR 15,000 per year. Set up alongside any hosting plan, or entirely on its own.",
     eyebrow: "05 · Email",

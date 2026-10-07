@@ -35,6 +35,11 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  // Google Search Console HTML-tag verification. Set GOOGLE_SITE_VERIFICATION
+  // (the content="..." value only) at build time; omitted when unset.
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  }),
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

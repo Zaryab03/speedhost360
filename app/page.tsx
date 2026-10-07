@@ -19,7 +19,7 @@ export const revalidate = 300;
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = buildMetadata({
-  title: "SpeedHost360 | Web Development, Hosting & Digital Marketing",
+  title: "SpeedHost360 | Web Hosting & Website Development in Pakistan",
   description:
     "Websites, reliable infrastructure, and digital marketing built to turn your online presence into a business asset. Based in Pakistan, serving clients everywhere.",
   path: "/",
