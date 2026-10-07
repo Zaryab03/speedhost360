@@ -8,6 +8,7 @@ import { Pricing } from "@/components/sections/pricing";
 import { EmailPricing } from "@/components/sections/email-pricing";
 import { HostingComparison } from "@/components/sections/hosting-comparison";
 import { BuildHostGrow } from "@/components/sections/build-host-grow";
+import { RecentWork } from "@/components/sections/recent-work";
 import { Testimonials } from "@/components/sections/testimonials";
 import { FaqSection } from "@/components/sections/faq-section";
 import { AuditCta } from "@/components/sections/audit-cta";
@@ -37,6 +38,7 @@ export default async function Home() {
       <EmailPricing />
       <HostingComparison />
       <BuildHostGrow />
+      <RecentWork />
       <Testimonials />
       <AuditCta location="home" />
       <FaqSection plans={plans} />

@@ -44,6 +44,23 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink">{study.clientName}</h1>
         <p className="mt-4 text-lg leading-relaxed text-ink-muted">{study.summary}</p>
 
+        {(study.location || study.stack?.length) && (
+          <dl className="mt-8 grid gap-4 border-y border-line py-5 sm:grid-cols-2">
+            {study.location && (
+              <div>
+                <dt className="font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">Based in</dt>
+                <dd className="mt-1 text-ink">{study.location}</dd>
+              </div>
+            )}
+            {study.stack && study.stack.length > 0 && (
+              <div>
+                <dt className="font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">Built with</dt>
+                <dd className="mt-1 text-ink">{study.stack.join(", ")}</dd>
+              </div>
+            )}
+          </dl>
+        )}
+
         {study.image && (
           <Image
             src={study.image.src}
