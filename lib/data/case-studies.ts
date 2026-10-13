@@ -80,6 +80,22 @@ export const caseStudies: CaseStudy[] = [
     results: [],
     liveUrl: "https://www.creatify-hub.com",
   },
+  {
+    slug: "tech-orbit-systems",
+    clientName: "Tech Orbit Systems",
+    industry: "AI Automation & Software",
+    location: "Karachi, Pakistan",
+    services: ["Web Hosting"],
+    stack: ["WordPress"],
+    summary:
+      "Fast, secure WordPress hosting in Pakistan for a Karachi-based AI automation, custom software and SEO company.",
+    problem:
+      "Tech Orbit Systems is a Karachi-based company that builds AI agents, business automation, custom software and SEO & AEO growth systems for clients. Their WordPress website is how prospects find them and book a conversation, so it needed reliable, secure web hosting that keeps the site fast and online.",
+    solution:
+      "We host their WordPress website on our managed web hosting, so their team can focus on client work while we keep the site running, secure and quick to load for visitors in Pakistan and abroad.",
+    results: [],
+    liveUrl: "https://techorbitsystems.com",
+  },
 ];
 
 export function getCaseStudy(slug: string) {

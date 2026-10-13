@@ -24,8 +24,8 @@ export function RecentWork() {
           </div>
         </RevealOnScroll>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {caseStudies.slice(0, 3).map((c, index) => (
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {caseStudies.slice(0, 4).map((c, index) => (
             <RevealOnScroll key={c.slug} delay={index * 0.06} className="h-full">
               <Link
                 href={`/case-studies/${c.slug}`}
