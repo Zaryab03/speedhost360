@@ -44,7 +44,7 @@ export function buildGeneralFaq(plans: HostingPlan[]): FaqItem[] {
   {
     question: "How are backups handled?",
     answer:
-      "Every hosting plan includes daily automated backups, so a bad update or deploy is a restore, not a rebuild. On managed hosting we also test that backups actually restore. Ask us how long backups are kept on your plan.",
+      "Every hosting plan includes daily automated backups, so a bad update or deploy is a restore, not a rebuild. On managed hosting we also test that backups actually restore. A fresh backup is taken every day.",
   },
   {
     question: "What are your support hours?",

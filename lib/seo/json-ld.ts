@@ -6,8 +6,11 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
+    description:
+      "Web development, web hosting, managed hosting, business email and digital marketing for businesses in Pakistan and beyond.",
     ...(siteConfig.email ? { email: siteConfig.email } : {}),
+    telephone: siteConfig.phoneDisplay,
+    areaServed: "PK",
   };
 }
 

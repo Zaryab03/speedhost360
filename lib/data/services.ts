@@ -49,6 +49,9 @@ export type ServiceContent = {
   metaTitle: string;
   metaDescription: string;
   eyebrow: string;
+  /** The page's H1: carries the target keyword. */
+  h1: string;
+  /** Brand line shown under the H1. */
   headline: string;
   subheadline: string;
   primaryCta: string;
@@ -74,10 +77,11 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "web-development",
     navLabel: "Web Development",
     title: "Website Development",
-    metaTitle: "Website Development Services in Pakistan",
+    metaTitle: "Website Development Company in Pakistan",
     metaDescription:
-      "Business websites, e-commerce, landing pages and custom web applications: designed, built and optimized by SpeedHost360.",
+      "Business websites, online stores and custom web apps built for speed and conversion. Fixed-price packages from PKR 30,000, usually 3 to 6 weeks.",
     eyebrow: "01 · Build",
+    h1: "Website Development for Pakistani Businesses",
     headline: "Websites built to work, not just look good.",
     subheadline:
       "Corporate sites, online stores, landing pages and custom web applications: engineered for speed, clarity and conversion from the first commit.",
@@ -256,10 +260,11 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "web-hosting",
     navLabel: "Web Hosting",
     title: "Web Hosting",
-    metaTitle: "Web Hosting in Pakistan: Plans in PKR",
+    metaTitle: "Web Hosting in Pakistan from PKR 15,000/Year",
     metaDescription:
-      "Compare web hosting plans side by side: websites, backups, support, migration and SLA. SSL, daily backups and monitoring on every plan, from PKR 15,000 per year.",
+      "Web hosting plans in PKR with free SSL, daily backups, free migration and a 99.9% uptime commitment. Compare Starter, Business and Professional.",
     eyebrow: "02 · Host",
+    h1: "Web Hosting in Pakistan Built to Stay Online",
     headline: "Infrastructure your website can depend on.",
     subheadline:
       "SSL, backups, security hardening, performance tuning and real monitoring: the operational basics most hosts skip.",
@@ -377,8 +382,9 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Managed Hosting",
     metaTitle: "Managed Hosting Services in Pakistan",
     metaDescription:
-      "You run the business, we run the infrastructure: server management, security, monitoring and support from SpeedHost360, starting at PKR 56,000.",
+      "Managed hosting from PKR 56,000/year: we handle server setup, security patching, monitoring and daily backups so you don't need a sysadmin.",
     eyebrow: "03 · Manage",
+    h1: "Managed Hosting: You Run the Business, We Run the Server",
     headline: "You run the business. We run the infrastructure.",
     subheadline:
       "Server management, security, updates, monitoring, backups and performance optimization handled by us, so your team never has to think about the server.",
@@ -499,10 +505,11 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     slug: "digital-marketing",
     navLabel: "Digital Marketing",
     title: "Digital Marketing",
-    metaTitle: "Digital Marketing & SEO Services in Pakistan",
+    metaTitle: "SEO & Digital Marketing Services in Pakistan",
     metaDescription:
-      "SEO, local SEO, content strategy, social media, paid campaigns and conversion optimization: digital marketing built on top of a website that's actually fast.",
+      "SEO, local SEO, content, social media and paid campaigns tied to real enquiries. Monthly plans from PKR 30,000 with transparent reporting.",
     eyebrow: "04 · Grow",
+    h1: "SEO & Digital Marketing That Brings Enquiries",
     headline: "Traffic is a start. Customers are the goal.",
     subheadline:
       "SEO, content strategy, social media, paid campaigns and conversion optimization: built on top of a website and infrastructure that can actually convert visitors.",
@@ -669,8 +676,9 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     title: "Business Email Hosting",
     metaTitle: "Business Email Hosting in Pakistan",
     metaDescription:
-      "Self-hosted business email on your own domain, priced per mailbox from PKR 15,000 per year. Set up alongside any hosting plan, or entirely on its own.",
+      "Professional email on your own domain from PKR 15,000/year for 3 mailboxes. Self-hosted, typically live within a day, with or without a hosting plan.",
     eyebrow: "05 · Email",
+    h1: "Business Email Hosting on Your Own Domain",
     headline: "Look like a real business every time you hit send.",
     subheadline:
       "Self-hosted email on your own domain (you@yourbusiness.com) instead of a free Gmail or Yahoo address, set up and running without the back and forth.",

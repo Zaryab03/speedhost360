@@ -34,9 +34,12 @@ export function ServicePageBody({
             {service.eyebrow}
           </p>
           <h1 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-            {service.headline}
+            {service.h1}
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">
+          <p className="mt-4 max-w-2xl text-xl font-medium tracking-tight text-ink">
+            {service.headline}
+          </p>
+          <p className="mt-3 max-w-xl text-lg leading-relaxed text-ink-muted">
             {service.subheadline}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">

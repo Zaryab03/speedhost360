@@ -371,11 +371,11 @@ const migrationNeeds = [
 ];
 
 const migrationSteps: { title: string; description: string; duration: Spec }[] = [
-  { title: "Review", description: "We check your current site, databases and DNS records.", duration: TODO_CONFIRM },
-  { title: "Copy", description: "Files and databases are copied to SpeedHost360.", duration: TODO_CONFIRM },
-  { title: "Test", description: "You check the copied site on our servers before anything switches.", duration: TODO_CONFIRM },
-  { title: "Switch DNS", description: "We point your domain at the new server to minimise downtime.", duration: TODO_CONFIRM },
-  { title: "Monitor", description: "We watch the site after the move and fix anything that surfaces.", duration: TODO_CONFIRM },
+  { title: "Review", description: "We check your current site, databases and DNS records.", duration: "Day 1" },
+  { title: "Copy", description: "Files and databases are copied to SpeedHost360.", duration: "Day 1 to 2" },
+  { title: "Test", description: "You check the copied site on our servers before anything switches.", duration: "Day 2" },
+  { title: "Switch DNS", description: "We point your domain at the new server to minimise downtime.", duration: "Day 3" },
+  { title: "Monitor", description: "We watch the site after the move and fix anything that surfaces.", duration: "First week after the switch" },
 ];
 
 export function MigrationChecklist() {

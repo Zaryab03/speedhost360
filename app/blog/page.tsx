@@ -6,9 +6,9 @@ import { RevealOnScroll } from "@/components/motion/reveal";
 import { PostCard } from "@/components/blog/post-card";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Blog",
+  title: "Hosting, Website & SEO Guides for Pakistan",
   description:
-    "Notes on web development, hosting, security and growth from the SpeedHost360 team.",
+    "Practical guides on web hosting, website costs, business email and SEO for Pakistani businesses, from the SpeedHost360 team.",
   path: "/blog",
 });
 

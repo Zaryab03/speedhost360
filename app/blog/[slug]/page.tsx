@@ -6,7 +6,8 @@ import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import { getPublishedPostBySlug, getRelatedPosts } from "@/lib/blog";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
-import { articleJsonLd } from "@/lib/seo/json-ld";
+import { articleJsonLd, faqJsonLd } from "@/lib/seo/json-ld";
+import { extractBlogFaq } from "@/lib/seo/blog-faq";
 import { BlogBody } from "@/components/blog/blog-body";
 import { PostCard, formatPostDate } from "@/components/blog/post-card";
 import { Button } from "@/components/ui/button";
@@ -40,6 +41,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const related = await getRelatedPosts(post.id, post.category);
+  const faq = extractBlogFaq(post.body);
   const publishedAt = post.publishedAt ?? post.createdAt;
   // ~220 words a minute, never less than 1.
   const readingMinutes = Math.max(1, Math.round(post.body.split(/\s+/).filter(Boolean).length / 220));
@@ -66,6 +68,7 @@ export default async function BlogPostPage({
           updatedAt: post.updatedAt.toISOString(),
         })}
       />
+      {faq.length > 0 && <JsonLd data={faqJsonLd(faq)} />}
 
       <article>
         <header className="border-b border-line bg-paper-raised">
