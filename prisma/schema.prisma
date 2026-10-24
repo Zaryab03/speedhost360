@@ -129,7 +129,6 @@ model HostingPlan {
   migrationIncluded   String
   staging             String
   sshAccess           String
-  cdn                 String
   region              String
   bestFor             String
   mostPopular         Boolean  @default(false)

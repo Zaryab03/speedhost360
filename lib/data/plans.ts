@@ -54,7 +54,6 @@ export type HostingPlan = {
   migrationIncluded: Spec;
   staging: Spec;
   sshAccess: Spec;
-  cdn: Spec;
   region: Spec;
   bestFor: string;
   mostPopular: boolean;
@@ -92,7 +91,6 @@ export const hostingPlans: HostingPlan[] = [
     migrationIncluded: "Included",
     staging: "No",
     sshAccess: "Yes, provided",
-    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "A single business website",
     mostPopular: false,
@@ -123,7 +121,6 @@ export const hostingPlans: HostingPlan[] = [
     migrationIncluded: "Included",
     staging: "Yes",
     sshAccess: "Yes, provided",
-    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "Businesses running several sites or brands",
     mostPopular: true,
@@ -154,7 +151,6 @@ export const hostingPlans: HostingPlan[] = [
     migrationIncluded: "Included",
     staging: "Yes",
     sshAccess: "Yes, provided",
-    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "Multiple high-traffic sites",
     mostPopular: false,
@@ -185,7 +181,6 @@ export const hostingPlans: HostingPlan[] = [
     migrationIncluded: "Included",
     staging: "Yes",
     sshAccess: "Yes, provided",
-    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "Custom or dedicated servers without an in-house sysadmin",
     mostPopular: false,
@@ -214,7 +209,6 @@ export const planSpecRows: { key: PlanSpecKey; label: string }[] = [
   { key: "migrationIncluded", label: "Migration" },
   { key: "staging", label: "Staging site" },
   { key: "sshAccess", label: "SSH access" },
-  { key: "cdn", label: "CDN" },
   { key: "region", label: "Server region" },
   { key: "bestFor", label: "Best for" },
 ];
