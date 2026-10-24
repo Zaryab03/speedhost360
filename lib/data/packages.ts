@@ -1,4 +1,4 @@
-import { formatPkr, TODO_CONFIRM, type Spec } from "./plans";
+import { formatPkr, type Spec } from "./plans";
 
 // Complete packages: domain, hosting, a website and business email (plus
 // digital marketing on the top tier) sold together at one price. Prices are
@@ -20,7 +20,7 @@ export type CompletePackage = {
 export const PACKAGE_SERVICE = "complete-package";
 
 /** Renewal price for domain, hosting and email after the first year. */
-export const packageRenewal: Spec = TODO_CONFIRM;
+export const packageRenewal: Spec = "Same price every year, no increase";
 
 export const completePackages: CompletePackage[] = [
   {

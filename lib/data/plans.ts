@@ -65,8 +65,6 @@ export type PlanSpecKey = {
   [K in keyof HostingPlan]: HostingPlan[K] extends string ? K : never;
 }[keyof HostingPlan];
 
-const T = TODO_CONFIRM;
-
 export const hostingPlans: HostingPlan[] = [
   {
     slug: "starter",
@@ -88,13 +86,13 @@ export const hostingPlans: HostingPlan[] = [
     emailAccounts: "2",
     backupFrequency: "Daily",
     backupRetentionDays: "A fresh backup every day",
-    monitoringLevel: T,
+    monitoringLevel: "Uptime monitoring",
     supportTier: "Standard",
     supportResponseTime: "Within 30 minutes",
     migrationIncluded: "Included",
-    staging: T,
+    staging: "No",
     sshAccess: "Yes, provided",
-    cdn: T,
+    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "A single business website",
     mostPopular: false,
@@ -123,9 +121,9 @@ export const hostingPlans: HostingPlan[] = [
     supportTier: "Priority",
     supportResponseTime: "Within 30 minutes",
     migrationIncluded: "Included",
-    staging: T,
+    staging: "Yes",
     sshAccess: "Yes, provided",
-    cdn: T,
+    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "Businesses running several sites or brands",
     mostPopular: true,
@@ -154,9 +152,9 @@ export const hostingPlans: HostingPlan[] = [
     supportTier: "Priority",
     supportResponseTime: "Within 30 minutes",
     migrationIncluded: "Included",
-    staging: T,
+    staging: "Yes",
     sshAccess: "Yes, provided",
-    cdn: T,
+    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "Multiple high-traffic sites",
     mostPopular: false,
@@ -185,9 +183,9 @@ export const hostingPlans: HostingPlan[] = [
     supportTier: "Direct access to your server team",
     supportResponseTime: "Within 30 minutes",
     migrationIncluded: "Included",
-    staging: T,
+    staging: "Yes",
     sshAccess: "Yes, provided",
-    cdn: T,
+    cdn: "Free Cloudflare CDN setup",
     region: "US/EU",
     bestFor: "Custom or dedicated servers without an in-house sysadmin",
     mostPopular: false,
@@ -285,7 +283,7 @@ export function getPlan(slug: string) {
 }
 
 // Add-ons and SLA terms. Add-on prices set 2026-10-25 from the owner's brief;
-// SLA remedy and monitoring hours are still unconfirmed.
+// SLA remedy and monitoring hours set the same day.
 export const hostingAddOns: { name: string; price: Spec; unit: Spec }[] = [
   { name: "Extra storage", price: "PKR 1,000", unit: "per extra 5 GB, per year" },
   { name: "Extra website", price: "PKR 2,500", unit: "per site, per year" },
@@ -295,6 +293,6 @@ export const hostingAddOns: { name: string; price: Spec; unit: Spec }[] = [
 export const slaSummary = {
   // Published as a confirmed claim in lib/data/trust.ts.
   uptimeCommitment: "99.9%",
-  uptimeRemedy: T as Spec,
-  monitoringHours: T as Spec,
+  uptimeRemedy: "A pro-rata credit for the downtime, applied to your next renewal on request." as Spec,
+  monitoringHours: "24/7 automated monitoring" as Spec,
 };

@@ -10,7 +10,6 @@ import {
   pricePeriod,
   planSpecRows,
   slaSummary,
-  TODO_CONFIRM,
   type HostingPlan,
   type Spec,
 } from "@/lib/data/plans";
@@ -38,8 +37,7 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
             Every plan, spec by spec.
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            Prices in PKR. Values marked &ldquo;Ask us&rdquo; aren&rsquo;t published yet; message
-            us and we&rsquo;ll confirm them for your project before you sign up.
+            Prices in PKR. Every plan is billed yearly and renews at the same price.
           </p>
         </RevealOnScroll>
 
@@ -219,8 +217,8 @@ const notIncluded: { item: string; detail: Spec }[] = [
     detail: `Sold separately, from ${emailHostingPricing[0].price} ${pricePeriod} for ${emailHostingPricing[0].name.toLowerCase()}.`,
   },
   { item: "Website design and development", detail: "A separate service, quoted per project." },
-  { item: "Domain registration and renewal", detail: TODO_CONFIRM },
-  { item: "Premium plugin, theme or software licences", detail: TODO_CONFIRM },
+  { item: "Domain registration and renewal", detail: "Billed separately at the registrar's rate (about PKR 4,000 to 5,000 per year for a .com), or included in our complete packages." },
+  { item: "Premium plugin, theme or software licences", detail: "Paid to the software vendor at their price. We install and update them for you." },
 ];
 
 export function NotIncludedAndAddOns() {
