@@ -61,7 +61,7 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
                   >
                     {plan.mostPopular && (
                       <span className="mb-2 inline-block bg-signal px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-signal-ink">
-                        Most popular
+                        Recommended
                       </span>
                     )}
                     <span className="block font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
@@ -119,7 +119,7 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
             >
               {plan.mostPopular && (
                 <span className="mb-2 inline-block bg-signal px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-signal-ink">
-                  Most popular
+                  Recommended
                 </span>
               )}
               <h3

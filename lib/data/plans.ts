@@ -123,7 +123,7 @@ export const hostingPlans: HostingPlan[] = [
     sshAccess: "Yes, provided",
     region: "US/EU",
     bestFor: "Multiple high-traffic sites",
-    mostPopular: false,
+    mostPopular: true,
   },
   {
     slug: "managed",

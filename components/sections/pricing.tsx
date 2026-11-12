@@ -34,7 +34,7 @@ export function Pricing({ plans }: { plans: HostingPlan[] }) {
             >
               {plan.mostPopular && (
                 <span className="absolute -top-3 left-6 bg-signal px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-signal-ink">
-                  Most popular
+                  Recommended
                 </span>
               )}
               <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
