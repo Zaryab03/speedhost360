@@ -38,7 +38,7 @@ export const completePackages: CompletePackage[] = [
         items: [
           "Static or dynamic website (limited functionality)",
           "Mobile-responsive design",
-          "Contact form with email notifications",
+          "Contact and enquiry forms",
           "WhatsApp integration",
           "Blog with admin panel",
           "Google Maps integration",
@@ -66,8 +66,16 @@ export const completePackages: CompletePackage[] = [
         ],
       },
       {
+        title: "Digital marketing launch",
+        items: [
+          "Facebook and Instagram business page setup and optimisation",
+          "Social media branding setup",
+          "WhatsApp Business setup",
+        ],
+      },
+      {
         title: "After-launch services",
-        items: ["Website backup", "30 days post-launch support"],
+        items: ["Website backup", "30 days technical support", "Website handover and guidance"],
       },
     ],
   },
