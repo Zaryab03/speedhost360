@@ -34,6 +34,7 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "equipio-tech",
+    image: { src: "/images/case-studies/equipio-tech.png", alt: "Equipio Tech Ltd. website homepage" },
     clientName: "Equipio Tech Ltd.",
     industry: "IT Hardware Supply",
     location: "United Kingdom",
@@ -50,6 +51,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "bizloom-erp",
+    image: { src: "/images/case-studies/bizloom-erp.png", alt: "Bizloom ERP website homepage" },
     clientName: "Bizloom ERP",
     industry: "ERP & Business Automation",
     location: "Pakistan",
@@ -66,6 +68,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "creatify-hub",
+    image: { src: "/images/case-studies/creatify-hub.png", alt: "Creatify Hub website homepage" },
     clientName: "Creatify Hub",
     industry: "ERP Software",
     location: "Pakistan",
@@ -82,6 +85,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "tech-orbit-systems",
+    image: { src: "/images/case-studies/tech-orbit-systems.png", alt: "Tech Orbit Systems website homepage" },
     clientName: "Tech Orbit Systems",
     industry: "AI Automation & Software",
     location: "Karachi, Pakistan",
