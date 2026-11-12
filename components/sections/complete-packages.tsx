@@ -1,4 +1,4 @@
-import { Check, Globe, Mail, Megaphone, MonitorSmartphone, Server, type LucideIcon } from "lucide-react";
+import { Check, Globe, LifeBuoy, Megaphone, MonitorSmartphone, Search, type LucideIcon } from "lucide-react";
 import {
   completePackages,
   packagePriceLabel,
@@ -10,13 +10,13 @@ import { SpecValue } from "@/components/ui/spec-value";
 import { RevealOnScroll } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
-function includeIcon(line: string): LucideIcon {
-  const l = line.toLowerCase();
-  if (l.includes("domain")) return Globe;
-  if (l.includes("hosting")) return Server;
-  if (l.includes("website")) return MonitorSmartphone;
-  if (l.includes("email")) return Mail;
-  if (l.includes("marketing")) return Megaphone;
+function groupIcon(title: string): LucideIcon {
+  const t = title.toLowerCase();
+  if (t.includes("website")) return MonitorSmartphone;
+  if (t.includes("domain")) return Globe;
+  if (t.includes("seo")) return Search;
+  if (t.includes("marketing")) return Megaphone;
+  if (t.includes("after")) return LifeBuoy;
   return Check;
 }
 
@@ -35,7 +35,7 @@ export function CompletePackages({ location }: { location: string }) {
           </p>
         </RevealOnScroll>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:max-w-4xl">
           {completePackages.map((pkg, index) => {
             const label = pkg.highlighted ? "Recommended" : pkg.badge;
             return (
@@ -64,19 +64,29 @@ export function CompletePackages({ location }: { location: string }) {
                 <p className="mt-3 text-3xl font-semibold tracking-tight text-ink">{packagePriceLabel(pkg)}</p>
                 <p className="mt-2 text-sm text-ink-muted">{pkg.tagline}</p>
 
-                <ul className="mt-6 flex-1 space-y-3 border-t border-line pt-6">
-                  {pkg.includes.map((line) => {
-                    const Icon = includeIcon(line);
+                <div className="mt-6 flex-1 space-y-6 border-t border-line pt-6">
+                  {pkg.groups.map((group) => {
+                    const Icon = groupIcon(group.title);
                     return (
-                      <li key={line} className="flex items-center gap-3 text-sm text-ink">
-                        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-signal-soft text-signal transition-transform duration-300 group-hover:scale-110">
-                          <Icon size={15} aria-hidden />
-                        </span>
-                        {line}
-                      </li>
+                      <div key={group.title}>
+                        <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-ink">
+                          <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-signal-soft text-signal">
+                            <Icon size={14} aria-hidden />
+                          </span>
+                          {group.title}
+                        </p>
+                        <ul className="mt-3 space-y-2">
+                          {group.items.map((item) => (
+                            <li key={item} className="flex items-start gap-2 text-sm text-ink">
+                              <Check size={14} aria-hidden className="mt-0.5 shrink-0 text-signal" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     );
                   })}
-                </ul>
+                </div>
 
                 <PlanCtas
                   className="mt-8"

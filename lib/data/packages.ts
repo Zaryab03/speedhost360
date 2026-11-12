@@ -10,7 +10,10 @@ export type CompletePackage = {
   name: string;
   price: number;
   tagline: string;
+  /** Short summary used by llms.txt and the FAQ. */
   includes: string[];
+  /** Full feature list shown on the card, grouped by area. */
+  groups: { title: string; items: string[] }[];
   /** Factual badge only, e.g. what's included. Never "most popular" without data. */
   badge?: string;
   highlighted?: boolean;
@@ -28,20 +31,51 @@ export const completePackages: CompletePackage[] = [
     name: "Starter Package",
     price: 40_000,
     tagline: "Get a simple business website online",
-    includes: ["Domain registration", "Web hosting", "Basic static website", "1 business email account"],
-  },
-  {
-    slug: "business-package",
-    name: "Business Package",
-    price: 80_000,
-    tagline: "A dynamic website you can grow",
-    includes: ["Domain registration", "Web hosting", "Dynamic website", "2 business email accounts"],
-    highlighted: true,
+    includes: ["Domain registration", "Web hosting", "Responsive website", "3 business email accounts"],
+    groups: [
+      {
+        title: "Website",
+        items: [
+          "Responsive website",
+          "Static website",
+          "Dynamic website (limited functionality)",
+          "Blog with admin panel",
+          "Contact form with email notifications",
+          "WhatsApp integration",
+          "Google Maps integration",
+        ],
+      },
+      {
+        title: "Domain, hosting & email",
+        items: [
+          "Domain registration (first year)",
+          "Web hosting (first year)",
+          "DNS management",
+          "Free SSL certificate",
+          "3 business email accounts",
+        ],
+      },
+      {
+        title: "SEO & analytics",
+        items: [
+          "Google Search Console",
+          "Google Business Profile",
+          "Google Analytics 4",
+          "XML sitemap and robots.txt",
+          "Microsoft Clarity",
+          "Basic on-page SEO",
+        ],
+      },
+      {
+        title: "After launch",
+        items: ["Website backup", "30 days post-launch support"],
+      },
+    ],
   },
   {
     slug: "growth-package",
     name: "Growth Package",
-    price: 120_000,
+    price: 80_000,
     tagline: "Launch and start bringing in customers",
     includes: [
       "Domain registration",
@@ -51,6 +85,63 @@ export const completePackages: CompletePackage[] = [
       "Digital marketing",
     ],
     badge: "Includes marketing",
+    highlighted: true,
+    groups: [
+      {
+        title: "Website development",
+        items: [
+          "Up to 8 professionally designed pages",
+          "Static or dynamic website",
+          "Mobile-responsive design",
+          "Contact and enquiry forms",
+          "WhatsApp integration",
+          "Blog with admin panel",
+          "Google Maps integration",
+        ],
+      },
+      {
+        title: "Domain, hosting & email",
+        items: [
+          "Domain registration (first year)",
+          "Managed web hosting (first year)",
+          "DNS management",
+          "Free SSL certificate",
+          "5 business email accounts",
+        ],
+      },
+      {
+        title: "SEO & analytics",
+        items: [
+          "Google Search Console",
+          "Google Analytics 4",
+          "Google Business Profile setup",
+          "Microsoft Clarity",
+          "Sitemap and robots.txt",
+          "Basic on-page SEO",
+          "Keyword research for target pages",
+        ],
+      },
+      {
+        title: "Digital marketing launch",
+        items: [
+          "Facebook and Instagram business page setup and optimisation",
+          "Social media branding setup",
+          "8 professionally designed social media posts",
+          "Basic monthly content calendar",
+          "WhatsApp Business setup",
+          "Initial digital marketing strategy",
+        ],
+      },
+      {
+        title: "After-launch services",
+        items: [
+          "Website backup",
+          "2 rounds of revisions",
+          "30 days technical support",
+          "Website handover and guidance",
+        ],
+      },
+    ],
   },
 ];
 
