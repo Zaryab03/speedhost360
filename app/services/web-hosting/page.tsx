@@ -8,7 +8,6 @@ import { DataOwnership } from "@/components/sections/data-ownership";
 import { ClientPortalLink } from "@/components/layout/client-portal-link";
 import { siteConfig } from "@/lib/data/site";
 import { EmailPricing } from "@/components/sections/email-pricing";
-import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import {
   MigrationChecklist,
   NotIncludedAndAddOns,
@@ -60,7 +59,6 @@ export default async function WebHostingPage() {
             <MigrationChecklist />
             <DataOwnership />
             <EmailPricing />
-            <ReliabilityStats />
           </>
         }
       />
