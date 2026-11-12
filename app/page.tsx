@@ -7,7 +7,6 @@ import { ReliabilityStats } from "@/components/sections/reliability-stats";
 import { CompletePackages } from "@/components/sections/complete-packages";
 import { Pricing } from "@/components/sections/pricing";
 import { EmailPricing } from "@/components/sections/email-pricing";
-import { HostingComparison } from "@/components/sections/hosting-comparison";
 import { RecentWork } from "@/components/sections/recent-work";
 import { Testimonials } from "@/components/sections/testimonials";
 import { FaqSection } from "@/components/sections/faq-section";
@@ -37,7 +36,6 @@ export default async function Home() {
       <CompletePackages location="home_packages" />
       <Pricing plans={plans} />
       <EmailPricing />
-      <HostingComparison />
       <RecentWork />
       <Testimonials />
       <AuditCta location="home" />

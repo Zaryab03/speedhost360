@@ -9,7 +9,6 @@ import { ClientPortalLink } from "@/components/layout/client-portal-link";
 import { siteConfig } from "@/lib/data/site";
 import { EmailPricing } from "@/components/sections/email-pricing";
 import { ReliabilityStats } from "@/components/sections/reliability-stats";
-import { HostingComparison } from "@/components/sections/hosting-comparison";
 import {
   MigrationChecklist,
   NotIncludedAndAddOns,
@@ -62,7 +61,6 @@ export default async function WebHostingPage() {
             <DataOwnership />
             <EmailPricing />
             <ReliabilityStats />
-            <HostingComparison />
           </>
         }
       />
