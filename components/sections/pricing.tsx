@@ -9,14 +9,17 @@ export function Pricing({ plans }: { plans: HostingPlan[] }) {
     <section id="pricing" className="border-b border-line bg-paper-raised">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <RevealOnScroll>
-          <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">Pricing</p>
-          <h2 className="mt-3 max-w-lg text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Published starting prices, no guessing games.
-          </h2>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
-            Hosting and managed infrastructure plans, in PKR, up front. Final pricing may adjust
-            for unusual traffic or storage needs, but you&rsquo;ll never have to ask what
-            something costs before we tell you.
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Web Hosting Plans</h2>
+          <h3 className="mt-3 max-w-2xl text-lg font-medium text-signal sm:text-xl">
+            Reliable hosting for your website. Simple, transparent pricing.
+          </h3>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            From personal websites and small businesses to growing companies, find a hosting plan that
+            fits your needs. Get dependable server resources, SSL security, website backups and reliable
+            performance, with clear pricing in PKR.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm font-medium text-ink">
+            No hidden charges. No confusing plans. Just hosting you can count on.
           </p>
         </RevealOnScroll>
 
