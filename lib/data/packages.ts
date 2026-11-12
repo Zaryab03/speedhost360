@@ -64,6 +64,7 @@ export const completePackages: CompletePackage[] = [
           "Sitemap and robots.txt",
           "Basic on-page SEO",
         ],
+        excluded: ["Keyword research for target pages"],
       },
       {
         title: "Digital marketing launch",
