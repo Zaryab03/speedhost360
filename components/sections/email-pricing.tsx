@@ -1,6 +1,5 @@
 import { Check } from "lucide-react";
 import { emailHostingPricing } from "@/lib/data/email-hosting";
-import { pricePeriod } from "@/lib/data/plans";
 import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/motion/reveal";
 
@@ -12,34 +11,42 @@ export function EmailPricing() {
           <p className="font-mono text-xs uppercase tracking-[0.08em] text-signal">
             Business Email
           </p>
-          <h2 className="mt-3 max-w-lg text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-            Professional email on your own domain.
+          <h2 className="mt-3 max-w-xl text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+            Professional Business Email Hosting
           </h2>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
-            Self-hosted business email, priced per mailbox. Sold alongside any hosting plan, not
-            locked to one.
+            Reliable, secure and professional email for your business. Use your own domain to
+            communicate with customers and teams with confidence.
           </p>
         </RevealOnScroll>
 
-        <div className="mt-8 grid gap-6 sm:max-w-2xl sm:grid-cols-2">
+        <div className="mt-8 grid gap-6 md:max-w-4xl md:grid-cols-2">
           {emailHostingPricing.map((plan, index) => (
             <RevealOnScroll
               key={plan.name}
               delay={index * 0.05}
-              className={`flex h-full flex-col border p-6 ${
-                plan.highlighted ? "border-signal" : "border-line"
+              className={`relative flex h-full flex-col border p-6 sm:p-7 ${
+                plan.highlighted
+                  ? "border-signal bg-signal-soft/30 shadow-[0_0_0_1px_var(--signal)]"
+                  : "border-line"
               }`}
             >
+              {plan.highlighted && (
+                <span className="absolute -top-3 left-6 bg-signal px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-signal-ink">
+                  Most Popular
+                </span>
+              )}
               <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">
-                {plan.name}
+                {plan.tier} &middot; {plan.name}
               </p>
-              <p className="mt-3 text-2xl font-semibold text-ink">
+              <p className="mt-3 text-3xl font-semibold tracking-tight text-ink">
                 {plan.price}
-                <span className="ml-1 text-sm font-normal text-ink-muted">{pricePeriod}</span>
+                <span className="ml-1 text-sm font-normal text-ink-muted">/ year</span>
               </p>
-              <ul className="mt-5 flex-1 space-y-2.5">
+              <p className="mt-2 text-sm text-ink-muted">{plan.description}</p>
+              <ul className="mt-5 flex-1 space-y-2.5 border-t border-line pt-5">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-ink-muted">
+                  <li key={f} className="flex items-start gap-2 text-sm text-ink">
                     <Check size={15} className="mt-0.5 shrink-0 text-signal" />
                     {f}
                   </li>
