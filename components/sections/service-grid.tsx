@@ -57,20 +57,16 @@ export function ServiceGrid() {
           {serviceList.map((service, index) => {
             const copy = cardCopy[service.slug];
             const Icon = copy.icon;
-            const number = String(index + 1).padStart(2, "0");
             return (
               <li key={service.slug}>
                 <RevealOnScroll delay={index * 0.05} className="h-full">
                   <Link
                     href={`/services/${service.slug}`}
-                    className="focus-ring group relative flex h-full min-h-[18rem] flex-col rounded-[var(--radius-md)] border border-line bg-paper-raised p-7 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-signal hover:shadow-[var(--shadow-card)]"
+                    className="focus-ring group relative flex h-full min-h-[18rem] flex-col rounded-[var(--radius-md)] border border-line bg-paper-raised p-7 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-signal hover:bg-signal-soft/40 hover:shadow-[0_0_0_1px_var(--signal),0_24px_48px_-28px_color-mix(in_srgb,var(--signal)_60%,transparent)]"
                   >
-                    <div className="flex items-start justify-between">
+                    <div className="flex items-start">
                       <span className="flex size-11 items-center justify-center rounded-[var(--radius-sm)] border border-line-strong text-ink transition-colors duration-300 group-hover:border-signal group-hover:bg-signal group-hover:text-signal-ink">
                         <Icon size={20} strokeWidth={1.5} aria-hidden />
-                      </span>
-                      <span className="font-mono text-sm tracking-[0.08em] text-ink-muted transition-colors group-hover:text-signal">
-                        {number}
                       </span>
                     </div>
 
