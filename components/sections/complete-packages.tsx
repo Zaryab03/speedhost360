@@ -1,4 +1,4 @@
-import { Check, Globe, LifeBuoy, Megaphone, MonitorSmartphone, Search, type LucideIcon } from "lucide-react";
+import { Check, Globe, LifeBuoy, Megaphone, MonitorSmartphone, Search, X, type LucideIcon } from "lucide-react";
 import {
   completePackages,
   packagePriceLabel,
@@ -79,6 +79,13 @@ export function CompletePackages({ location }: { location: string }) {
                           {group.items.map((item) => (
                             <li key={item} className="flex items-start gap-2 text-sm text-ink">
                               <Check size={14} aria-hidden className="mt-0.5 shrink-0 text-signal" />
+                              {item}
+                            </li>
+                          ))}
+                          {group.excluded?.map((item) => (
+                            <li key={item} className="flex items-start gap-2 text-sm text-ink-muted/70 line-through">
+                              <X size={14} aria-hidden className="mt-0.5 shrink-0" />
+                              <span className="sr-only">Not included: </span>
                               {item}
                             </li>
                           ))}

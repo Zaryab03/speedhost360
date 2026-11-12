@@ -13,7 +13,7 @@ export type CompletePackage = {
   /** Short summary used by llms.txt and the FAQ. */
   includes: string[];
   /** Full feature list shown on the card, grouped by area. */
-  groups: { title: string; items: string[] }[];
+  groups: { title: string; items: string[]; /** Shown struck through: in Growth but not in this package. */ excluded?: string[] }[];
   /** Factual badge only, e.g. what's included. Never "most popular" without data. */
   badge?: string;
   highlighted?: boolean;
@@ -67,15 +67,20 @@ export const completePackages: CompletePackage[] = [
       },
       {
         title: "Digital marketing launch",
-        items: [
+        items: [],
+        excluded: [
           "Facebook and Instagram business page setup and optimisation",
           "Social media branding setup",
+          "8 professionally designed social media posts",
+          "Basic monthly content calendar",
           "WhatsApp Business setup",
+          "Initial digital marketing strategy",
         ],
       },
       {
         title: "After-launch services",
-        items: ["Website backup", "30 days technical support", "Website handover and guidance"],
+        items: ["Website backup", "30 days technical support"],
+        excluded: ["2 rounds of revisions", "Website handover and guidance"],
       },
     ],
   },
