@@ -56,7 +56,7 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
                     id={`plan-${plan.slug}`}
                     scope="col"
                     className={`px-4 py-3 text-left align-bottom font-normal ${
-                      plan.mostPopular ? "bg-signal-soft/50" : ""
+                      plan.mostPopular ? "bg-signal-soft" : ""
                     }`}
                   >
                     {plan.mostPopular && (
@@ -87,7 +87,7 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
                   {plans.map((plan) => (
                     <td
                       key={plan.slug}
-                      className={`px-4 py-3 text-ink-muted ${plan.mostPopular ? "bg-signal-soft/50" : ""}`}
+                      className={`px-4 py-3 text-ink-muted ${plan.mostPopular ? "bg-signal-soft" : ""}`}
                     >
                       <SpecValue value={plan[row.key]} />
                     </td>
@@ -99,7 +99,7 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
                 {plans.map((plan) => (
                   <td
                     key={plan.slug}
-                    className={`px-4 py-5 ${plan.mostPopular ? "bg-signal-soft/50" : ""}`}
+                    className={`px-4 py-5 ${plan.mostPopular ? "bg-signal-soft" : ""}`}
                   >
                     <PlanCtas plan={ctaPlan(plan)} primary={plan.mostPopular} location={location} />
                   </td>
@@ -115,7 +115,7 @@ export function PlanComparisonTable({ plans, location }: { plans: HostingPlan[];
             <article
               key={plan.slug}
               aria-labelledby={`plan-card-${plan.slug}`}
-              className={`border p-5 ${plan.mostPopular ? "border-signal" : "border-line"}`}
+              className={`border p-5 ${plan.mostPopular ? "border-signal bg-signal-soft/30 shadow-[0_0_0_1px_var(--signal),0_24px_48px_-28px_color-mix(in_srgb,var(--signal)_60%,transparent)]" : "border-line"}`}
             >
               {plan.mostPopular && (
                 <span className="mb-2 inline-block bg-signal px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-signal-ink">

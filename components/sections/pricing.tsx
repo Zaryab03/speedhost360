@@ -29,7 +29,7 @@ export function Pricing({ plans }: { plans: HostingPlan[] }) {
               key={plan.slug}
               delay={index * 0.05}
               className={`relative flex h-full flex-col border p-6 ${
-                plan.mostPopular ? "border-signal" : "border-line"
+                plan.mostPopular ? "border-signal bg-signal-soft/30 shadow-[0_0_0_1px_var(--signal),0_24px_48px_-28px_color-mix(in_srgb,var(--signal)_60%,transparent)]" : "border-line"
               }`}
             >
               {plan.mostPopular && (
