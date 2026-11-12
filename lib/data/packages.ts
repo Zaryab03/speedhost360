@@ -34,14 +34,13 @@ export const completePackages: CompletePackage[] = [
     includes: ["Domain registration", "Web hosting", "Responsive website", "3 business email accounts"],
     groups: [
       {
-        title: "Website",
+        title: "Website development",
         items: [
-          "Responsive website",
-          "Static website",
-          "Dynamic website (limited functionality)",
-          "Blog with admin panel",
+          "Static or dynamic website (limited functionality)",
+          "Mobile-responsive design",
           "Contact form with email notifications",
           "WhatsApp integration",
+          "Blog with admin panel",
           "Google Maps integration",
         ],
       },
@@ -49,7 +48,7 @@ export const completePackages: CompletePackage[] = [
         title: "Domain, hosting & email",
         items: [
           "Domain registration (first year)",
-          "Web hosting (first year)",
+          "Managed web hosting (first year)",
           "DNS management",
           "Free SSL certificate",
           "3 business email accounts",
@@ -59,15 +58,15 @@ export const completePackages: CompletePackage[] = [
         title: "SEO & analytics",
         items: [
           "Google Search Console",
-          "Google Business Profile",
           "Google Analytics 4",
-          "XML sitemap and robots.txt",
+          "Google Business Profile setup",
           "Microsoft Clarity",
+          "Sitemap and robots.txt",
           "Basic on-page SEO",
         ],
       },
       {
-        title: "After launch",
+        title: "After-launch services",
         items: ["Website backup", "30 days post-launch support"],
       },
     ],
