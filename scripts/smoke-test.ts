@@ -91,7 +91,7 @@ async function main() {
     console.log("\nDatabase");
     const plans = await prisma.hostingPlan.findMany({ orderBy: { sortOrder: "asc" } });
     check("plans query returns seeded plans", plans.length >= 4, `${plans.length} rows (run npm run db:seed)`);
-    check("exactly one most popular plan", plans.filter((p) => p.mostPopular).length === 1);
+    check("at most one most popular plan", plans.filter((p) => p.mostPopular).length <= 1);
     const posts = await prisma.post.findMany({ where: { status: "PUBLISHED" }, take: 1 });
     check("published posts query runs", Array.isArray(posts));
 
@@ -101,12 +101,12 @@ async function main() {
       email: MARKER_EMAIL,
       phone: "+92 300 0000000",
       service: "web-hosting",
-      plan: "business",
+      plan: "starter",
       message: "Automated smoke test, please ignore.",
     };
     const ok = await post("/api/contact", brief);
     check("valid brief accepted", ok.status === 200, JSON.stringify(ok.json));
-    const lead = await prisma.lead.findFirst({ where: { email: MARKER_EMAIL, plan: "business" } });
+    const lead = await prisma.lead.findFirst({ where: { email: MARKER_EMAIL, plan: "starter" } });
     check("brief stored with plan", !!lead);
 
     const contactOnly = await post("/api/contact", { ...brief, service: "other", plan: "" });

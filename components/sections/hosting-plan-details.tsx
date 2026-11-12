@@ -165,11 +165,6 @@ const scenarios: { title: string; description: string; plan: HostingPlan["slug"]
     plan: "starter",
   },
   {
-    title: "“I run a few sites or brands.”",
-    description: "Up to five websites under one plan, with performance monitoring and priority support.",
-    plan: "business",
-  },
-  {
     title: "“My sites get serious traffic.”",
     description: "Multiple busy sites where slowdowns cost you sales, with advanced monitoring.",
     plan: "professional",
@@ -188,7 +183,7 @@ export function PlanScenarios({ plans }: { plans: HostingPlan[] }) {
         <RevealOnScroll>
           <Eyebrow>Which plan is right for me?</Eyebrow>
         </RevealOnScroll>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {scenarios.map((s) => {
             const plan = plans.find((p) => p.slug === s.plan);
             if (!plan) return null;

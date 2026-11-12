@@ -23,7 +23,7 @@ export function Pricing({ plans }: { plans: HostingPlan[] }) {
           </p>
         </RevealOnScroll>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {plans.map((plan, index) => (
             <RevealOnScroll
               key={plan.slug}

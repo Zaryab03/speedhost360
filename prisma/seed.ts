@@ -16,6 +16,9 @@ async function seedPlans() {
     });
   }
 
+  // Drop plans that were removed from the config.
+  await prisma.hostingPlan.deleteMany({ where: { slug: { notIn: hostingPlans.map((p) => p.slug) } } });
+
   const pending = hostingPlans.flatMap((plan) =>
     Object.entries(plan)
       .filter(([, value]) => isPending(value))

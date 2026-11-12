@@ -20,7 +20,7 @@ export function isPending(value: unknown): value is Pending {
   return value === TODO_CONFIRM;
 }
 
-export type PlanSlug = "starter" | "business" | "professional" | "managed";
+export type PlanSlug = "starter" | "professional" | "managed";
 
 export type HostingPlan = {
   slug: PlanSlug;
@@ -94,36 +94,6 @@ export const hostingPlans: HostingPlan[] = [
     region: "US/EU",
     bestFor: "A single business website",
     mostPopular: false,
-  },
-  {
-    slug: "business",
-    name: "Business",
-    service: "web-hosting",
-    price: 25000,
-    priceIsFrom: false,
-    billingPeriod: "Yearly",
-    renewalPrice: "Same price every year, no increase",
-    websitesIncluded: "Up to 5",
-    storageGb: "10",
-    freeSsl: "Yes",
-    bandwidth: "Unlimited",
-    addonDomains: "4",
-    subdomains: "10",
-    ram: "2 GB",
-    cpu: "2 CPU cores",
-    databases: "10",
-    emailAccounts: "10",
-    backupFrequency: "Daily",
-    backupRetentionDays: "A fresh backup every day",
-    monitoringLevel: "Performance monitoring",
-    supportTier: "Priority",
-    supportResponseTime: "Within 30 minutes",
-    migrationIncluded: "Included",
-    staging: "Yes",
-    sshAccess: "Yes, provided",
-    region: "US/EU",
-    bestFor: "Businesses running several sites or brands",
-    mostPopular: true,
   },
   {
     slug: "professional",
